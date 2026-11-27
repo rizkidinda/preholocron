@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Last Touch Lead Source --></label>
+    <name>Last_Touch_Lead_Source__c</name>
+    <picklistValues>
+        <masterLabel>Channel Partnership</masterLabel>
+        <translation><!-- Channel Partnership --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Database Upload</masterLabel>
+        <translation><!-- Database Upload --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Direct</masterLabel>
+        <translation><!-- Direct --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>DragonPay Referral</masterLabel>
+        <translation><!-- DragonPay Referral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Email</masterLabel>
+        <translation><!-- Email --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Inbound</masterLabel>
+        <translation><!-- Inbound --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Internal Referral</masterLabel>
+        <translation><!-- Internal Referral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Offline Events</masterLabel>
+        <translation><!-- Offline Events --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Organic App Install</masterLabel>
+        <translation><!-- Organic App Install --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Organic Display</masterLabel>
+        <translation><!-- Organic Display --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Organic Search</masterLabel>
+        <translation><!-- Organic Search --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Organic Social</masterLabel>
+        <translation><!-- Organic Social --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid App - AC</masterLabel>
+        <translation><!-- Paid App - AC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid App - Search</masterLabel>
+        <translation><!-- Paid App - Search --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid Search</masterLabel>
+        <translation><!-- Paid Search --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid Social</masterLabel>
+        <translation><!-- Paid Social --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Purchased list</masterLabel>
+        <translation><!-- Purchased list --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Referral</masterLabel>
+        <translation><!-- Referral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Self-hunted</masterLabel>
+        <translation><!-- Self-hunted --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website</masterLabel>
+        <translation><!-- Website --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>clevertap email</masterLabel>
+        <translation><!-- clevertap email --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>clevertap whatsapp</masterLabel>
+        <translation><!-- clevertap whatsapp --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>facebook paid</masterLabel>
+        <translation><!-- facebook paid --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>facebook social</masterLabel>
+        <translation><!-- facebook social --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>foundry con_syn</masterLabel>
+        <translation><!-- foundry con_syn --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>google cpc</masterLabel>
+        <translation><!-- google cpc --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>google display</masterLabel>
+        <translation><!-- google display --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>google organic</masterLabel>
+        <translation><!-- google organic --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>linkedin paid</masterLabel>
+        <translation><!-- linkedin paid --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>linkedin social</masterLabel>
+        <translation><!-- linkedin social --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>owned_event</masterLabel>
+        <translation><!-- owned_event --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>owned_offline_event</masterLabel>
+        <translation><!-- owned_offline_event --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>pardot email</masterLabel>
+        <translation><!-- pardot email --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>xendit customer_support</masterLabel>
+        <translation><!-- xendit customer_support --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>xendit referral</masterLabel>
+        <translation><!-- xendit referral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>xendit self_prospected</masterLabel>
+        <translation><!-- xendit self_prospected --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>youtube organic</masterLabel>
+        <translation><!-- youtube organic --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>youtube paid</masterLabel>
+        <translation><!-- youtube paid --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Lead Layout</layout>
+        <sections>
+            <label><!-- Company Information --></label>
+            <section>Company Information</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Information --></label>
+            <section>Contact Information</section>
+        </sections>
+        <sections>
+            <label><!-- From Contact Us Form --></label>
+            <section>From Contact Us Form</section>
+        </sections>
+        <sections>
+            <label><!-- From Lead Qual --></label>
+            <section>From Lead Qual</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Details --></label>
+            <section>Marketing Details</section>
+        </sections>
+        <sections>
+            <label><!-- Revenue Details --></label>
+            <section>Revenue Details</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Add to Nurture List --></label>
+        <name>pi__Add_to_Nurture_List</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Send to Slack --></label>
+        <name>slackv2__Send_to_Slack</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Slack Alerts --></label>
+        <name>slackv2__Slack_Alerts</name>
+    </quickActions>
+    <validationRules>
+        <errorMessage><!-- Please populate the value of total funding raised --></errorMessage>
+        <name>Is_VC_backed_startup_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Address Country is mandatory --></errorMessage>
+        <name>Lead_Country_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunity creation is mandatory upon lead conversion --></errorMessage>
+        <name>Opportunity_Creation_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You are not allowed to update First Touch Lead Source --></errorMessage>
+        <name>Prevent_First_Touch_Lead_Source_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You are not allowed to update Last Touch Lead Source --></errorMessage>
+        <name>Prevent_Last_Touch_Lead_Source_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can only update the Pipeline Source value to Internal Referral/Outbound/ABM/Partner Referral/Events --></errorMessage>
+        <name>Sales_PipelineSource_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- To populate total funding raised, make sure &quot;Is VC backed startup?&quot; field is ticked --></errorMessage>
+        <name>Total_Funding_Raised_validation</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Pardot_Email --></label>
+        <name>pi__Send_Pardot_Email</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Pardot_Emails --></label>
+        <name>pi__Send_Pardot_Emails</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Single_Pardot_Email --></label>
+        <name>pi__Send_Single_Pardot_Email</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_to_Prospect_Insight --></label>
+        <name>pi__Send_to_Prospect_Insight</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_to_Slack --></label>
+        <name>slackv2__Send_to_Slack</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Slack_Alerts --></label>
+        <name>slackv2__Slack_Alerts</name>
+    </webLinks>
+</CustomObjectTranslation>

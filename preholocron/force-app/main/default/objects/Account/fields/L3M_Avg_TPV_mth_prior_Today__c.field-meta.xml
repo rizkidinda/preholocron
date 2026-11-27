@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L3M_Avg_TPV_mth_prior_Today__c</fullName>
+    <description>The average TPV/month of the merchant in the last 3 months
+
+ 
+
+Master Logic: IF master acc THEN use (sum L3M TPV prior today / 3)</description>
+    <externalId>false</externalId>
+    <label>L3M Avg TPV/mth (prior Today)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

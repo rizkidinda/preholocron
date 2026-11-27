@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>
+        <!-- The first transaction date/time of the merchant, regardless of channel
+
+Master Logic: IF master acc THEN use (min. first transaction date) -->
+    </help>
+    <label><!-- First Transaction Date/Time --></label>
+    <name>First_Transaction_Date_Time__c</name>
+</CustomFieldTranslation>

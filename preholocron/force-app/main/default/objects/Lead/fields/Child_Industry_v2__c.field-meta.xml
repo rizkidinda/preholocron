@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_Industry_v2__c</fullName>
+    <inlineHelpText>Refers to the merchant&apos;s child vertical category. See vertical list definitions for more details on classification</inlineHelpText>
+    <label>Child Industry</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Industry_Category__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Child_Industry</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <valueName>edutech</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <valueName>entertainment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <valueName>health_tech</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <controllingFieldValue>Digital Product</controllingFieldValue>
+            <valueName>martech_adtech</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <controllingFieldValue>Digital Product</controllingFieldValue>
+            <valueName>mobile_application</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <controllingFieldValue>Digital Product</controllingFieldValue>
+            <valueName>other_digital_products</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <valueName>other_saas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <controllingFieldValue>Digital Product</controllingFieldValue>
+            <valueName>Apps</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <controllingFieldValue>Digital Product</controllingFieldValue>
+            <valueName>Games</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <controllingFieldValue>Digital Product</controllingFieldValue>
+            <valueName>Live_Gaming_Streaming_Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <controllingFieldValue>Digital Product</controllingFieldValue>
+            <valueName>Movie_Music_TV_Streaming_Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <controllingFieldValue>Digital Product</controllingFieldValue>
+            <valueName>Music_or_Other_Media</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital Products</controllingFieldValue>
+            <controllingFieldValue>Digital Product</controllingFieldValue>
+            <valueName>Software_as_a_Service</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regulated and age restricted products</controllingFieldValue>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>alcohol</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regulated and age restricted products</controllingFieldValue>
+            <valueName>health_supplements_selling_existing_brand</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regulated and age restricted products</controllingFieldValue>
+            <valueName>health_supplements_selling_own_brand</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regulated and age restricted products</controllingFieldValue>
+            <valueName>pharmacies_or_pharmaceuticals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <valueName>airline</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <valueName>airport</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <valueName>bus</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <controllingFieldValue>Travel and Lodging</controllingFieldValue>
+            <valueName>camping_site_and_trailer_park</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>car_rental</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <valueName>water_transport</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <controllingFieldValue>Travel and Lodging</controllingFieldValue>
+            <valueName>haj_and_umrah_provider</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <valueName>online_travel_agent</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <valueName>other_travel_and_hospitalities</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <controllingFieldValue>Transportations</controllingFieldValue>
+            <valueName>ride_sharing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <valueName>taxi</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <valueName>tour</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <valueName>train</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <controllingFieldValue>Travel and Lodging</controllingFieldValue>
+            <valueName>travel_agency</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Hospitality</controllingFieldValue>
+            <valueName>accommodation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transportations</controllingFieldValue>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>parking</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transportations</controllingFieldValue>
+            <valueName>commuter_transportations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transportations</controllingFieldValue>
+            <valueName>cruise_lines</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transportations</controllingFieldValue>
+            <valueName>other_transport_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Lodging</controllingFieldValue>
+            <valueName>hotels_inns_or_motels</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Lodging</controllingFieldValue>
+            <valueName>other_travel_and_lodging</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel and Lodging</controllingFieldValue>
+            <valueName>property_rentals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertaiment and Recreation</controllingFieldValue>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>amusement_park_carnival_circus</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertaiment and Recreation</controllingFieldValue>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>cinema</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertaiment and Recreation</controllingFieldValue>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>concert_band_orchestra</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertaiment and Recreation</controllingFieldValue>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>other_entertainment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertaiment and Recreation</controllingFieldValue>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>tickets_events</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertaiment and Recreation</controllingFieldValue>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>tourist_destination_and_exhibition</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical Services</controllingFieldValue>
+            <valueName>Dentist_or_Orthodontist</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical Services</controllingFieldValue>
+            <valueName>Hospitals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical Services</controllingFieldValue>
+            <valueName>Opticians_Eyeglasses_and_Eye_Clinics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical Services</controllingFieldValue>
+            <valueName>Other_Medical_Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical Services</controllingFieldValue>
+            <valueName>Telemedicine_and_Telehealth</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical Services</controllingFieldValue>
+            <valueName>Veterinary_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Membership Organisations</controllingFieldValue>
+            <controllingFieldValue>Non-Profit</controllingFieldValue>
+            <valueName>zakat_collection</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Membership Organisations</controllingFieldValue>
+            <valueName>Charities_or_Social_Services_Organisations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Membership Organisations</controllingFieldValue>
+            <valueName>Civic_Fraternal_or_Social_Associatons</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Membership Organisations</controllingFieldValue>
+            <valueName>Country_Club</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Membership Organisations</controllingFieldValue>
+            <valueName>Other_Membership_Organisations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Membership Organisations</controllingFieldValue>
+            <valueName>Political_Organisations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Membership Organisations</controllingFieldValue>
+            <valueName>Religious_Organisations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Personal Services</controllingFieldValue>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>wedding_and_bridal_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Personal Services</controllingFieldValue>
+            <valueName>Fitness_Sports_Club</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Personal Services</controllingFieldValue>
+            <valueName>Health_and_Beauty_Spas_Salons_and_Barbers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Personal Services</controllingFieldValue>
+            <valueName>Laundry_or_Cleaning_Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Personal Services</controllingFieldValue>
+            <valueName>Massage_Therapy_Practices</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Personal Services</controllingFieldValue>
+            <valueName>Other_Personal_Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>alteration_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>architecture_engineering</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>cellular_telecomunication_service_provider</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>cemetery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>childcare_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>cleaning_service_and_sanitation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>clothing_rental</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>dental_clinic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>education_informal_skill_course_photography_painting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>education_school</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>education_university</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>event_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>health_beauty_care_services_no_physical_site</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>health_beauty_care_services_physical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>hospital</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>internet_service_provider</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>it_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>laboratory</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>landline_telephone_provider</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>laundry_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>logistics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>marketing_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>medical_service_and_other_practice</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>memberships</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>online_course</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>optician_clinic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>other_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>photo_studio</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>printing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>reflexology_and_massage</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>salon_barber_shop_spa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>training_and_courses</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>utilities</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>vet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Services</controllingFieldValue>
+            <valueName>Legal_Law</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Building Services</controllingFieldValue>
+            <valueName>Other_Building_Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>fitness_and_sport_club</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>gaming</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>live_streaming</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>paid_tv_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>accounting_auditing_and_book_keeping</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>asset_management_company</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>bank</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>cryptocurrency_exchange</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>e_wallets_e_money</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>insurance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>investment_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>koperasi_simpan_pinjam</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>multi_finance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>other_financial_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>other_lendings</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>payment_gateway</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>payment_point_online_bank</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>peer_to_peer_lending</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>remittance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial Services</controllingFieldValue>
+            <valueName>Loans_or_Lending</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Non-Profit</controllingFieldValue>
+            <valueName>charity_and_donation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Non-Profit</controllingFieldValue>
+            <valueName>charity_and_social_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Non-Profit</controllingFieldValue>
+            <valueName>other_non_profit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Non-Profit</controllingFieldValue>
+            <valueName>religious_organization</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Educations</controllingFieldValue>
+            <valueName>Child_Care_Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Educations</controllingFieldValue>
+            <valueName>Collages_or_Universities</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Educations</controllingFieldValue>
+            <valueName>Elementary_or_Secondary_Schools</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Educations</controllingFieldValue>
+            <valueName>Training_Online_Inclass_Short_Courses</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Educations</controllingFieldValue>
+            <valueName>Vocational_Schools_or_Trade_Schools</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Property</controllingFieldValue>
+            <valueName>mall</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Property</controllingFieldValue>
+            <valueName>other_properties</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Property</controllingFieldValue>
+            <valueName>property_management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Property</controllingFieldValue>
+            <controllingFieldValue>Real Estate Services</controllingFieldValue>
+            <valueName>coworking_spaces</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>art_and_crafts</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>automotive</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <controllingFieldValue>Restaurants</controllingFieldValue>
+            <valueName>bakery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>beauty_selling_existing_brand</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>beauty_selling_own_brand</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>book_and_stationary</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>butcher</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>camera_and_photography_shop</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>chemical_material</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>e_tickets</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>fashion_and_accessories</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>florist</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>food_and_beverage</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>gas_station</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>gift_shop</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>health_supplements_existing_brand</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>health_supplements_own_brand</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>home_product_and_furniture</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>marketplace</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>mom_and_baby_shop</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>music</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>optic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>other_ecommerce</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>other_offline_retail</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>pet_shop</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>pharmacy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>sporting_goods</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>super_market_minimart</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>toys_and_games_store</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>watches_and_jewelry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>electronics_and_accessories</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>importing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>jewelry_precious_metals_and_precious_stones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>live_plants_florist_nurseries</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>mothercare_baby_products</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>other_merchandise</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>precious_stones_and_metals_watches_and_jewellery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Restaurants</controllingFieldValue>
+            <valueName>bar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Restaurants</controllingFieldValue>
+            <valueName>cafe_coffeeshop</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Restaurants</controllingFieldValue>
+            <valueName>fast_food</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Restaurants</controllingFieldValue>
+            <valueName>other_restaurants</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Restaurants</controllingFieldValue>
+            <valueName>other_food_and_dining</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Restaurants</controllingFieldValue>
+            <valueName>restaurants_and_nightlife</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Photography_Studios</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Computer_Repair</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Direct_Marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Event_Organizer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Funeral_Burial_Crematory_Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Other_Business_Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Other_Marketing_Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Telemarketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Testing_Laboratories</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Others</controllingFieldValue>
+            <valueName>manufacturing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Others</controllingFieldValue>
+            <valueName>multi_level_marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Others</controllingFieldValue>
+            <valueName>others</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Others</controllingFieldValue>
+            <valueName>wholesale</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Others</controllingFieldValue>
+            <valueName>unallocated</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Real Estate Services</controllingFieldValue>
+            <valueName>other_real_estate_services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Real Estate Services</controllingFieldValue>
+            <valueName>property_infrastucture_developer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Real Estate Services</controllingFieldValue>
+            <valueName>real_estate_management_services</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

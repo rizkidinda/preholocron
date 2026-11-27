@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Heeet First Click Google Client ID --></label>
+    <name>Heeet__Heeet_First_Click_Google_Client_ID__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Heeet__Audience_Trigger__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Audience Trigger</label>
+    <referenceTo>Heeet__Audience_Trigger__c</referenceTo>
+    <relationshipLabel>Audience Select Items</relationshipLabel>
+    <relationshipName>Audience_Select_Items</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

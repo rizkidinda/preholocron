@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Account_Type_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  $User.Bypass_VR__c = FALSE,
+ $Profile.Name != &apos;Xendit API Profile&apos;,
+ !ISBLANK( AccountId ),
+ ISPICKVAL( Account.Type , &quot;GROUP&quot;)
+)</errorConditionFormula>
+    <errorDisplayField>AccountId</errorDisplayField>
+    <errorMessage>Cannot tag opportunity to account with type as Group</errorMessage>
+</ValidationRule>

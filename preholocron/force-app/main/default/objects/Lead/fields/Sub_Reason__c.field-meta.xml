@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Reason__c</fullName>
+    <inlineHelpText>Child category of reasons to describe exactly why a lead is disqualified. Selected only when lead status is declared disqualified</inlineHelpText>
+    <label>Sub Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Unqualified_Reasons__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Lost_Sub_Reasons</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Business Contact</controllingFieldValue>
+            <valueName>Connected but stopped responding</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Contact</controllingFieldValue>
+            <valueName>Contact left company</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Contact</controllingFieldValue>
+            <valueName>Do not contact again</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Contact</controllingFieldValue>
+            <valueName>Incorrect contact data</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Contact</controllingFieldValue>
+            <valueName>Never responded to first contact</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Contact</controllingFieldValue>
+            <valueName>Wrong decision maker</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Compliance</controllingFieldValue>
+            <controllingFieldValue>Onboarding</controllingFieldValue>
+            <valueName>Cannot obtain all info required</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Compliance</controllingFieldValue>
+            <valueName>Declined - prohibited vertical/industry/merchant</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Compliance</controllingFieldValue>
+            <valueName>Exceeds risk appetite</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Compliance</controllingFieldValue>
+            <valueName>Impermissible product / integration</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Covid-19 related</controllingFieldValue>
+            <valueName>Business closed</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Covid-19 related</controllingFieldValue>
+            <valueName>Credit fit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Covid-19 related</controllingFieldValue>
+            <valueName>Deprioritized</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Covid-19 related</controllingFieldValue>
+            <valueName>No integration resources</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Covid-19 related</controllingFieldValue>
+            <valueName>Risk</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature missing</controllingFieldValue>
+            <valueName>Alternative payment method not available</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature missing</controllingFieldValue>
+            <valueName>Country currency support</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature missing</controllingFieldValue>
+            <valueName>Credit or Debit card feature missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature missing</controllingFieldValue>
+            <valueName>Fraud feature missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature missing</controllingFieldValue>
+            <valueName>Omni-channel missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature missing</controllingFieldValue>
+            <controllingFieldValue>Integration Issues</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature missing</controllingFieldValue>
+            <valueName>Platform support missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature missing</controllingFieldValue>
+            <valueName>Reporting or conciliation gaps</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature missing</controllingFieldValue>
+            <valueName>Settlement feature missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Integration Issues</controllingFieldValue>
+            <valueName>Cart not supported</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Integration Issues</controllingFieldValue>
+            <valueName>ERP (back office platform) not compatible</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Integration Issues</controllingFieldValue>
+            <valueName>No merchant resources</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Merchant Timing</controllingFieldValue>
+            <valueName>Bad Xendit Experience</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Merchant Timing</controllingFieldValue>
+            <valueName>Existing Contract in place</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Merchant Timing</controllingFieldValue>
+            <valueName>From BDR - Not Sales Ready</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Merchant Timing</controllingFieldValue>
+            <valueName>Not interested - stop engaging</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Merchant Timing</controllingFieldValue>
+            <valueName>Not sales ready - pass to BDR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Merchant Timing</controllingFieldValue>
+            <valueName>Out of business</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Merchant Timing</controllingFieldValue>
+            <valueName>Shopping cart partner agreement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Merchant Timing</controllingFieldValue>
+            <valueName>Xendit too slow</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pricing</controllingFieldValue>
+            <valueName>Chargeback fee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pricing</controllingFieldValue>
+            <valueName>Could not match competitor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pricing</controllingFieldValue>
+            <valueName>Cross-Border Fees</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pricing</controllingFieldValue>
+            <valueName>Fixed term pricing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pricing</controllingFieldValue>
+            <valueName>Not enough contra</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pricing</controllingFieldValue>
+            <valueName>Other Fees</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Salesforce Data Issue</controllingFieldValue>
+            <valueName>Already a Xendit Customer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Salesforce Data Issue</controllingFieldValue>
+            <valueName>Clean up old / Dead Opportunity</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Salesforce Data Issue</controllingFieldValue>
+            <valueName>Duplicate Opportunity</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Salesforce Data Issue</controllingFieldValue>
+            <valueName>Incorrect BDR pass</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Salesforce Data Issue</controllingFieldValue>
+            <valueName>Incorrect Volume</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Salesforce Data Issue</controllingFieldValue>
+            <valueName>No Sales Opportunity</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Salesforce Data Issue</controllingFieldValue>
+            <valueName>No Upsell Opportunity - 100% Share of Checkout</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Onboarding</controllingFieldValue>
+            <valueName>Declined - Business Model</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Onboarding</controllingFieldValue>
+            <valueName>Declined - Credit Risk</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Onboarding</controllingFieldValue>
+            <valueName>Declined - Poor processing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Onboarding</controllingFieldValue>
+            <valueName>Fraud</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Onboarding</controllingFieldValue>
+            <valueName>Merchant doesn’t have a website</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Onboarding</controllingFieldValue>
+            <valueName>Reserve requirements</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Onboarding</controllingFieldValue>
+            <valueName>Website not live</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

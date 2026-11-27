@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Approval_Submitter__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(CONTAINS( $CustomMetadata.Opportunity_Exception_User__mdt.Default_Pool_AM_User.All_Users_Email__c ,  Opportunity__r.Owner.FederationIdentifier ),
+CreatedBy.FirstName + IF(ISBLANK( CreatedBy.MiddleName ), &quot;&quot;, &quot; &quot;) + BLANKVALUE(CreatedBy.MiddleName, &quot;&quot;) + IF(ISBLANK( CreatedBy.LastName ), &quot;&quot;, &quot; &quot;) + BLANKVALUE(CreatedBy.LastName,&quot;&quot;), 
+Opportunity__r.Owner.FirstName + IF(ISBLANK( Opportunity__r.Owner.MiddleName ), &quot;&quot;, &quot; &quot;) + BLANKVALUE(Opportunity__r.Owner.MiddleName, &quot;&quot;) + IF(ISBLANK( Opportunity__r.Owner.LastName ), &quot;&quot;, &quot; &quot;) + BLANKVALUE(Opportunity__r.Owner.LastName,&quot;&quot;) )</formula>
+    <label>Opportunity Approval Submitter</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

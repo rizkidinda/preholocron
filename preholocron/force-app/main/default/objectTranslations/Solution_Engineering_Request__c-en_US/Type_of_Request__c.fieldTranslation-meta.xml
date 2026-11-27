@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type of Request --></label>
+    <name>Type_of_Request__c</name>
+    <picklistValues>
+        <masterLabel>Change Request</masterLabel>
+        <translation><!-- Change Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New integration</masterLabel>
+        <translation><!-- New integration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>One-time Meeting</masterLabel>
+        <translation><!-- One-time Meeting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PMO</masterLabel>
+        <translation><!-- PMO --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Product Demo</masterLabel>
+        <translation><!-- Product Demo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RFP/RFI</masterLabel>
+        <translation><!-- RFP/RFI --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Does this client/merchant have a local entity in Indonesia or Philippines? --></help>
+    <label><!-- Local Entity in the Country? --></label>
+    <name>Local_Entity_in_the_Country__c</name>
+</CustomFieldTranslation>

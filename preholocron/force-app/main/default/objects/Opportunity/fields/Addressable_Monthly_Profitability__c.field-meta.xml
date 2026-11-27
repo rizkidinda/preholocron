@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Addressable_Monthly_Profitability__c</fullName>
+    <description>Estimated Monthly Profitability on Parent Opportunity level</description>
+    <formula>IF(Addressable_Merchant_Revenue_Monthly__c &gt; 0, (Addressable_Merchant_Revenue_Monthly__c -  Addressable_Project_Cost_Monthly__c) / Addressable_Merchant_Revenue_Monthly__c, 0)</formula>
+    <label>Addressable Monthly Profitability</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

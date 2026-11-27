@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Heeet__Heeet_StandardTrigger__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Heeet_StandardTrigger</label>
+    <referenceTo>Heeet__Heeet_StandardTrigger__c</referenceTo>
+    <relationshipLabel>Heeet_StandardTriggerConditions</relationshipLabel>
+    <relationshipName>Heeet_StandardTriggerConditions</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

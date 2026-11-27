@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Count_ProdFam_Remittance_Disb_MI_MO__c</fullName>
+    <label>Count ProdFam Remittance Disb (MI+MO)</label>
+    <summaryFilterItems>
+        <field>Channel_KYC__c.Product_Family__c</field>
+        <operation>equals</operation>
+        <value>Remittance Disbursements (MI+MO)</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Channel_KYC__c.Status__c</field>
+        <operation>equals</operation>
+        <value>LIVE</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Channel_KYC__c.Account__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

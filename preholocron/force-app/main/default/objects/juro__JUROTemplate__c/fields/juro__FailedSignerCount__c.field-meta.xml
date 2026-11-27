@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__FailedSignerCount__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Failed Signer Count</label>
+    <summarizedField>juro__JUROTemplateSignature__c.juro__FailedSignerCount__c</summarizedField>
+    <summaryFilterItems>
+        <field>juro__JUROTemplateSignature__c.juro__Status__c</field>
+        <operation>notEqual</operation>
+        <value>Deleted</value>
+    </summaryFilterItems>
+    <summaryForeignKey>juro__JUROTemplateSignature__c.juro__JUROTemplate__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

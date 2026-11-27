@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Del_Discovery_Stage_Validation1</fullName>
+    <active>false</active>
+    <errorConditionFormula>If( 
+   AND(
+       RecordType.Name  = &apos;Parent Opportunity&apos;,
+       $Profile.Name!=&apos;Xendit API Profile&apos;,
+       ISPICKVAL(StageName,&apos;Discovery&apos;),
+       OR(
+          NOT(Ramp_Created__c)
+          )
+      ), true,false)</errorConditionFormula>
+    <errorMessage>To set stage as Discovery, make sure the Opportunity Ramp is configured</errorMessage>
+</ValidationRule>

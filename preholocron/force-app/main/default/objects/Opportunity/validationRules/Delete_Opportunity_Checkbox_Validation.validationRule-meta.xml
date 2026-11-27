@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delete_Opportunity_Checkbox_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+$User.Bypass_VR__c = FALSE,
+$Profile.Name != &apos;Xendit API Profile&apos;,
+ Request_to_delete__c = TRUE,
+ ISBLANK( TEXT(Reason_to_delete__c) )
+)</errorConditionFormula>
+    <errorDisplayField>Reason_to_delete__c</errorDisplayField>
+    <errorMessage>Please provide reason to delete the opportunity</errorMessage>
+</ValidationRule>

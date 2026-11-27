@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- What are the initial payment methods required (i.e. VAs, Cards, OTC, eWallet and etc)? --></help>
+    <label><!-- Potential Product used by merchant --></label>
+    <name>Potential_Product_used_by_merchant__c</name>
+</CustomFieldTranslation>

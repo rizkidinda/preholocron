@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- % of TPV Fee for the specific channel that a merchant is charged by Xendit for accepting payments from their customers, where applicable --></help>
+    <label><!-- Rate  % Per TPV (Selling Rate) --></label>
+    <name>Rate_Per_TPV_Sell__c</name>
+</CustomFieldTranslation>

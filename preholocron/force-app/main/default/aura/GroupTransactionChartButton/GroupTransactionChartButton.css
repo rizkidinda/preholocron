@@ -1,0 +1,26 @@
+.THIS .chart-legend li span{
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    font-size: 9px;
+    margin-right: 5px;
+}
+
+.THIS .chart-legend{
+  overflow:auto;
+  height: 250px;
+  font-size: 9px;
+}
+
+.THIS .chart-legend li{
+    /*cursor:pointer;*/
+    padding-bottom : 5px;
+}
+
+.THIS .strike{
+    text-decoration: line-through !important;
+}
+
+.THIS .float-left{
+ float:left;
+}

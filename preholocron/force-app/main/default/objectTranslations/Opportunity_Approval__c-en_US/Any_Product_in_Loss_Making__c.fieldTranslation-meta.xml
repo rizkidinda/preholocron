@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Please select Yes if any product of the deal is in Loss Making. --></help>
+    <label><!-- Any Product in Loss Making? --></label>
+    <name>Any_Product_in_Loss_Making__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Decision_Making_Model__c</fullName>
+    <label>Company Decision Making Model</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Centralized Decision Making</fullName>
+                <default>false</default>
+                <label>Centralized Decision Making</label>
+            </value>
+            <value>
+                <fullName>Multi-National Decision Making</fullName>
+                <default>false</default>
+                <label>Multi-National Decision Making</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

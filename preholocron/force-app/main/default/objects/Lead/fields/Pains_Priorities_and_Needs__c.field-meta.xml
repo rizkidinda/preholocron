@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pains_Priorities_and_Needs__c</fullName>
+    <description>Merchant Strategic Priorities, Needs, Pains and Challenges, Metrics</description>
+    <inlineHelpText>Listen and learn what the most critical business or technical issues are that the customer is facing. The goal is to understand the customer’s business priorities , painpoints and needs before recommending any technology solutions</inlineHelpText>
+    <label>Context, Pain, Priorities and Needs</label>
+    <length>50000</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

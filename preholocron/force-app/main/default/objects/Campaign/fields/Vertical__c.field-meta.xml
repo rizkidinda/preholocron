@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vertical__c</fullName>
+    <inlineHelpText>Refers to the industry category that describes the business type of the companies based on goods and services rendered</inlineHelpText>
+    <label>Vertical</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Generic/All</fullName>
+                <default>false</default>
+                <label>Generic/All</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

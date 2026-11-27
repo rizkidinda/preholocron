@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>How_do_you_want_to_use_Xendit__c</fullName>
+    <label>How do you want to use Xendit?</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>How_do_you_want_to_use_Xendit</valueSetName>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

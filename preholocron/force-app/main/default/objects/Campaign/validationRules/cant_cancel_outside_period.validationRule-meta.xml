@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>cant_cancel_outside_period</fullName>
+    <active>true</active>
+    <description>User can only change the status to Cancelled when the current status is not Completed, and not after End date</description>
+    <errorConditionFormula>ISPICKVAL(Status, &apos;Cancelled&apos;) &amp;&amp; TODAY() &gt; EndDate</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>You are not allowed to update the campaign status to Cancelled when the current status is Completed or it is after the Campaign End Date</errorMessage>
+</ValidationRule>

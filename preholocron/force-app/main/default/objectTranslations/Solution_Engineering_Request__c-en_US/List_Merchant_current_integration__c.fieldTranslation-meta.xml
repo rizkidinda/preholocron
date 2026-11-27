@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- How&apos;s their current integration with Xendit (i.e. Payment link, Direct API, Payment API, Plugins, XenPlatform and etc)? --></help>
+    <label><!-- List Merchant current integration --></label>
+    <name>List_Merchant_current_integration__c</name>
+</CustomFieldTranslation>

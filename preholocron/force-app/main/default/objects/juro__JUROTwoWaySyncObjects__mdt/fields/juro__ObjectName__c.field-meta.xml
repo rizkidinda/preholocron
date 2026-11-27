@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__ObjectName__c</fullName>
+    <deprecated>false</deprecated>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>ObjectApiName</label>
+    <referenceTo>EntityDefinition</referenceTo>
+    <relationshipLabel>JUROTwoWaySyncObjects</relationshipLabel>
+    <relationshipName>JUROTwoWaySyncObjects</relationshipName>
+    <required>true</required>
+    <type>MetadataRelationship</type>
+    <unique>true</unique>
+</CustomField>

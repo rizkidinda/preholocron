@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Only_One_FinOpsApp_Allowed_per_Oppty</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISNEW(),
+RecordType.Name = &apos;Fin Ops Approval&apos;,
+NOT(ISBLANK(Opportunity__c)),
+NOT(ISBLANK(TEXT( Opportunity__r.Fin_Opp_Approval__c ))),
+ISPICKVAL ( Opportunity__r.Fin_Opp_Approval__c , &quot;Approved&quot;)
+)</errorConditionFormula>
+    <errorMessage>There is an existing approved Fin Ops approval. You are not allowed to create another Fin Ops approval. If you would like to submit a new Fin Ops approval, please recall the existing approved approval.</errorMessage>
+</ValidationRule>

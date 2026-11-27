@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country_of_HQ__c</fullName>
+    <externalId>false</externalId>
+    <formula>Account.BillingCountry</formula>
+    <inlineHelpText>Merchant&apos;s global / regional HQ location</inlineHelpText>
+    <label>Country of HQ</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

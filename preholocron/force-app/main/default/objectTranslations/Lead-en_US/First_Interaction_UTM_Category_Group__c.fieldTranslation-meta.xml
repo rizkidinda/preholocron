@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- First Interaction UTM Category Group --></label>
+    <name>First_Interaction_UTM_Category_Group__c</name>
+</CustomFieldTranslation>

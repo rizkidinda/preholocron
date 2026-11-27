@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Stage_Movement__c</fullName>
+    <formula>IF(
+    AND(
+        ISBLANK(Qualification_Date__c),
+        ISBLANK(Discovery_Date__c),
+        ISBLANK(Evaluation_Date__c),
+        ISBLANK(Negotiation_Date__c),
+        ISBLANK(Onboarding_Contracting_Date__c),
+        ISBLANK(Integration_Date__c),
+        ISBLANK(Activation_Date__c)
+    ),
+    NULL,
+    IF(
+        MAX(
+            TODAY() - BLANKVALUE(Qualification_Date__c, TODAY()),
+            TODAY() - BLANKVALUE(Discovery_Date__c, TODAY()),
+            TODAY() - BLANKVALUE(Evaluation_Date__c, TODAY()),
+            TODAY() - BLANKVALUE(Negotiation_Date__c, TODAY()),
+            TODAY() - BLANKVALUE(Onboarding_Contracting_Date__c, TODAY()),
+            TODAY() - BLANKVALUE(Integration_Date__c, TODAY()),
+            TODAY() - BLANKVALUE(Activation_Date__c, TODAY())
+        ) &gt; 90,
+        TRUE,
+        FALSE
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>No Stage Movement</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

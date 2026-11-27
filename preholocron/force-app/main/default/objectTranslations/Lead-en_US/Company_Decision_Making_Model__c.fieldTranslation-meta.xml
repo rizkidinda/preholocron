@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Company Decision Making Model --></label>
+    <name>Company_Decision_Making_Model__c</name>
+    <picklistValues>
+        <masterLabel>Centralized Decision Making</masterLabel>
+        <translation><!-- Centralized Decision Making --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Multi-National Decision Making</masterLabel>
+        <translation><!-- Multi-National Decision Making --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Goals_Plan__c</fullName>
+    <inlineHelpText>The sales goals and plan outline all pertinent information about your customer, including their business goals, priorities, decision-making processes, and purchase criteria. You can also detail your strategies for retaining and upselling them. It also consists of the vital things you must achieve with this customer during the year</inlineHelpText>
+    <label>Sales Goals &amp; Plan</label>
+    <length>131072</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>11</visibleLines>
+</CustomField>

@@ -1,0 +1,419 @@
+<!--
+  @description       : 
+  @group             : 
+  @last modified on  : 21-01-2024
+  @last modified by  : arief.tjiptorahardja@mii.co.id
+-->
+<aura:component implements="force:appHostable,force:hasRecordId,flexipage:availableForRecordHome,flexipage:availableForAllPageTypes" access="global" controller="OppApprovalSummaryTableController">
+    <aura:attribute name="error" type="boolean" default="false"/>
+    <aura:attribute name="approvalObject" type="Object"/>
+    <aura:attribute name="oppProdList" type="List" default="[]"/>
+    <aura:attribute name="rateOriCurrency" type="Decimal" default="1"/>
+    <aura:attribute name="headlineTotalRevenue" type="Decimal" default="0"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+    <aura:attribute name="showCOGS" type="boolean" default="false"/>
+    <aura:html tag="style">
+        .toastMessage.forceActionsText{ 
+        white-space : pre-line !important; 
+        }
+        .slds-table td{
+            height: 40px !important;
+        }
+        label.slds-form-element__label.slds-m-right_xxx-small{
+            display: none !important;
+        }
+        div .urlCls {
+            pointer-events: auto;
+        }
+        div .tableCSS tr:hover > td {
+            color: black !important;
+        }
+    </aura:html>
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="small" />
+    </aura:if>
+    <div class="slds-grid slds-wrap slds-p-around--large slds-gutters">
+        <div class="slds-col slds-size_1-of-1 slds-scrollable" style="max-height:1000px;">
+            <p>
+                <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table_col-bordered tableCSS overflowTable" width="100%">
+                    <thead width="100%"></thead>
+                    <tbody  style="text-align:left; " width="100%">
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Opportunity Owner" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:formattedText value="{!v.approvalObject.Opportunity__r.Owner.Name}" />
+                            </td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Brand" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:formattedText value="{!v.approvalObject.Opportunity__r.Account.Brand__c}" />
+                            </td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Segment" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:formattedText value="{!v.approvalObject.Opportunity__r.Account.Segment__c}" />
+                            </td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Industry" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:formattedText value="{!v.approvalObject.Opportunity__r.Account.Industry_Category__c}" />
+                                <aura:if isTrue="{!not(empty(v.approvalObject.Opportunity__r.Account.Child_Industry_v2__c))}">
+                                    &nbsp;-&nbsp;<lightning:formattedText value="{!v.approvalObject.Opportunity__r.Account.Child_Industry_v2__c}" />
+                                </aura:if>
+                            </td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Monthly TPV Potential" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:formattedNumber value="{!v.approvalObject.Opportunity__r.Addressable_Merchant_TPV_Monthly__c}" style="currency" currencyCode="{!v.approvalObject.Opportunity__r.CurrencyIsoCode}" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                <aura:if isTrue="{!and(v.approvalObject.Opportunity__r.CurrencyIsoCode != 'USD', v.approvalObject.Opportunity__r.Addressable_Merchant_TPV_Monthly__c != null)}">
+                                    &nbsp;(<lightning:formattedNumber value="{!v.approvalObject.Opportunity__r.Addressable_Merchant_TPV_Monthly__c / v.rateOriCurrency}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>)
+                                </aura:if>
+                            </td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Monthly Rev Potential" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:formattedNumber value="{!v.approvalObject.Opportunity__r.Addressable_Merchant_Revenue_Monthly__c}" style="currency" currencyCode="{!v.approvalObject.Opportunity__r.CurrencyIsoCode}" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                <aura:if isTrue="{!and(v.approvalObject.Opportunity__r.CurrencyIsoCode != 'USD', v.approvalObject.Opportunity__r.Addressable_Merchant_Revenue_Monthly__c != null)}">
+                                    &nbsp;(<lightning:formattedNumber value="{!v.approvalObject.Opportunity__r.Addressable_Merchant_Revenue_Monthly__c / v.rateOriCurrency}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>)
+                                </aura:if>
+                            </td>
+                        </tr>
+                        <aura:if isTrue="{!v.showCOGS}">
+                            <tr class="slds-line-height_reset">
+                                <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                    <lightning:formattedText value="Monthly COGS" />
+                                </td>
+                                <td class="slds-truncate slds-text-align_left">
+                                    <lightning:formattedNumber value="{!v.approvalObject.Opportunity__r.Addressable_Project_Cost_Monthly__c}" style="currency" currencyCode="{!v.approvalObject.Opportunity__r.CurrencyIsoCode}" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                    <aura:if isTrue="{!and(v.approvalObject.Opportunity__r.CurrencyIsoCode != 'USD', v.approvalObject.Opportunity__r.Addressable_Project_Cost_Monthly__c != null)}">
+                                        &nbsp;(<lightning:formattedNumber value="{!v.approvalObject.Opportunity__r.Addressable_Project_Cost_Monthly__c / v.rateOriCurrency}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>)
+                                    </aura:if>
+                                </td>
+                            </tr>
+                            <tr class="slds-line-height_reset">
+                                <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                    <lightning:formattedText value="Monthly Gross Profit" />
+                                </td>
+                                <td class="slds-truncate slds-text-align_left">
+                                    <lightning:formattedNumber value="{!v.approvalObject.Opportunity__r.Total_Gross_Profit_Margin__c}" style="currency" currencyCode="{!v.approvalObject.Opportunity__r.CurrencyIsoCode}" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                    <aura:if isTrue="{!and(v.approvalObject.Opportunity__r.CurrencyIsoCode != 'USD', v.approvalObject.Opportunity__r.Total_Gross_Profit_Margin__c != null)}">
+                                        &nbsp;(<lightning:formattedNumber value="{!v.approvalObject.Opportunity__r.Total_Gross_Profit_Margin__c / v.rateOriCurrency}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>)
+                                    </aura:if>
+                                </td>
+                            </tr>
+                        </aura:if>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Monthly Discount against Headline Pricing (exclude Unsupported Products)" />
+                            </td>
+                            
+                            <aura:if isTrue="{!v.headlineTotalRevenue > 0}">
+                                <td class="slds-truncate slds-text-align_left">
+                                    <lightning:formattedNumber value="{!(v.headlineTotalRevenue - v.approvalObject.Opportunity__r.Addressable_Merchant_Revenue_Monthly__c)}" style="currency" currencyCode="{!v.approvalObject.Opportunity__r.CurrencyIsoCode}" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                    <aura:if isTrue="{!v.approvalObject.Opportunity__r.CurrencyIsoCode != 'USD'}">
+                                        &nbsp;(<lightning:formattedNumber value="{!(v.headlineTotalRevenue - v.approvalObject.Opportunity__r.Addressable_Merchant_Revenue_Monthly__c) / v.rateOriCurrency}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>)
+                                    </aura:if>
+                                </td>
+                                <aura:set attribute="else">
+                                    <td class="slds-truncate slds-text-align_left">
+                                        <lightning:formattedNumber value="0" style="currency" currencyCode="{!v.approvalObject.Opportunity__r.CurrencyIsoCode}" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                        <aura:if isTrue="{!v.approvalObject.Opportunity__r.CurrencyIsoCode != 'USD'}">
+                                            &nbsp;(<lightning:formattedNumber value="0" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>)
+                                        </aura:if>
+                                    </td>
+                                </aura:set>
+                            </aura:if>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%; ">
+                                <lightning:formattedText value="Gross Take Rate (%)" />&nbsp;
+                                <lightning:helptext content="Addressable Merchant Revenue Monthly / Addressable Merchant TPV Monthly" style="display: inline-flex"></lightning:helptext>
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:formattedNumber value="{!v.approvalObject.Opportunity__r.Gross_Take_Rate__c / 100}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2" />
+                            </td>
+                        </tr>
+                        <aura:if isTrue="{!v.showCOGS}">
+                            <tr class="slds-line-height_reset">
+                                <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                    <lightning:formattedText value="Gross Profit (%)" />&nbsp;
+                                    <lightning:helptext content="(Addressable Merchant Revenue Monthly - Monthly COGS) / Addressable Merchant Revenue Monthly" style="display: inline-flex"></lightning:helptext>
+                                </td>
+                                <td class="slds-truncate slds-text-align_left">
+                                    <lightning:formattedNumber value="{!v.approvalObject.Opportunity__r.Addressable_Monthly_Profitability__c / 100}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2" />
+                                </td>
+                            </tr>
+                        </aura:if>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Estimated 1st Txn Date" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:formattedDateTime value="{!v.approvalObject.Opportunity__r.Xst_Txn_Act_Date__c}" year="numeric" month="numeric" day="numeric" />
+                            </td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Request" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:formattedText value="{!v.approvalObject.Requests__c}" />
+                            </td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Justification" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:formattedText value="{!v.approvalObject.Justification2__c}" />
+                            </td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Oppty Link" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left" style="pointer-events: visible;">
+                                <lightning:formattedUrl value="{!'/' + v.approvalObject.Opportunity__c}" label="{!v.approvalObject.Opportunity__r.Name}" target="_blank" />
+                            </td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-truncate slds-text-align_left oppFieldTitle" style="width:40%">
+                                <lightning:formattedText value="Acct Link" />
+                            </td>
+                            <td class="slds-truncate slds-text-align_left">
+                                <div class="urlCls"><lightning:formattedUrl value="{!'/' + v.approvalObject.Opportunity__r.AccountId}" label="{!v.approvalObject.Opportunity__r.Account.Name}" target="_blank" /></div>
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>
+            <br/><br/>
+            <p>
+                <div class="title-body-divider" style="margin: 20px 0px !important">
+                    <div class="slds-col slds-size_1-of-1" style="font-size : 14px;">
+                        <span><b>List of Products and Channels in Opportunity</b></span>
+                    </div>
+                </div>
+            </p>
+            <p>
+                <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table_col-bordered overflowTable" width="100%">
+                    <thead style="text-align:center" class="slds-table--bordered" width="100%">
+                        <tr style="font-weight: bold" class="slds-border_bottom">
+                            <td class="slds-truncate slds-text-align_center">&nbsp;</td>
+                            <aura:if isTrue="{!v.showCOGS}">
+                                <td class="slds-truncate slds-text-align_center" colspan="5">Channel P&amp;L (USD)</td>
+                                <td class="slds-truncate slds-text-align_center" colspan="10">Pricing &amp; COGS per Transaction (Local)</td>
+                                <aura:set attribute="else">
+                                    <td class="slds-truncate slds-text-align_center" colspan="2">Channel P&amp;L (USD)</td>
+                                    <td class="slds-truncate slds-text-align_center" colspan="8">Pricing &amp; COGS per Transaction (Local)</td>
+                                </aura:set>
+                            </aura:if> 
+                            <!-- <td class="slds-truncate slds-text-align_center" colspan="5">Channel P&amp;L (USD)</td>
+                            <td class="slds-truncate slds-text-align_center" colspan="10">Pricing &amp; COGS per Transaction (Local)</td> -->
+                            <td class="slds-truncate slds-text-align_center">Billing</td>
+                        </tr>
+                    </thead>
+                    <tbody  style="text-align:left; pointer-events: none;" width="100%">
+                        <tr style="font-weight: bold; text-align:center">
+                            <td class="slds-truncate slds-text-align_center">Channel Name</td>
+                            <!--Channel P&L column - start-->
+                            <td class="slds-truncate slds-text-align_center">Monthly Rev Potential</td>
+                            <aura:if isTrue="{!v.showCOGS}">
+                                <td class="slds-truncate slds-text-align_center">Monthly COGS</td>
+                                <td class="slds-truncate slds-text-align_center">Monthly Gross Profit</td>
+                                <td class="slds-truncate slds-text-align_center">Gross Profit (%)</td>
+                            </aura:if>
+                            <!-- <td class="slds-truncate slds-text-align_center">Monthly COGS</td> -->
+                            <!-- <td class="slds-truncate slds-text-align_center">Monthly Gross Profit</td> -->
+                            <!-- <td class="slds-truncate slds-text-align_center">Gross Profit (%)</td> -->
+                            <td class="slds-truncate slds-text-align_center">Discount Given against<br/>Headline Pricing</td>
+                            <!--Channel P&L column - end-->
+                            <td class="slds-truncate slds-text-align_center">Lower than Pre-Approved Rate?</td>
+                            <td class="slds-truncate slds-text-align_center">Offered MDR</td>
+                            <td class="slds-truncate slds-text-align_center">Available Lowest Pre-Approved MDR</td>
+                            <td class="slds-truncate slds-text-align_center">MDR Headline Price</td>
+                            <aura:if isTrue="{!v.showCOGS}">
+                                <td class="slds-truncate slds-text-align_center">COGS MDR</td>
+                            </aura:if>
+                            <!-- <td class="slds-truncate slds-text-align_center">COGS MDR</td> -->
+                            <td class="slds-truncate slds-text-align_center">Offered Rate / Txn</td>
+                            <td class="slds-truncate slds-text-align_center">Available Lowest Pre-Approved Rate / Txn</td>
+                            <td class="slds-truncate slds-text-align_center">Rate / Txn Headline Price</td>
+                            <aura:if isTrue="{!v.showCOGS}">
+                                <td class="slds-truncate slds-text-align_center">COGS Fixed Fee</td>
+                            </aura:if>
+                            <!-- <td class="slds-truncate slds-text-align_center">COGS Fixed Fee</td> -->
+                            <td class="slds-truncate slds-text-align_center">Below COGS</td>
+                            <td class="slds-truncate slds-text-align_center">Billing Type</td>
+                        </tr>
+                        <aura:iteration items="{!v.oppProdList}" var="channel">
+                            <tr class="slds-line-height_reset">
+                                <td class="slds-truncate slds-text-align_left">
+                                    <lightning:formattedText value="{!channel.channelName}" />
+                                </td>
+                                <!--Channel P&L column - start-->
+                                <td class="slds-truncate slds-text-align_left">
+                                    <lightning:formattedNumber value="{!channel.totalRevenue / v.rateOriCurrency}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                </td>
+                                <aura:if isTrue="{!v.showCOGS}">
+                                    <td class="slds-truncate slds-text-align_left">
+                                        <lightning:formattedNumber value="{!channel.projectedCost / v.rateOriCurrency}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                    </td> 
+                                    <td class="slds-truncate slds-text-align_left">
+                                        <lightning:formattedNumber value="{!(channel.totalRevenue - channel.projectedCost) / v.rateOriCurrency}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                    </td>   
+                                    <aura:if isTrue="{!channel.totalRevenue > 0}">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            <lightning:formattedNumber value="{!((channel.totalRevenue - channel.projectedCost) / channel.totalRevenue)}" style="percent" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                        </td>
+                                        <aura:set attribute="else">
+                                            <td class="slds-truncate slds-text-align_left">
+                                                <lightning:formattedNumber value="0" style="percent" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                            </td>
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:if>
+                                <!-- <aura:if isTrue="{!channel.totalRevenue > 0}">
+                                    <td class="slds-truncate slds-text-align_left">
+                                        <lightning:formattedNumber value="{!((channel.totalRevenue - channel.projectedCost) / channel.totalRevenue)}" style="percent" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                    </td>
+                                    <aura:set attribute="else">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            <lightning:formattedNumber value="0" style="percent" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                        </td>
+                                    </aura:set>
+                                </aura:if> -->
+                                
+                                <aura:if isTrue="{!!channel.isUnsupportedProduct}">
+                                    <aura:if isTrue="{!channel.headlineTotalRevenue > 0}">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            <lightning:formattedNumber value="{!(channel.headlineTotalRevenue - channel.totalRevenue) / v.rateOriCurrency}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                        </td>
+                                        <aura:set attribute="else">
+                                            <td class="slds-truncate slds-text-align_left">
+                                                <lightning:formattedNumber value="0" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                            </td>
+                                        </aura:set>
+                                    </aura:if>
+                                    <aura:set attribute="else">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                    </aura:set>
+                                </aura:if>
+                                
+                                <!--Channel P&L column - end-->
+                                <aura:if isTrue="{!!channel.isUnsupportedProduct}">
+                                    <td class="{!(channel.withDiscount == 'Yes') ? 'slds-truncate slds-text-align_left lowValue' : 'slds-truncate slds-text-align_left'}">
+                                        <lightning:formattedText value="{!channel.withDiscount}" />
+                                    </td>
+                                    <aura:set attribute="else">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                    </aura:set>
+                                </aura:if>
+                                <aura:if isTrue="{!channel.productFamily != 'Unsupported Product - Non PG/VAS'}">
+                                    <td class="{!(channel.offeredMDR lt channel.availableLowestMDR || channel.offeredMDR lt channel.cogsMDR) ? 'slds-truncate slds-text-align_left lowValue' : 'slds-truncate slds-text-align_left'}">
+                                        <lightning:formattedNumber value="{!channel.offeredMDR / 100}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2" />
+                                    </td>
+                                    <aura:set attribute="else">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                    </aura:set>
+                                </aura:if>
+                                <aura:if isTrue="{!!channel.isUnsupportedProduct}">
+                                    <td class="slds-truncate slds-text-align_left">
+                                        <lightning:formattedNumber value="{!channel.availableLowestMDR / 100}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2" />
+                                    </td>
+                                    <td class="slds-truncate slds-text-align_left">
+                                        <lightning:formattedNumber value="{!channel.thresholdMDR / 100}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2" />
+                                    </td>
+                                    <aura:if isTrue="{!v.showCOGS}">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            <lightning:formattedNumber value="{!channel.cogsMDR / 100}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2" />
+                                        </td>
+                                    </aura:if>
+                                    <aura:set attribute="else">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                    </aura:set>
+                                </aura:if>
+                                <aura:if isTrue="{!channel.productFamily != 'Unsupported Product - Non PG/VAS'}">
+                                    <td class="{!(channel.offeredRatePerTxn lt channel.availableLowestRatePerTxn || channel.offeredRatePerTxn lt channel.cogsRatePerTxn) ? 'slds-truncate slds-text-align_left lowValue' : 'slds-truncate slds-text-align_left'}">
+                                        <lightning:formattedNumber value="{!channel.offeredRatePerTxn}" style="currency" currencyCode="{!channel.currencyIsoCode}" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                    </td>
+                                    <aura:set attribute="else">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                    </aura:set>
+                                </aura:if>
+                                <aura:if isTrue="{!!channel.isUnsupportedProduct}">
+                                    <td class="slds-truncate slds-text-align_left">
+                                        <lightning:formattedNumber value="{!channel.availableLowestRatePerTxn}" style="currency" currencyCode="{!channel.currencyIsoCode}" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                    </td>
+                                    <td class="slds-truncate slds-text-align_left">
+                                        <lightning:formattedNumber value="{!channel.thresholdRatePerTxn}" style="currency" currencyCode="{!channel.currencyIsoCode}" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                    </td>
+                                    <aura:if isTrue="{!v.showCOGS}">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            <lightning:formattedNumber value="{!channel.cogsRatePerTxn}" style="currency" currencyCode="{!channel.currencyIsoCode}" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                                        </td>
+                                    </aura:if>
+                                    <td class="{!(channel.belowCOGS == 'Yes') ? 'slds-truncate slds-text-align_left lowValue' : 'slds-truncate slds-text-align_left'}">
+                                        <lightning:formattedText value="{!channel.belowCOGS}" />
+                                    </td>
+                                    <aura:set attribute="else">
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                        <td class="slds-truncate slds-text-align_left">
+                                            N/A
+                                        </td>
+                                    </aura:set>
+                                </aura:if>
+                                <td class="{!(channel.billingType != 'Direct Billing - Standard') ? 'slds-truncate slds-text-align_left lowValue' : 'slds-truncate slds-text-align_left'}">
+                                    <lightning:formattedText value="{!channel.billingType}" />
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </p>
+        </div>
+    </div>
+</aura:component>

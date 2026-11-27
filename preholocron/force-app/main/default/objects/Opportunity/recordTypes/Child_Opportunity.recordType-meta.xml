@@ -1,0 +1,1432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_Opportunity</fullName>
+    <active>true</active>
+    <businessProcess>XendIt Sales Process</businessProcess>
+    <compactLayoutAssignment>Child_Opportunity_Compact_Layout</compactLayoutAssignment>
+    <label>Child Opportunity</label>
+    <picklistValues>
+        <picklist>BD_CS_SOS__c</picklist>
+        <values>
+            <fullName>To Transfer to BDR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transferred to BDR</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BD_Prospecting_Stage__c</picklist>
+        <values>
+            <fullName>100%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>25%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>50%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>75%25</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Competitive_Status__c</picklist>
+        <values>
+            <fullName>1 - Behind Competition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 - Even with Competition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 - Ahead of Competition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4 - Vendor of Choice</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DB_Competitor__c</picklist>
+        <values>
+            <fullName>Competitor A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor C</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FX_Product_Approval__c</picklist>
+        <values>
+            <fullName>Approval Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No approval required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reject</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fin_Opp_Approval__c</picklist>
+        <values>
+            <fullName>Approval Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No approval required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reject</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ForecastCategoryName</picklist>
+        <values>
+            <fullName>Best Case</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Omitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>GTM_Motion__c</picklist>
+        <values>
+            <fullName>Inbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self Serve</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Has_Competitor__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Industry__c</picklist>
+        <values>
+            <fullName>Digital Product</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entertainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non-Profit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Property</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Restaurants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Services</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Is_Current_Provider__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Last_Touch_Lead_Source__c</picklist>
+        <values>
+            <fullName>Channel Partnership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Database Upload</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DragonPay Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offline Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic App Install</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic Display</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic Social</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid App - AC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid App - Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Social</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchased list</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self-hunted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>clevertap email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>clevertap whatsapp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>direct</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>facebook paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>facebook social</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>foundry con_syn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>google cpc</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>google display</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>google organic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>linkedin paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>linkedin social</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>owned_event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>owned_offline_event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>pardot email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>xendit customer_support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>xendit referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>xendit self_prospected</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>youtube organic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>youtube paid</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Channel Partnership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CyberSource Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Database Upload</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DragonPay Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meta P2M Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offline Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic App Install</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic Display</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic Social</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid App - AC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid App - Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Social</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchased list</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self-hunted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>clevertap email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>clevertap whatsapp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>facebook paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>facebook social</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>foundry con_syn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>google cpc</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>google display</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>google organic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>linkedin paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>linkedin social</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>owned_event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>owned_offline_event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>pardot email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>xendit customer_support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>xendit referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>xendit self_prospected</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>youtube organic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>youtube paid</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Legal_Approval__c</picklist>
+        <values>
+            <fullName>Approval Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No approval required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reject</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Loss_Reason__c</picklist>
+        <values>
+            <fullName>Lost to Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Budget %2F Lost Funding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Decision %2F Non-Responsive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pipeline_Source__c</picklist>
+        <values>
+            <fullName>ABM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declared Interest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Undeclared Interest</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pricing_Approval__c</picklist>
+        <values>
+            <fullName>Approval Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No approval required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reject</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Probability__c</picklist>
+        <values>
+            <fullName>0%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>100%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>35%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>45%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>55%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>75%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>85%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>95%25</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Family__c</picklist>
+        <values>
+            <fullName>ACH Direct Debit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cards Authentication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cards Authorization</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cards Fraud Detection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cards Payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cybersource</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct Debit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Disbursements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escrow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IM Disbursements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iluma Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Over the Counter %28OTC%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paylater</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>QR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remittance Disbursements %28MI%2BMO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remittance Disbursements %28MO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsupported Product - Non PG%2FVAS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsupported Product - PG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XPS Disbursements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XRS Collection Fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XRS Forex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XRS Service Fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>eWallets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>xenCap Early Settlement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>xenPlatform</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Fit__c</picklist>
+        <values>
+            <fullName>Good Fit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requires more scoping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unfit</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Products_Interested_In__c</picklist>
+        <values>
+            <fullName>Direct Debit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Disbursements %28Aggregator%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escrow %28MI%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escrow %28MO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IM Disbursements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>QR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail Outlets %28RO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual Account %28VA%29 Aggregator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual Account %28VA%29 Switcher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XRS Collection Fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XRS Disbursements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>eWallets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>eWallets QR</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_Lost_Opp__c</picklist>
+        <values>
+            <fullName>Dead - Cannot onboard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Compliance Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Duplicate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - No Decision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - No Opportunity</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_Lost__c</picklist>
+        <values>
+            <fullName>Business Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Covid-19 related</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Feature missing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integration Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Merchant Timing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pricing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Salesforce Data Issue</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_to_delete__c</picklist>
+        <values>
+            <fullName>Duplicate Opportunity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Risk_Approval__c</picklist>
+        <values>
+            <fullName>Approval Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No approval required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reject</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Risk_Category__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moderate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N%2FA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prohibited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Standard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Very High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SE_Weekly_Update_Status__c</picklist>
+        <values>
+            <fullName>Read Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Significant</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stage_2_Flag__c</picklist>
+        <values>
+            <fullName>N</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Standard_Financial_Terms__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Standard_Legal_Terms__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Reason_Opp__c</picklist>
+        <values>
+            <fullName>Actual business differ from business license</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cannot obtain all KYC documents required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cannot obtain all info required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Error</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined - prohibited vertical%2Findustry%2Fmerchant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Did not hit target objective within marketing campaign active period</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duplicate opportunity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exceeds risk appetite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fraud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal %2F Contract disagreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lost to competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Budget</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non Qualified</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non responsive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opportunity size %3C 10K TPV USD Monthly %2F Transfer to Self-Serve</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Out of business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment terms not favourable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poor credit risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pricing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product limitation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Project Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Project Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website not live</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Reason__c</picklist>
+        <values>
+            <fullName>Already a Xendit Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alternative payment method not available</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bad Xendit Experience</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cannot obtain all info required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cart not supported</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chargeback fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clean up old %2F Dead Opportunity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connected but stopped responding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact left company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Could not match competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Country currency support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit fit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit or Debit card feature missing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cross-Border Fees</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined - Business Model</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined - Credit Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined - Poor processing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined - prohibited vertical%2Findustry%2Fmerchant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deprioritized</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do not contact again</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duplicate Opportunity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ERP %28back office platform%29 not compatible</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exceeds risk appetite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing Contract in place</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fixed term pricing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fraud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fraud feature missing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>From BDR - Not Sales Ready</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Impermissible product %2F integration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incorrect BDR pass</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incorrect Volume</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incorrect contact data</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Merchant doesn%E2%80%99t have a website</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Never responded to first contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Sales Opportunity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Upsell Opportunity - 100%25 Share of Checkout</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No integration resources</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No merchant resources</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not enough contra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not interested - stop engaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not sales ready - pass to BDR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Omni-channel missing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Fees</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Out of business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Platform support missing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reporting or conciliation gaps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reserve requirements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Settlement feature missing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shopping cart partner agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TBC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website not live</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website under constuction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wrong decision maker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Xendit too slow</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Account Expansion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Country Expansion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cross Sell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Acquisition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renegotiation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Upsell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Winback%2FChurn Recovery</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Upsell_Approval__c</picklist>
+        <values>
+            <fullName>Approval Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No approval required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reject</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Weekly_Update_Status__c</picklist>
+        <values>
+            <fullName>Read Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Significant</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>del_Primary_Competitor__c</picklist>
+        <values>
+            <fullName>A</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

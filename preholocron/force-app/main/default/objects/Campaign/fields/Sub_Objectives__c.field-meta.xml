@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Objectives__c</fullName>
+    <label>Sub - Objectives</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Objective__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Awareness</fullName>
+                <default>false</default>
+                <label>Awareness</label>
+            </value>
+            <value>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+                <label>Consideration</label>
+            </value>
+            <value>
+                <fullName>Intent</fullName>
+                <default>false</default>
+                <label>Intent</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Pipe Gen</controllingFieldValue>
+            <controllingFieldValue>Activation</controllingFieldValue>
+            <valueName>Awareness</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pipe Gen</controllingFieldValue>
+            <controllingFieldValue>Activation</controllingFieldValue>
+            <valueName>Consideration</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pipe Gen</controllingFieldValue>
+            <controllingFieldValue>Activation</controllingFieldValue>
+            <valueName>Intent</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

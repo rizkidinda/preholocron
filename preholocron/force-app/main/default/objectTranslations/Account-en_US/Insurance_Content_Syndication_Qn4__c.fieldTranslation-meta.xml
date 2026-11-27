@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- When will you be looking to review or upgrade your online payment gateway? --></help>
+    <label><!-- Insurance Content Syndication Qn4 --></label>
+    <name>Insurance_Content_Syndication_Qn4__c</name>
+</CustomFieldTranslation>

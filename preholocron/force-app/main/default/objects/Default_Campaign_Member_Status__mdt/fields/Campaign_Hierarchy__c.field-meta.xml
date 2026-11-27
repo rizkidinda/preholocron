@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Campaign_Hierarchy__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Campaign Hierarchy</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Master</fullName>
+                <default>true</default>
+                <label>Master</label>
+            </value>
+            <value>
+                <fullName>Program</fullName>
+                <default>false</default>
+                <label>Program</label>
+            </value>
+            <value>
+                <fullName>Tactic</fullName>
+                <default>false</default>
+                <label>Tactic</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

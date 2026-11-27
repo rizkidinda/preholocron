@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Refers to the size of the customer defined by the customer&apos;s revenue or its potential TPV with Xendit --></help>
+    <label><!-- Segment --></label>
+    <name>Segment__c</name>
+</CustomFieldTranslation>

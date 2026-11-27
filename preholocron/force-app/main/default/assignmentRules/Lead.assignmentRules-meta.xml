@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Lead Assignment Rule</fullName>
+        <active>false</active>
+        <ruleEntry>
+            <formula>NOT(ISNEW())</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>darrick@xendit.co</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.LeadSource</field>
+                <operation>equals</operation>
+                <value>Website</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+    <assignmentRule>
+        <fullName>Xendit Lead Assignment Rules</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Lead.IsMappedUserFromReferral__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>BDRQ</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Business_Entity_Type__c</field>
+                <operation>equals</operation>
+                <value>id_individual,ph_individual</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>EnterpriseQ</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR (2 AND 3) OR (4 AND 5)</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Expected_Transaction_Volume__c</field>
+                <operation>equals</operation>
+                <value>gt $750K</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Expected_Transaction_Volume__c</field>
+                <operation>equals</operation>
+                <value>$200K - $750K</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Country_of_HQ__c</field>
+                <operation>equals</operation>
+                <value>Philippines</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Expected_Transaction_Volume__c</field>
+                <operation>equals</operation>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Number_of_Employees_Lead_Qual__c</field>
+                <operation>equals</operation>
+                <value>600</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MMQ</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR (2 AND 3) OR (4 AND 5)</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Expected_Transaction_Volume__c</field>
+                <operation>equals</operation>
+                <value>$50K - $200K</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Expected_Transaction_Volume__c</field>
+                <operation>equals</operation>
+                <value>$200K - $750K</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Country_of_HQ__c</field>
+                <operation>equals</operation>
+                <value>Indonesia</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Expected_Transaction_Volume__c</field>
+                <operation>equals</operation>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Number_of_Employees_Lead_Qual__c</field>
+                <operation>equals</operation>
+                <value>75,200</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>timothy.james@xendit.co</assignedTo>
+            <assignedToType>User</assignedToType>
+            <booleanFilter>1 AND (2 OR (3 AND 4))</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Country_of_HQ__c</field>
+                <operation>equals</operation>
+                <value>Philippines</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Expected_Transaction_Volume__c</field>
+                <operation>equals</operation>
+                <value>lt $10K,$10K - $50K</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Expected_Transaction_Volume__c</field>
+                <operation>equals</operation>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Number_of_Employees_Lead_Qual__c</field>
+                <operation>equals</operation>
+                <value>5,25</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>SMEQ</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR (2 AND 3)</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Expected_Transaction_Volume__c</field>
+                <operation>equals</operation>
+                <value>lt $10K,$10K - $50K</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Expected_Transaction_Volume__c</field>
+                <operation>equals</operation>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Number_of_Employees_Lead_Qual__c</field>
+                <operation>equals</operation>
+                <value>5,25</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>BDRQ</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1</booleanFilter>
+            <criteriaItems>
+                <field>Lead.CreatedDate</field>
+                <operation>notEqual</operation>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

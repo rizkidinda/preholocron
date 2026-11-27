@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nina_s_Assignment</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Opportunity__c</columns>
+    <columns>Solution_PIC__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Solution_PIC__c</field>
+        <operation>contains</operation>
+        <value>Nina</value>
+    </filters>
+    <label>Nina&apos;s Assignment</label>
+</ListView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_XPM_and_RegularAccounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Brand__c</columns>
+    <columns>ACCOUNT.ADDRESS2_STREET</columns>
+    <columns>ACCOUNT.ADDRESS2_CITY</columns>
+    <columns>ACCOUNT.ADDRESS2_STATE</columns>
+    <columns>ACCOUNT.ADDRESS2_COUNTRY</columns>
+    <columns>ACCOUNT.ADDRESS2_ZIP</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>Last_Transaction_Date__c</columns>
+    <columns>Go_Live_Status__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>ACCOUNT.TYPE</field>
+        <operation>equals</operation>
+        <value>XP MASTER,REGULAR</value>
+    </filters>
+    <label>My XPM and Regular Accounts</label>
+</ListView>

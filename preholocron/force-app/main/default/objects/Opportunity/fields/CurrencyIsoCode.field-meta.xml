@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CurrencyIsoCode</fullName>
+    <inlineHelpText>If your deal consists of multi currency, please select USD. If your deal consists of 1 local currency only, please select the respective currency</inlineHelpText>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>

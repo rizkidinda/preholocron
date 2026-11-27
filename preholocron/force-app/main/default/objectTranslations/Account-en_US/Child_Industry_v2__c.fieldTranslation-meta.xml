@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Refers to the merchant&apos;s child vertical category. See vertical list definitions for more details on classification --></help>
+    <label><!-- Child Industry --></label>
+    <name>Child_Industry_v2__c</name>
+</CustomFieldTranslation>

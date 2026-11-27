@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- How_Would_You_Prefer_To_Meet --></label>
+    <name>How_Would_You_Prefer_To_Meet__c</name>
+</CustomFieldTranslation>

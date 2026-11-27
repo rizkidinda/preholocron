@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legal_Approval</fullName>
+    <active>false</active>
+    <description>Legal Approval</description>
+    <label>Legal Approval</label>
+    <picklistValues>
+        <picklist>Any_Product_in_Loss_Making__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Country__c</picklist>
+        <values>
+            <fullName>Indonesia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Philippines</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Overall_Deal_Profitability__c</picklist>
+        <values>
+            <fullName>%3E 25%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>0%25 to 25%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loss Making</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Profitability__c</picklist>
+        <values>
+            <fullName>Break Even</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loss Making</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profitable</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Required_Manual_Billing__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

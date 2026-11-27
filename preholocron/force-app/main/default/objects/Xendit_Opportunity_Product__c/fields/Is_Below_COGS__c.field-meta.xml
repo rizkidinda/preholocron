@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Below_COGS__c</fullName>
+    <formula>IF(
+   ISBLANK(TEXT(Rate_Card__r.Selected_Value__c)),
+   IF((Rate_Per_Txn_Sell__c &lt; Rate_Card__r.COGS_Fixed_Fee__c) || (Rate_Per_TPV_Sell__c &lt; Rate_Card__r.COGS_MDR__c), TRUE,FALSE),
+   IF(
+      TEXT(Rate_Card__r.Selected_Value__c) = &apos;Higher&apos; &amp;&amp; !ISBLANK(TEXT(Rate_Card__r.Selected_Value_Source__c)),
+      IF(Basket_Size__c &gt; Rate_Card__r.Basket_Size_Threshold__c, 
+         IF(TEXT(Rate_Card__r.Selected_Value_Source__c) = &apos;Rate per Txn&apos;,(Rate_Per_Txn_Sell__c &lt; Rate_Card__r.COGS_Fixed_Fee__c), (Rate_Per_TPV_Sell__c &lt; Rate_Card__r.COGS_MDR__c)),
+         IF(TEXT(Rate_Card__r.Selected_Value_Source__c) = &apos;Rate per Txn&apos;,(Rate_Per_TPV_Sell__c &lt; Rate_Card__r.COGS_MDR__c), (Rate_Per_Txn_Sell__c &lt; Rate_Card__r.COGS_Fixed_Fee__c))
+      ),
+      IF(TEXT(Rate_Card__r.Selected_Value__c) = &apos;Lower&apos; &amp;&amp; !ISBLANK(TEXT(Rate_Card__r.Selected_Value_Source__c)),
+         IF(Basket_Size__c &lt;= Rate_Card__r.Basket_Size_Threshold__c,
+            IF(TEXT(Rate_Card__r.Selected_Value_Source__c) = &apos;Rate per Txn&apos;,(Rate_Per_Txn_Sell__c &lt; Rate_Card__r.COGS_Fixed_Fee__c), (Rate_Per_TPV_Sell__c &lt; Rate_Card__r.COGS_MDR__c)),
+            IF(TEXT(Rate_Card__r.Selected_Value_Source__c) = &apos;Rate per Txn&apos;,(Rate_Per_TPV_Sell__c &lt; Rate_Card__r.COGS_MDR__c), (Rate_Per_Txn_Sell__c &lt; Rate_Card__r.COGS_Fixed_Fee__c))
+         ),
+         FALSE
+      )
+   )
+ )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Below COGS?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

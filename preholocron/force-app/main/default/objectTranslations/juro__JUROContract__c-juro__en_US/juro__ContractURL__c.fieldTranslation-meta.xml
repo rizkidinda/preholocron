@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This link opens the contract in Juro. There, you can edit it, or send it for signing. You’ll need a Juro login. --></help>
+    <label><!-- Editable Contract --></label>
+    <name>juro__ContractURL__c</name>
+</CustomFieldTranslation>

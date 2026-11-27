@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Competitor Key Value Preposition --></label>
+    <name>Competitor_Key_Value_Preposition__c</name>
+</CustomFieldTranslation>

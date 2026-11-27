@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GTM_Motion__c</fullName>
+    <description>mapped with Lead GTM Motion field</description>
+    <inlineHelpText>Inbound, Outbound, Self Serve</inlineHelpText>
+    <label>GTM Motion</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>GTM_Motion</valueSetName>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This link to the final PDF is available when the contract is fully signed. --></help>
+    <label><!-- [Removed] Signed Contract (PDF) --></label>
+    <name>juro__SignedPDFURL__c</name>
+</CustomFieldTranslation>

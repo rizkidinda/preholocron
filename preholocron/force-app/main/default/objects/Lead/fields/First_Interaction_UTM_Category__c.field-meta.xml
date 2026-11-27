@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>First_Interaction_UTM_Category__c</fullName>
+    <label>First Interaction UTM Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>First_Interaction_UTM_Category_Group__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>UTM_Category</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Offline Sources</controllingFieldValue>
+            <valueName>Database Purchase</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PR</controllingFieldValue>
+            <valueName>Paid PR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PR</controllingFieldValue>
+            <valueName>Organic PR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Outbound</controllingFieldValue>
+            <valueName>Sales Sourced</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Online Event</controllingFieldValue>
+            <valueName>Xendit Online Event</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Online Event</controllingFieldValue>
+            <valueName>Paid Online Event</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid Display</controllingFieldValue>
+            <valueName>Google Paid Display</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Organic/Direct</controllingFieldValue>
+            <valueName>Google Organic Search</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Organic/Direct</controllingFieldValue>
+            <valueName>Direct Traffic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Organic/Direct</controllingFieldValue>
+            <valueName>Xendit CS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid Search</controllingFieldValue>
+            <valueName>Google Paid Search</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Email/Message</controllingFieldValue>
+            <valueName>Clevertap Email</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Email/Message</controllingFieldValue>
+            <valueName>Pardot Email</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Email/Message</controllingFieldValue>
+            <valueName>Xendit BD</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Email/Message</controllingFieldValue>
+            <valueName>Clevertap Whatsapp</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Email/Message</controllingFieldValue>
+            <valueName>Partner Email</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Email/Message</controllingFieldValue>
+            <valueName>Partner Message</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Referral</controllingFieldValue>
+            <valueName>Partner Referral</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Referral</controllingFieldValue>
+            <valueName>Xendit Referral</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Referral</controllingFieldValue>
+            <valueName>Merchant Referral</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Media</controllingFieldValue>
+            <valueName>Facebook</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Media</controllingFieldValue>
+            <valueName>Instagram</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Media</controllingFieldValue>
+            <valueName>LinkedIn</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Media</controllingFieldValue>
+            <valueName>TikTok</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Media</controllingFieldValue>
+            <valueName>Twitter</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Social Media</controllingFieldValue>
+            <valueName>Youtube</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid Social</controllingFieldValue>
+            <valueName>Facebook Paid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid Social</controllingFieldValue>
+            <valueName>Instagram Paid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid Social</controllingFieldValue>
+            <valueName>Linkedin Paid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid Social</controllingFieldValue>
+            <valueName>Youtube Paid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid Social</controllingFieldValue>
+            <valueName>Tik Tok Paid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid App</controllingFieldValue>
+            <valueName>Google Paid App</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paid App</controllingFieldValue>
+            <valueName>Facebook Paid App</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Content Syndication</controllingFieldValue>
+            <valueName>Paid Content Syndication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Content Syndication</controllingFieldValue>
+            <valueName>Third Party Content Syndication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Content Syndication</controllingFieldValue>
+            <valueName>Partner Content Syndication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Content Syndication</controllingFieldValue>
+            <valueName>Guest Post Content Syndication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Offline Event</controllingFieldValue>
+            <valueName>Paid Offline Event</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Offline Event</controllingFieldValue>
+            <valueName>Xendit Offline Event</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

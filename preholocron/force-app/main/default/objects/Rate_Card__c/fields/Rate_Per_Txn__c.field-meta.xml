@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rate_Per_Txn__c</fullName>
+    <defaultValue>0</defaultValue>
+    <externalId>false</externalId>
+    <inlineHelpText>If the Rate per Txn is in %, then convert it to decimal. If it is normal rate, then enter the rate amount</inlineHelpText>
+    <label>Rate Per Txn</label>
+    <precision>12</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

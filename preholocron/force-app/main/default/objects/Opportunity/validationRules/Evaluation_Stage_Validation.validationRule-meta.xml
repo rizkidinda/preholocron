@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Evaluation_Stage_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(
+    AND(
+        RecordType.Name = &apos;Parent Opportunity&apos;,
+        $User.Bypass_VR__c = FALSE,
+        $Profile.Name != &apos;Xendit API Profile&apos;,
+        ISPICKVAL(StageName, &apos;Evaluation&apos;),
+        OR(ISNEW(), ISCHANGED(StageName)),
+        OR(
+          ISBLANK ( Pains_Priorities_and_Needs__c ),
+          ISBLANK( TEXT(Has_Competitor__c) ),
+          AND(
+			TEXT(Has_Competitor__c) = &apos;Yes&apos;,
+			ISBLANK( Primary_Competitor__c )
+		  ),
+		  OR ( No_of_Contact_Roles__c &lt; 1, ISBLANK (No_of_Contact_Roles__c), LEN(Sales_Goals_Plan__c) = 0 )
+       )
+    ),
+    true,
+    false
+)</errorConditionFormula>
+    <errorMessage>To set stage as Evaluation, make sure all fields in Evaluation and Discovery Stage sections are filled, and at least 1 Contact Role has been added to the Opportunity.</errorMessage>
+</ValidationRule>

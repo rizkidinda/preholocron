@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The estimated TPV per channel that is expected from the merchant --></help>
+    <label><!-- Estimated Monthly Channel Potential TPV --></label>
+    <name>TPV__c</name>
+</CustomFieldTranslation>

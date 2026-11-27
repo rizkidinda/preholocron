@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expected_Transaction_Volume__c</fullName>
+    <inlineHelpText>Refers to the average transaction volume per month</inlineHelpText>
+    <label>Expected Transaction Volume</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Expected_Transaction_Volume</valueSetName>
+    </valueSet>
+</CustomField>

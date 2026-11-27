@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Influence Type --></label>
+    <name>Heeet__InfluenceType__c</name>
+    <picklistValues>
+        <masterLabel>Direct</masterLabel>
+        <translation><!-- Direct --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SEA</masterLabel>
+        <translation><!-- SEA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SEO</masterLabel>
+        <translation><!-- SEO --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Social Ads</masterLabel>
+        <translation><!-- Social Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Social Organic</masterLabel>
+        <translation><!-- Social Organic --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

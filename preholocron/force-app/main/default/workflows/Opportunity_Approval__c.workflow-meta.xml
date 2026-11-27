@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Opportunity_Fin_Ops_Approval_Approval_Alert</fullName>
+        <description>Opportunity Fin Ops Approval Approval Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Opportunity_Fin_Ops_Approval_Approved_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Fin_Ops_Approval_Rejected_Alert</fullName>
+        <description>Opportunity Fin Ops Approval Rejected Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Opportunity_Fin_Ops_Approval_Rejected_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Legal_Approval_Approved_Alert</fullName>
+        <description>Opportunity Legal Approval Approved Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Opportunity_Legal_Approval_Approved_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Legal_Approval_Rejected_Alert</fullName>
+        <description>Opportunity Legal Approval Rejected Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Opportunity_Legal_Manager_Rejected_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Pricing_Approval_Approved</fullName>
+        <description>Opportunity Pricing Approval Approved</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Opportunity_Pricing_Approval_Approved_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Pricing_Approval_Approved_Approver</fullName>
+        <description>Opportunity Pricing Approval Approved - Approver</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Final_Approver__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Pricing_Approval_Approved_Approver</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Pricing_Approval_Approved_Createdby</fullName>
+        <description>Opportunity Pricing Approval Approved - Createdby</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Pricing_Approval_Approved</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Pricing_Approval_Approved_Opp_Owner</fullName>
+        <description>Opportunity Pricing Approval Approved - Opp Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Pricing_Approval_Approved</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Pricing_Approval_Rejected</fullName>
+        <description>Opportunity Pricing Approval Rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Opportunity_Pricing_Approval_Rejected_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Pricing_Approval_Rejected_Createdby</fullName>
+        <description>Opportunity Pricing Approval Rejected - Createdby</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Pricing_Approval_Rejected</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Pricing_Approval_Rejected_Opp_Owner</fullName>
+        <description>Opportunity Pricing Approval Rejected - Opp Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Pricing_Approval_Rejected</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Pricing_Approval_Rejected_Rejecter</fullName>
+        <description>Opportunity Pricing Approval Rejected - Rejecter</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Rejecter__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Pricing_Approval_Rejected_Rejecter</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Pricing_Approval_Submission_CC_Loss_Making</fullName>
+        <description>Opportunity Pricing Approval Submission - CC Loss Making</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>dexter.leong@xendit.co</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>jim@xendit.co</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Pricing_Approval_Submission_CC</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Pricing_Approval_Submission_CC_PH</fullName>
+        <description>Opportunity Pricing Approval Submission - CC PH</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>aleli@xendit.co</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>pebbles@xendit.co</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>yangyang@xendit.co</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Pricing_Approval_Submission_CC</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Risk_Approval_Approved_Alert</fullName>
+        <description>Opportunity Risk Approval Approved Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Opportunity_Risk_Approval_Approved_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Risk_Approval_Rejected_Alert</fullName>
+        <description>Opportunity Risk Approval Rejected Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Xendit_Approval_Email_Templates/Opportunity_Risk_Approval_Rejected_Template</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>FX_Type_Approve</fullName>
+        <field>FX_Type_Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>FX Type Approve</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opportunity_Billing_Type_FALSE</fullName>
+        <field>Billing_Type_Approved__c</field>
+        <literalValue>0</literalValue>
+        <name>Opportunity Billing Type FALSE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opportunity_Billing_Type_TRUE</fullName>
+        <field>Billing_Type_Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>Opportunity Billing Type TRUE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reset_Approval_History</fullName>
+        <field>Approval_History__c</field>
+        <name>Reset Approval History</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reset_Approval_Step</fullName>
+        <field>Approval_Step__c</field>
+        <formula>0</formula>
+        <name>Reset Approval Step</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reset_Update_History</fullName>
+        <field>History_Updated__c</field>
+        <literalValue>0</literalValue>
+        <name>Reset Update History</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_as_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Status as Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_as_Recalled</fullName>
+        <field>Status__c</field>
+        <literalValue>Recalled</literalValue>
+        <name>Status as Recalled</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_as_Rejected</fullName>
+        <field>Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Status as Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_as_Sales_VP_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Sales VP Approved</literalValue>
+        <name>Status as Sales VP Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_as_Submitted</fullName>
+        <field>Status__c</field>
+        <literalValue>Submitted</literalValue>
+        <name>Status as Submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Approval_Step_0</fullName>
+        <field>Approval_Step__c</field>
+        <formula>Approval_Step__c+1</formula>
+        <name>Update Approval Step</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Pricing_Type_Submission_to_FALSE</fullName>
+        <field>Pricing_Type_Submission__c</field>
+        <literalValue>0</literalValue>
+        <name>Update Pricing Type Submission to FALSE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Pricing_Type_Submission_to_TRUE</fullName>
+        <field>Pricing_Type_Submission__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Pricing Type Submission to TRUE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

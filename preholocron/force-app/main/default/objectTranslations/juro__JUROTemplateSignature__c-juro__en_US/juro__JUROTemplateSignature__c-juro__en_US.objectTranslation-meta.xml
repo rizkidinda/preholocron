@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>JURO Template Signature</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>JURO Template Signatures</value>
+    </caseValues>
+    <layouts>
+        <layout>JURO Template Signature Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Our side name can’t be mapped in Salesforce. Please change the name in Juro. --></errorMessage>
+        <name>juro__Cannot_map_our_side_name</name>
+    </validationRules>
+</CustomObjectTranslation>

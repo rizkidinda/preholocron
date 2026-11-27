@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Gross take rate (BPS) = Revenue / TPV *10000 --></help>
+    <label><!-- Gross take rate (BPS) --></label>
+    <name>Gross_take_rate_BPS__c</name>
+</CustomFieldTranslation>

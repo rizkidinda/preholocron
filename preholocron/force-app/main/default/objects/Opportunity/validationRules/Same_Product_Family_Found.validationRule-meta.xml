@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Same_Product_Family_Found</fullName>
+    <active>false</active>
+    <errorConditionFormula>Found_Existing_Open_Opp__c</errorConditionFormula>
+    <errorMessage>There is another open opportunity with the same product family. Please reuse the same opportunity.</errorMessage>
+</ValidationRule>

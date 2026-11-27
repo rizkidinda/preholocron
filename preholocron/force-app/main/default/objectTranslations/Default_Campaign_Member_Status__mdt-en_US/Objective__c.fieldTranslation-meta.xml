@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Objective --></label>
+    <name>Objective__c</name>
+    <picklistValues>
+        <masterLabel>Activation</masterLabel>
+        <translation><!-- Activation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brand awareness (new market)</masterLabel>
+        <translation><!-- Brand awareness (new market) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Branding</masterLabel>
+        <translation><!-- Branding --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cross sell</masterLabel>
+        <translation><!-- Cross sell --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dashboard Sign Up</masterLabel>
+        <translation><!-- Dashboard Sign Up --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Demand Gen</masterLabel>
+        <translation><!-- Demand Gen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Form Sign Up</masterLabel>
+        <translation><!-- Form Sign Up --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Go Live Request</masterLabel>
+        <translation><!-- Go Live Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Government Relations</masterLabel>
+        <translation><!-- Government Relations --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Growth/Retention</masterLabel>
+        <translation><!-- Growth/Retention --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Market Launch</masterLabel>
+        <translation><!-- Market Launch --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New active merchant acquired</masterLabel>
+        <translation><!-- New active merchant acquired --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pipe Gen</masterLabel>
+        <translation><!-- Pipe Gen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pipe Progression</masterLabel>
+        <translation><!-- Pipe Progression --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Product/Feature awareness</masterLabel>
+        <translation><!-- Product/Feature awareness --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Upsell</masterLabel>
+        <translation><!-- Upsell --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

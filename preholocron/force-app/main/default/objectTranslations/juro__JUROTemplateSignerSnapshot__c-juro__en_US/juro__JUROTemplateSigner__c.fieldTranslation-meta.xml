@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- JUROTemplateSigner --></label>
+    <name>juro__JUROTemplateSigner__c</name>
+    <relationshipLabel><!-- JURO Template Signer Snapshots --></relationshipLabel>
+</CustomFieldTranslation>

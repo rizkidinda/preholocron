@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Monthly Revenue in local currency --></help>
+    <label><!-- Revenue - Monthly --></label>
+    <name>Revenue_Monthly__c</name>
+</CustomFieldTranslation>

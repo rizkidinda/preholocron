@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Touch_Lead_source__c</fullName>
+    <label>Last Touch Lead source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Paid Search</fullName>
+                <default>false</default>
+                <label>Paid Search</label>
+            </value>
+            <value>
+                <fullName>Organic Display</fullName>
+                <default>false</default>
+                <label>Organic Display</label>
+            </value>
+            <value>
+                <fullName>Direct</fullName>
+                <default>false</default>
+                <label>Direct</label>
+            </value>
+            <value>
+                <fullName>Organic Search</fullName>
+                <default>false</default>
+                <label>Organic Search</label>
+            </value>
+            <value>
+                <fullName>Paid Social</fullName>
+                <default>false</default>
+                <label>Paid Social</label>
+            </value>
+            <value>
+                <fullName>Referral</fullName>
+                <default>false</default>
+                <label>Referral</label>
+            </value>
+            <value>
+                <fullName>Email</fullName>
+                <default>false</default>
+                <label>Email</label>
+            </value>
+            <value>
+                <fullName>Organic Social</fullName>
+                <default>false</default>
+                <label>Organic Social</label>
+            </value>
+            <value>
+                <fullName>Organic App Install</fullName>
+                <default>false</default>
+                <label>Organic App Install</label>
+            </value>
+            <value>
+                <fullName>Website</fullName>
+                <default>false</default>
+                <label>Website</label>
+            </value>
+            <value>
+                <fullName>Paid App - AC</fullName>
+                <default>false</default>
+                <label>Paid App - AC</label>
+            </value>
+            <value>
+                <fullName>Paid App - Search</fullName>
+                <default>false</default>
+                <label>Paid App - Search</label>
+            </value>
+            <value>
+                <fullName>Channel Partnership</fullName>
+                <default>false</default>
+                <label>Channel Partnership</label>
+            </value>
+            <value>
+                <fullName>Database Upload</fullName>
+                <default>false</default>
+                <label>Database Upload</label>
+            </value>
+            <value>
+                <fullName>Inbound</fullName>
+                <default>false</default>
+                <label>Inbound</label>
+            </value>
+            <value>
+                <fullName>Purchased list</fullName>
+                <default>false</default>
+                <label>Purchased list</label>
+            </value>
+            <value>
+                <fullName>Self-hunted</fullName>
+                <default>false</default>
+                <label>Self-hunted</label>
+            </value>
+            <value>
+                <fullName>Offline Events</fullName>
+                <default>false</default>
+                <label>Offline Events</label>
+            </value>
+            <value>
+                <fullName>Internal Referral</fullName>
+                <default>false</default>
+                <label>Internal Referral</label>
+            </value>
+            <value>
+                <fullName>DragonPay Referral</fullName>
+                <default>false</default>
+                <label>DragonPay Referral</label>
+            </value>
+            <value>
+                <fullName>google organic</fullName>
+                <default>false</default>
+                <label>google organic</label>
+            </value>
+            <value>
+                <fullName>google cpc</fullName>
+                <default>false</default>
+                <label>google cpc</label>
+            </value>
+            <value>
+                <fullName>google display</fullName>
+                <default>false</default>
+                <label>google display</label>
+            </value>
+            <value>
+                <fullName>linkedin social</fullName>
+                <default>false</default>
+                <label>linkedin social</label>
+            </value>
+            <value>
+                <fullName>linkedin paid</fullName>
+                <default>false</default>
+                <label>linkedin paid</label>
+            </value>
+            <value>
+                <fullName>facebook social</fullName>
+                <default>false</default>
+                <label>facebook social</label>
+            </value>
+            <value>
+                <fullName>facebook paid</fullName>
+                <default>false</default>
+                <label>facebook paid</label>
+            </value>
+            <value>
+                <fullName>youtube organic</fullName>
+                <default>false</default>
+                <label>youtube organic</label>
+            </value>
+            <value>
+                <fullName>youtube paid</fullName>
+                <default>false</default>
+                <label>youtube paid</label>
+            </value>
+            <value>
+                <fullName>pardot email</fullName>
+                <default>false</default>
+                <label>pardot email</label>
+            </value>
+            <value>
+                <fullName>clevertap email</fullName>
+                <default>false</default>
+                <label>clevertap email</label>
+            </value>
+            <value>
+                <fullName>clevertap whatsapp</fullName>
+                <default>false</default>
+                <label>clevertap whatsapp</label>
+            </value>
+            <value>
+                <fullName>owned_offline_event</fullName>
+                <default>false</default>
+                <label>owned_offline_event</label>
+            </value>
+            <value>
+                <fullName>owned_event</fullName>
+                <default>false</default>
+                <label>owned_event</label>
+            </value>
+            <value>
+                <fullName>xendit referral</fullName>
+                <default>false</default>
+                <label>xendit referral</label>
+            </value>
+            <value>
+                <fullName>xendit customer_support</fullName>
+                <default>false</default>
+                <label>xendit customer_support</label>
+            </value>
+            <value>
+                <fullName>xendit self_prospected</fullName>
+                <default>false</default>
+                <label>xendit self_prospected</label>
+            </value>
+            <value>
+                <fullName>foundry con_syn</fullName>
+                <default>false</default>
+                <label>foundry con_syn</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_Competitor_Description__c</fullName>
+    <inlineHelpText>Key competitor differentiators beyond their products and services that are better than Xendit. eg. Merchant has Intimate CEO relationship w/ Doku, Doku has direct acquiring license</inlineHelpText>
+    <label>Other Competitor Description</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

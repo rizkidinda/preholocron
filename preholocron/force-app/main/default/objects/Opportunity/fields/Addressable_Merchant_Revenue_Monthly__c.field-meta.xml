@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Addressable_Merchant_Revenue_Monthly__c</fullName>
+    <inlineHelpText>At the parent opp, it refers to the sum of monthly potential revenue, rolled up from child opportunities ( product) on a monthly basis.
+At the child opp, it refers to the sum of each Estimated monthly channel potential revenue</inlineHelpText>
+    <label>Addressable Merchant Revenue - Monthly</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

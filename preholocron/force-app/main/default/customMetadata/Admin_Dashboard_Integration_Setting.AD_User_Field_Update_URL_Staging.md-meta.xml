@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>AD User Field Update URL Staging</label>
+    <protected>false</protected>
+    <values>
+        <field>API_Key__c</field>
+        <value xsi:type="xsd:string">RF2U2SU3B4kfjRtwmTcry5sPYhzHgEcVpAAL0KXs</value>
+    </values>
+    <values>
+        <field>Base_URL__c</field>
+        <value xsi:type="xsd:string">https://xendit-admin-dashboard-staging-live.ap-southeast-1.stg.tidnex.dev</value>
+    </values>
+    <values>
+        <field>Deactivate__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+</CustomMetadata>

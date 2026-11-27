@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BDCS_SOS_cannot_be_Transfer_to_CS_on_Qua</fullName>
+    <active>false</active>
+    <description>User cannot change the field BD/CS SOS to To Transfer to CS when the oppty is on Qualification stage</description>
+    <errorConditionFormula>AND (
+  ISPICKVAL ( BD_CS_SOS__c, &apos;To Transfer to CS&apos;),
+  ISPICKVAL (StageName, &apos;Qualification&apos;),
+  OR (
+    ISCHANGED (StageName),
+    ISCHANGED (BD_CS_SOS__c)
+  )
+)</errorConditionFormula>
+    <errorDisplayField>BD_CS_SOS__c</errorDisplayField>
+    <errorMessage>BD/CS SOS is not allowed to be &quot;To Transfer to CS&apos; while the stage is Qualification stage. Please update the BD/CS SOS if the Opportunity stage is still on Qualification stage.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Influence Sub Type --></label>
+    <name>Heeet__Influence_Sub_Type__c</name>
+    <picklistValues>
+        <masterLabel>Bing</masterLabel>
+        <translation><!-- Bing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Facebook</masterLabel>
+        <translation><!-- Facebook --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google</masterLabel>
+        <translation><!-- Google --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Linkedin</masterLabel>
+        <translation><!-- Linkedin --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

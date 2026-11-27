@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- JURO Template Table Snapshot --></label>
+    <name>juro__JUROTemplateTableSnapshot__c</name>
+    <relationshipLabel><!-- JURO Template Table Column Snapshots --></relationshipLabel>
+</CustomFieldTranslation>

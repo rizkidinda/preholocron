@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>RecordType</field>
+        <field>Opportunity__c</field>
+        <field>Justification2__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>yaowen.thng@xendit.co</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Overall Deal Profitability - &gt;25%, 0% to 25%, Loss Making</description>
+        <label>Pricing Manager Approval</label>
+        <name>Pricing_Manager_Approval</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>fah@xendit.co</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Overall Deal Profitability - &gt;25%, 0% to 25%, Loss Making</description>
+        <label>Fah Approval</label>
+        <name>Fah_Approval_2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>dexter.leong@xendit.co</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Overall Deal Profitability -&gt;25%,  0% to 25%, Loss Making</description>
+        <label>FP&amp;A Approval</label>
+        <name>FP_A_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>jim@xendit.co</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Overall Deal Profitability - Loss Making</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Opportunity_Approval__c.Overall_Deal_Profitability__c</field>
+                <operation>equals</operation>
+                <value>Loss Making</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Jim Approval</label>
+        <name>Jim_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>moses@xendit.co</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Overall Deal Profitability - Loss Making</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Opportunity_Approval__c.Overall_Deal_Profitability__c</field>
+                <operation>equals</operation>
+                <value>Loss Making</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>Moses Approval</label>
+        <name>Moses_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Product Profitability - Loss Making</description>
+    <emailTemplate>Xendit_Approval_Email_Templates/Opportunity_Pricing_Approval_Submission_Template</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Opportunity_Approval__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Pricing Approval</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity_Approval__c.Any_Product_in_Loss_Making__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Opportunity_Pricing_Approval_Approved</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Status_as_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Opportunity_Pricing_Approval_Rejected</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Status_as_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Status_as_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Loss Making Pricing Approval Process</label>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

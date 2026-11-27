@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Approval</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Approvals</value>
+    </caseValues>
+    <layouts>
+        <layout>Opportunity FinOps Approval Layout</layout>
+        <sections>
+            <label><!-- Approval Comments --></label>
+            <section>Approval Comments</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Request &amp; Justification --></label>
+            <section>Request &amp; Justification</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Opportunity Legal Approval Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Opportunity Pricing Approval Layout</layout>
+        <sections>
+            <label><!-- Approval Comments --></label>
+            <section>Approval Comments</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Request &amp; Justification --></label>
+            <section>Request &amp; Justification</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Recall Approval --></label>
+        <name>Recall_Approval</name>
+    </quickActions>
+    <recordTypes>
+        <description><!-- Fin Ops Approval --></description>
+        <label><!-- Fin Ops Approval --></label>
+        <name>Fin_Ops_Approval</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Legal Approval --></description>
+        <label><!-- Legal Approval --></label>
+        <name>Legal_Approval</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Pricing Approval --></description>
+        <label><!-- Pricing Approval --></label>
+        <name>Pricing_Approval</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Risk Approval --></description>
+        <label><!-- Risk Approval --></label>
+        <name>Risk_Approval</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please create on own/individual salesforce account --></errorMessage>
+        <name>Created_by_Pool_AM_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- There is an existing approved Fin Ops approval. You are not allowed to create another Fin Ops approval. If you would like to submit a new Fin Ops approval, please recall the existing approved approval. --></errorMessage>
+        <name>Only_One_FinOpsApp_Allowed_per_Oppty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- There is an existing approved pricing approval. You are not allowed to create another pricing approval. If you would like to submit a new pricing approval, please recall the existing approved approval. --></errorMessage>
+        <name>Only_One_PricingApp_Allowed_per_Oppty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select the same currency as the opportunity. --></errorMessage>
+        <name>Pricing_Approval_Currency_must_be_same</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select Parent Opportunity --></errorMessage>
+        <name>Related_Opportunity_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

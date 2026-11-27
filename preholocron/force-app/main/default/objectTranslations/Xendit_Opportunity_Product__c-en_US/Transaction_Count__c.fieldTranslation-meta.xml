@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Number of transactions per month for the specific channel. This is a calculated field: Estimated monthly channel potential TPV / Estimated basket size --></help>
+    <label><!-- Estimated Monthly Transaction Count --></label>
+    <name>Transaction_Count__c</name>
+</CustomFieldTranslation>

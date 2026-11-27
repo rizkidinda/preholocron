@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_ID__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>Unique identifier that generated on Xendit platform. Use as external ID to map with Xendit platform.</description>
+    <externalId>true</externalId>
+    <inlineHelpText>Xendit generated merchant unique identifier on signup</inlineHelpText>
+    <label>Business ID</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

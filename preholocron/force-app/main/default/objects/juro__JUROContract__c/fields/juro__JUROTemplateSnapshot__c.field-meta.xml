@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__JUROTemplateSnapshot__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>JURO Template Snapshot</label>
+    <referenceTo>juro__JUROTemplateSnapshot__c</referenceTo>
+    <relationshipLabel>Contracts</relationshipLabel>
+    <relationshipName>Contracts</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

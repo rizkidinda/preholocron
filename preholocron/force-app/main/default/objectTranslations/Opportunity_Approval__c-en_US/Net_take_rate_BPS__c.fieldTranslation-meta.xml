@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Net take rate (BPS) = Gross profit / TPV *10000 --></help>
+    <label><!-- Net take rate (BPS) --></label>
+    <name>Net_take_rate_BPS__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Heeet__Heeet_GoogleAnalyticsAccount__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Heeet_GoogleAnalyticsAccount</label>
+    <referenceTo>Heeet__Heeet_GoogleAnalyticsAccount__c</referenceTo>
+    <relationshipLabel>Heeet_StandardTriggerGAccounts</relationshipLabel>
+    <relationshipName>Heeet_StandardTriggerGAccounts</relationshipName>
+    <relationshipOrder>1</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

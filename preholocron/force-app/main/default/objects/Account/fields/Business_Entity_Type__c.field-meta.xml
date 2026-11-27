@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Entity_Type__c</fullName>
+    <inlineHelpText>Business entity type selection by customer during signup or updated during business due deligence process</inlineHelpText>
+    <label>Business Entity Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Business_Entity_Type</valueSetName>
+    </valueSet>
+</CustomField>

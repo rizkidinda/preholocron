@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Forecasting Engine ID --></label>
+    <name>Forecasting_Engine_ID__c</name>
+    <relationshipLabel><!-- Forecasting Engine Account Breakdowns --></relationshipLabel>
+</CustomFieldTranslation>

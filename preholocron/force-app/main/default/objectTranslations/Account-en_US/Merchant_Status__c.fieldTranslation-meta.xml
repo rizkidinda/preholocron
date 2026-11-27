@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Merchant Status --></label>
+    <name>Merchant_Status__c</name>
+    <picklistValues>
+        <masterLabel>is_active</masterLabel>
+        <translation><!-- is_active --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>is_churned</masterLabel>
+        <translation><!-- is_churned --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>is_dormant</masterLabel>
+        <translation><!-- is_dormant --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>is_new_active</masterLabel>
+        <translation><!-- is_new_active --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>is_non_starting</masterLabel>
+        <translation><!-- is_non_starting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>is_reactivated</masterLabel>
+        <translation><!-- is_reactivated --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

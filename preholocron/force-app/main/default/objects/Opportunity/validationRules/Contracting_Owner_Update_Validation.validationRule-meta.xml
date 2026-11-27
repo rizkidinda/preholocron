@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contracting_Owner_Update_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>If( AND(
+NOT(
+OR(
+$User.Bypass_VR__c = TRUE,
+Bypass_Change_Owner_Self_Serve__c = FALSE,
+$Profile.Name=&apos;Xendit API Profile&apos;,
+$Profile.Name=&apos;System Administrator&apos;,
+$Profile.Name=&apos;Xendit Sales Ops Profile&apos;
+)
+),
+OR(
+ISPICKVAL(StageName,&apos;Contracting&apos;),
+ISPICKVAL(StageName,&apos;Integration&apos;),
+ISPICKVAL(StageName,&apos;Activation&apos;),
+ISPICKVAL(StageName,&apos;Closed Won&apos;)
+),
+ISCHANGED( OwnerId ),
+RecordType.Name = &apos;Parent Opportunity&apos;
+) , true,false
+)</errorConditionFormula>
+    <errorMessage>Cannot update opportunity owner from Contracting stage onwards</errorMessage>
+</ValidationRule>

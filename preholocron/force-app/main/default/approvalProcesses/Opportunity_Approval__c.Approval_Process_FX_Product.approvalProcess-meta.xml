@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Opportunity__c</field>
+        <field>Justification2__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Reset_Update_History</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Update_Approval_Step_0</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>axel@xendit.co</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>FX Approval</label>
+        <name>FX_Approval</name>
+        <rejectionActions>
+            <action>
+                <name>Reset_Update_History</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Update_Approval_Step_0</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <emailTemplate>Xendit_Approval_Email_Templates/Pricing_Approval_Submission</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND(
+  ISPICKVAL(Opportunity__r.FX_Product_Approval__c, &quot;Approval Required&quot;),
+  FX_Type_Approved__c = FALSE,
+  NOT ISPICKVAL(Status__c, &apos;Approved&apos;),
+  RecordType.Name = &apos;Pricing Approval&apos;
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>FX_Type_Approve</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Status_as_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Status_as_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Approval Process FX Product</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>2</processOrder>
+    <recallActions>
+        <action>
+            <name>Status_as_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

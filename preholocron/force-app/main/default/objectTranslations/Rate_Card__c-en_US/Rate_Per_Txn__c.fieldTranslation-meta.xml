@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- If the Rate per Txn is in %, then convert it to decimal. If it is normal rate, then enter the rate amount --></help>
+    <label><!-- Rate Per Txn --></label>
+    <name>Rate_Per_Txn__c</name>
+</CustomFieldTranslation>

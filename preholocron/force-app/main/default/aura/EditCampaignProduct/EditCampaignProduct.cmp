@@ -1,0 +1,64 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:availableForFlowScreens" controller="EditCampaignProductController" access="public">
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+    <aura:attribute name="error" type="boolean" default="false"/>
+    <aura:attribute name="prodFamList" type="List" default="[]" />
+    <aura:attribute name="selectedPrdList" type="List" default="[]" />
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="activeSections" type="List" default="[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:html tag="style">
+        .toastMessage.forceActionsText{ 
+        white-space : pre-line !important; 
+        }
+
+        .slds-modal__container{
+            max-width: 95% !important;
+            width:90% !important;
+        }
+
+        .slds-p-around--medium{
+            max-height: 100% !important;
+            height: 100% !important;
+            padding: 0 !important;
+        }
+
+        .slds-p-around--large{
+            padding: 0 !important;
+        }
+    </aura:html>
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="small" />
+    </aura:if>
+    <lightning:card variant="Narrow">
+        <div class="slds-grid slds-wrap slds-p-around--large slds-gutters">
+            <div class="slds-align_absolute-center slds-col slds-size_1-of-1">
+                <lightning:button class="slds-m-top_small" variant="brand" label="Save" onclick="{!c.saveSelectedProduct}" />
+            </div>
+            
+            <div class="slds-col slds-size_1-of-1">
+                &nbsp;
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-scrollable_y" style="height:28rem;">
+                <lightning:accordion aura:id="productAccordion" allowMultipleSectionsOpen="true">
+                    <aura:iteration items="{!v.prodFamList}" var="prdFam" indexVar="rowIndex">
+                        <lightning:accordionSection name="{!prdFam.prodFamily}" label="{!prdFam.prodFamily}">
+                            <aura:if isTrue="{!not(empty(prdFam.productList))}">
+                                <lightning:datatable aura:id="prdTable" keyField="Id"
+                                                    data="{!prdFam.productList}"
+                                                    columns="{!v.columns }"
+                                                    hideCheckboxColumn="false"
+                                                    showRowNumberColumn="false"
+                                                    selectedRows="{! prdFam.selectedIds }"
+                                                    onrowselection ="{! c.updateSelectedProduct }"/>
+                                <aura:set attribute="else">
+                                    <div class="slds-text-align_center slds-text-color_weak"><i>No products to display.</i></div>   
+                                </aura:set>
+                            </aura:if>
+                        </lightning:accordionSection>
+                    </aura:iteration>
+            </lightning:accordion>
+            </div>
+        </div>
+    </lightning:card>  
+</aura:component>

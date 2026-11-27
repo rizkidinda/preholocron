@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BD_CS_SOS__c</fullName>
+    <description>This field is being used for the Sales team to indicate that this opportunity is to be transferred to CS or BDR team</description>
+    <inlineHelpText>For the Sales team to indicate that this opportunity is to be transferred to CS or BDR team</inlineHelpText>
+    <label>BD/CS SOS</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>To Transfer to BDR</fullName>
+                <default>false</default>
+                <label>To Transfer to BDR</label>
+            </value>
+            <value>
+                <fullName>Transferred to BDR</fullName>
+                <default>false</default>
+                <label>Transferred to BDR</label>
+            </value>
+            <value>
+                <fullName>To Transfer to CS</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>To Transfer to CS</label>
+            </value>
+            <value>
+                <fullName>Transferred to CS</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Transferred to CS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

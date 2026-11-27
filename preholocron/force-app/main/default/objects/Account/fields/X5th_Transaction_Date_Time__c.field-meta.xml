@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X5th_Transaction_Date_Time__c</fullName>
+    <description>The 5th transaction date/time of the merchant (by Internal Name), regardless of channel
+
+Master Logic: IF master acc THEN use (min. fifth transaction date)</description>
+    <inlineHelpText>The 5th transaction date/time of the merchant (by Internal Name), regardless of channel
+
+Master Logic: IF master acc THEN use (min. fifth transaction date)</inlineHelpText>
+    <label>5th Transaction Date/Time</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Us_Form_Queue_PH_Lead</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.COMPANY</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>LEAD.UNREAD</columns>
+    <columns>LEAD.TITLE</columns>
+    <columns>Average_Monthly_Revenue__c</columns>
+    <columns>Number_of_Employees_Lead_Qual__c</columns>
+    <columns>I_want_to_get_more_info_on_Contact_Us__c</columns>
+    <columns>Where_are_you_selling_your_products_now__c</columns>
+    <columns>How_did_you_hear_about_us__c</columns>
+    <filterScope>Queue</filterScope>
+    <label>Contact Us Form Queue - PH</label>
+    <queue>Contact_Us_Form_Queue_PH</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

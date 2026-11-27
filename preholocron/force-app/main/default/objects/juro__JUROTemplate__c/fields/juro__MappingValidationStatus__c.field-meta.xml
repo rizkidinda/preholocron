@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__MappingValidationStatus__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF(juro__MappedDataItemCount__c = 0, IMAGE(&quot;/resource/juro__TemplateIcons/template_not_mapped.svg&quot;, &quot;grey&quot;, 16, 16), 
+IF((juro__FailedDataItemCount__c = 0 &amp;&amp; juro__FailedSignerCount__c = 0 &amp;&amp; juro__WarningDataItemCount__c &gt; 0), IMAGE(&quot;/resource/juro__TemplateIcons/template_warning.svg&quot;, &quot;yellow&quot;, 16, 16),
+IF((juro__FailedDataItemCount__c = 0 &amp;&amp; juro__FailedSignerCount__c = 0 &amp;&amp; juro__StrictValidation__c = true), IMAGE(&quot;/changemgmt/img/checkgreen.png&quot;, &quot;green&quot;),
+IF((juro__FailedDataItemCount__c = 0 &amp;&amp; juro__FailedSignerCount__c = 0 &amp;&amp; juro__StrictValidation__c = false), IMAGE(&quot;/img/alohaSkin/help_black.png&quot;, &quot;grey&quot;),
+IMAGE(&quot;/changemgmt/img/closered.png&quot;, &quot;red&quot;)))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Mapping Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

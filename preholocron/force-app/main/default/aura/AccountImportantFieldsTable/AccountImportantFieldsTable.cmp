@@ -1,0 +1,253 @@
+<aura:component implements="force:appHostable,force:hasRecordId,flexipage:availableForRecordHome,flexipage:availableForAllPageTypes" access="global" controller="AccountImportantFieldsTableController">
+    <aura:attribute name="accObject" type="Object"/>
+    <aura:attribute name="showEdit" type="Boolean" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+    <aura:html tag="style">
+        .toastMessage.forceActionsText{ 
+        white-space : pre-line !important; 
+        }
+        .slds-table td{
+            height: 40px !important;
+            text-wrap: initial !important;
+        }
+        label.slds-form-element__label.slds-m-right_xxx-small{
+            display: none !important;
+        }
+        tableWidth{
+            width : 250px !important;
+        }
+    </aura:html>
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="small" />
+    </aura:if>
+    <div class="slds-grid slds-wrap slds-p-around--large slds-gutters">
+        <div class="slds-align_absolute-center slds-col slds-size_1-of-1" aura:id="div-grp-edit">
+            <lightning:button  variant="base" label="Edit" title="Edit" 
+                              class="slds-button slds-button_brand" onclick="{!c.handleEdit}"/>
+        </div>
+        <div class="slds-align_absolute-center slds-col slds-size_1-of-1 slds-hide" aura:id="div-grp-save">
+            <lightning:button  variant="base" label="Cancel" title="Cancel" 
+                              class="slds-button slds-button_neutral" onclick="{!c.handleCancel}"/>
+            <lightning:button  variant="base" label="Save" title="Save"
+                              class="slds-button slds-button_brand" onclick="{!c.handleSave}" />
+        </div>
+        <div class="slds-col slds-size_1-of-1">
+            &nbsp; 
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-scrollable_y slds-scrollable_x" style="max-height:1000px;overflow:scroll">
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table_col-bordered " width="100%">
+                <thead width="100%"></thead>
+                <tbody  style="text-align:left; " width="100%">
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left oppFieldTitle" colspan="2">
+                            <lightning:formattedText value="General" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:50%">
+                            <lightning:formattedText value="Brand" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left">
+                            <lightning:formattedText value="{!v.accObject.accObj.Brand__c}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:50%">
+                            <lightning:formattedText value="Segment" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left">
+                            <lightning:formattedText value="{!v.accObject.accObj.Segment__c}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:50%">
+                            <lightning:formattedText value="Account Status" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left">
+                            <lightning:formattedText value="{!v.accObject.accObj.Status__c}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:50%">
+                            <lightning:formattedText value="Account Sub Status" /><br/>
+                            <lightning:formattedText value="(Recent Growth Trend by Product)" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left">
+                            <aura:unescapedHtml value="{!v.accObject.accSubStatus}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:50%">
+                            <lightning:formattedText value="Ultimate Parent Account Division" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left">
+                            <aura:unescapedHtml value="{!v.accObject.ultiParentDivision}" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><br/></p>
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table_col-bordered" width="100%">
+                <thead width="100%"></thead>
+                <tbody  style="text-align:left; " width="100%">
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left oppFieldTitle" colspan="3">
+                            <lightning:formattedText value="Performance (Rev)" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left oppFieldSubTitle" colspan="3">
+                            <lightning:formattedText value="Rev" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:30%">
+                            <lightning:formattedText value="Is Top 5 Grower (L30D by Division)" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left" colspan="2">
+                            <lightning:formattedText value="{!v.accObject.accObj.is_top5_L30D_growth_ultiparent_of_owner__c}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:30%">
+                            <lightning:formattedText value="Is Top 5 Dropper (L30D by Division)" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left" colspan="2">
+                            <lightning:formattedText value="{!v.accObject.accObj.is_btm5_L30D_growth_ultiparent_of_owner__c}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:30%">
+                            <lightning:formattedText value="L7D Rev" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left" style="width:10%">
+                            <lightning:formattedNumber value="{!v.accObject.sumL7DRevUSD}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                        </td>
+                        <td class="slds-truncate slds-text-align_left">
+                            <aura:if isTrue="{!((v.accObject.suml7DDeltaUSD) / (v.accObject.sumL7DRevUSD - v.accObject.suml7DDeltaUSD)) > 0}">
+                                <!--L7D_TPV_Delta_% = sum(L7D_TPV_delta_USD__c)/ sum(L7D_TPV_USD__c - L7D_TPV_delta_USD__c)-->
+                                <span>+&nbsp;</span> <lightning:formattedNumber value="{!((v.accObject.suml7DDeltaUSD) / (v.accObject.sumL7DRevUSD - v.accObject.suml7DDeltaUSD))}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                <aura:set attribute="else">
+                                    <aura:if isTrue="{!((v.accObject.suml7DDeltaUSD) / (v.accObject.sumL7DRevUSD - v.accObject.suml7DDeltaUSD)) lt 0}">
+                                        <lightning:formattedNumber value="{!((v.accObject.suml7DDeltaUSD) / (v.accObject.sumL7DRevUSD - v.accObject.suml7DDeltaUSD))}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                        <aura:set attribute="else">
+                                            + 0%
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:set>
+                            </aura:if>
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:30%">
+                            <lightning:formattedText value="L30D Rev" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left" style="width:10%">
+                            <lightning:formattedNumber value="{!v.accObject.sumL30DRevUSD}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                        </td>
+                        <td class="slds-truncate slds-text-align_left">
+                            <aura:if isTrue="{!((v.accObject.suml30DDeltaUSD) / (v.accObject.sumL30DRevUSD - v.accObject.suml30DDeltaUSD)) > 0}">
+                                <span>+&nbsp;</span> <lightning:formattedNumber value="{!((v.accObject.suml30DDeltaUSD) / (v.accObject.sumL30DRevUSD - v.accObject.suml30DDeltaUSD))}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                <aura:set attribute="else">
+                                    <aura:if isTrue="{!((v.accObject.suml30DDeltaUSD) / (v.accObject.sumL30DRevUSD - v.accObject.suml30DDeltaUSD)) lt 0}">
+                                        <lightning:formattedNumber value="{!((v.accObject.suml30DDeltaUSD) / (v.accObject.sumL30DRevUSD - v.accObject.suml30DDeltaUSD))}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                        <aura:set attribute="else">
+                                            + 0%
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:set>
+                            </aura:if>
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:30%">
+                            <lightning:formattedText value="MTD Rev" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left" style="width:10%">
+                            <lightning:formattedNumber value="{!v.accObject.sumMTDRevUSD}" style="currency" currencyCode="USD" minimumFractionDigits="2" maximumFractionDigits="2"/>
+                        </td>
+                        <td class="slds-truncate slds-text-align_left">
+                            <aura:if isTrue="{!((v.accObject.sumMTDDDeltaUSD) / (v.accObject.sumMTDRevUSD - v.accObject.sumMTDDDeltaUSD)) > 0}">
+                                <span>+&nbsp;</span> <lightning:formattedNumber value="{!((v.accObject.sumMTDDDeltaUSD) / (v.accObject.sumMTDRevUSD - v.accObject.sumMTDDDeltaUSD))}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                <aura:set attribute="else">
+                                    <aura:if isTrue="{!((v.accObject.sumMTDDDeltaUSD) / (v.accObject.sumMTDRevUSD - v.accObject.sumMTDDDeltaUSD)) lt 0}">
+                                        <lightning:formattedNumber value="{!((v.accObject.sumMTDDDeltaUSD) / (v.accObject.sumMTDRevUSD - v.accObject.sumMTDDDeltaUSD))}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                        <aura:set attribute="else">
+                                            + 0%
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:set>
+                            </aura:if>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><br/></p>
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table_col-bordered" width="100%">
+                <thead width="100%"></thead>
+                <tbody  style="text-align:left; " width="100%">
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left oppFieldTitle" colspan="2">
+                            <lightning:formattedText value="Updates" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:50%">
+                            <lightning:formattedText value="Weekly Update Status" />
+                        </td>
+                        <aura:if isTrue="{!v.showEdit}">
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:select variant="label-hidden" label="Weekly Update Status" name="weeklyUpdateStatus" aura:id="weeklyUpdateStatus" value="{!v.accObject.accObj.Account_Weekly_Update_Status__c}" >
+                                    <option text="--None--" value=""/>    
+                                    <aura:iteration items="{!v.accObject.weeklyUpdateStatusPicklist}" var="option">
+                                        <option text="{!option}" value="{!option}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </td>
+                            <aura:set attribute="else">
+                                <td class="slds-truncate slds-text-align_left"> 
+                                    <lightning:formattedText value="{!v.accObject.accObj.Account_Weekly_Update_Status__c}" />
+                                </td>
+                            </aura:set>
+                        </aura:if>
+                    </tr>
+
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left oppFieldSubTitle" colspan="2">
+                            <lightning:formattedText value="Weekly Update" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <aura:if isTrue="{!v.showEdit}">
+                            <td class="slds-truncate slds-text-align_left" colspan="2"> 
+                                <lightning:inputRichText value="{!v.accObject.accObj.Weekly_Update__c}"  formats="['font', 'size', 'bold', 'italic', 'underline', 'strike',
+                                'list', 'indent', 'align', 'link', 'image', 'clean', 'table',
+                                'header', 'color', 'background', 'code', 'code-block', 'script', 'blockquote', 'direction']">
+                                    <lightning:insertImageButton />
+                                </lightning:inputRichText>
+                            </td>
+                            <aura:set attribute="else">
+                                <td class="slds-truncate slds-text-align_left" colspan="2"> 
+                                    <lightning:formattedRichText value="{!v.accObject.accObj.Weekly_Update__c}"   />
+                                </td>
+                            </aura:set>
+                        </aura:if>
+                    </tr>
+
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left oppFieldSubTitle" colspan="2">
+                            <lightning:formattedText value="Weekly Update (with history)" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" colspan="2">
+                            <lightning:formattedRichText value="{!v.accObject.accObj.Weekly_Update_History__c}" />
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</aura:component>

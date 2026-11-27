@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Gross profit % = Gross profit / Revenue --></help>
+    <label><!-- Gross profit % --></label>
+    <name>Gross_profit__c</name>
+</CustomFieldTranslation>

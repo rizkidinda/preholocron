@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Is Merchant an existing client of ours? --></help>
+    <label><!-- Is Merchant an existing client of ours? --></label>
+    <name>Is_Merchant_an_existing_client_of_ours__c</name>
+</CustomFieldTranslation>

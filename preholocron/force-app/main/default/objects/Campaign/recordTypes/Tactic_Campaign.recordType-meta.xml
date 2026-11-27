@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tactic_Campaign</fullName>
+    <active>true</active>
+    <label>Tactic Campaign</label>
+    <picklistValues>
+        <picklist>Ads_Type__c</picklist>
+        <values>
+            <fullName>Affiliate marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Display Ads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Natural Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Search Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price Comparison Website Ads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retargeting PPC Ads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Media Ads</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Campaign_Quarter__c</picklist>
+        <values>
+            <fullName>FY23</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FY24</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FY25</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Campaign_Target_Audience_Country__c</picklist>
+        <values>
+            <fullName>China</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Global</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indonesia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malaysia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mexico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Philippines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regional Remittance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Singapore</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taiwan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thailand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Viet Nam</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DB_Campaign_Tactic__c</picklist>
+        <values>
+            <fullName>Direct Mail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employment Seminars</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Website</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lunches</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online Banners%2FAds</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print Advertisement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Relations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Call Down</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinars</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Event_Type__c</picklist>
+        <values>
+            <fullName>Award Nights</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conferences %28Panels %26 Roundtables%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Networking Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Launch Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tradeshows</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VIP Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Workshop and Seminar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Workshops</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fiscal_Quarter__c</picklist>
+        <values>
+            <fullName>Q1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Q2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Q3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Q4</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fiscal_Year__c</picklist>
+        <values>
+            <fullName>2023</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Heeet__Campaign_Objective__c</picklist>
+        <values>
+            <fullName>Brand Awareness</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lead Generation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Revenue Driven</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Heeet__Facebook_Type__c</picklist>
+        <values>
+            <fullName>Ad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AdSet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campaign</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Medium__c</picklist>
+        <values>
+            <fullName>Direct</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offline - BDSP%2FGR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offline - Partnerships%2FBDCP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offline - Sales Prospecting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offline Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic Search - Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic Social - Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic Social - Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic Social - LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Search - Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Social - Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Social - Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Social - LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Objective__c</picklist>
+        <values>
+            <fullName>Branding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dashboard Sign Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Demand Gen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Form Sign Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Go Live Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Government Relations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Growth%2FRetention</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Market Launch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New active merchant acquired</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Offer_Type__c</picklist>
+        <values>
+            <fullName>Blog</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact Me</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Story</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Infographics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Landing Page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Owned Offline Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Owned Webinar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Offline Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Webinar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Press Releases</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Promotion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sign up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Video</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>White paper</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pipe_Type__c</picklist>
+        <values>
+            <fullName>Increase TPV Through Current Channels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline Generation %28New Pipeline%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline Progression</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Upsell%2FCross-sell New Products%2FChannels</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Program_Type__c</picklist>
+        <values>
+            <fullName>ENT - B2B Mktplace %28ID%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ENT - Crypto %28ID%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ENT - Futures %28ID%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ENT - Lending %28PH%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inside Sales</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Requesting_Team_Cross_Functional__c</picklist>
+        <values>
+            <fullName>Default</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status</picklist>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Confirmed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Planned</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Objectives__c</picklist>
+        <values>
+            <fullName>Awareness</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consideration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intent</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tactics_Type__c</picklist>
+        <values>
+            <fullName>Content Syndication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dashboard Banner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebok%28SM Connector%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Individual Social Media Posting %28Custom Redirect%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instagram %28Custom Redirect%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Linkedin %28SM Connector%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Notification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Owned Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Ads %28Digital platform based%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Ads %28Publisher direct%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TikTok %28Custom Redirect%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Twitter %28SM Connector%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Whatsapp Marketing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Demo Signup %2F Trial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Event</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thought Leadership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website Direct</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>UTM_Category_Group__c</picklist>
+        <values>
+            <fullName>Content Syndication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email%2FMessage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offline Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offline Sources</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic%2FDirect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid App</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Display</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Social</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Media</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>UTM_Category__c</picklist>
+        <values>
+            <fullName>Clevertap Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clevertap Whatsapp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Database Purchase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct Traffic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook Paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook Paid App</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Organic Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Paid App</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Paid Display</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Paid Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guest Post Content Syndication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instagram Paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Linkedin Paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Merchant Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic PR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Content Syndication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Offline Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Online Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid PR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pardot Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Content Syndication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Message</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Sourced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Third Party Content Syndication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tik Tok Paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TikTok</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Twitter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Xendit BD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Xendit CS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Xendit Offline Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Xendit Online Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Xendit Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Youtube</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Youtube Paid</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Vertical__c</picklist>
+        <values>
+            <fullName>Generic%2FAll</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

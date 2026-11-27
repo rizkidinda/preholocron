@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Xendit_Price_Book__c</columns>
+    <columns>Product__c</columns>
+    <columns>Description__c</columns>
+    <columns>Rate_Per_Txn__c</columns>
+    <columns>Rate_Per_TPV__c</columns>
+    <columns>Rate_Per_Event__c</columns>
+    <columns>Rate_Per_Subaccount__c</columns>
+    <columns>Fixed_Rate__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

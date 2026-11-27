@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Solution_PIC_Assignment_Date</name>
+        <label>Assign Solution PIC Assignment Date</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Solution_PIC_Assignment_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Today</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Update_Solution_Engineering_Request_Details</name>
+        <label>Update Solution Engineering Request Details</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Opportunity__r.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>is_PIC_assigned</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>is_PIC_assigned</name>
+        <label>is PIC assigned?</label>
+        <locationX>182</locationX>
+        <locationY>587</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>PIC_Assigned</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Solution_PIC__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Solution_PIC__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Solution_PIC_Assignment_Date</targetReference>
+            </connector>
+            <label>PIC Assigned</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Opportunity_is_not_blank</name>
+        <label>Opportunity is not blank</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>is_PIC_assigned</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Opportunity is blank</defaultConnectorLabel>
+        <rules>
+            <name>Set_Account_based_on_oppty</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity__r.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Solution_Engineering_Request_Details</targetReference>
+            </connector>
+            <label>Set Account based on oppty</label>
+        </rules>
+    </decisions>
+    <description>add condition for field account if opportunity is blank</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>isNew()</expression>
+    </formulas>
+    <formulas>
+        <name>Today</name>
+        <dataType>Date</dataType>
+        <expression>Today()</expression>
+    </formulas>
+    <interviewLabel>Solution Engineering Request Flow (Before Save) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Solution Engineering Request Flow (Before Save)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Opportunity_is_not_blank</targetReference>
+        </connector>
+        <object>Solution_Engineering_Request__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

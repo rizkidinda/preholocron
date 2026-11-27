@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Accounts_To_Be_Reassigned</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Owner_Name__c</columns>
+    <columns>Xendit_Account_Email__c</columns>
+    <columns>Expected_Transaction_Volume__c</columns>
+    <columns>Number_of_Employees_Lead_Qual__c</columns>
+    <columns>KYC_Verification_Status__c</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>THIS_YEAR</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT_SOURCE</field>
+        <operation>equals</operation>
+        <value>Inbound</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.TYPE</field>
+        <operation>equals</operation>
+        <value>XP MASTER,REGULAR</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Account.Synced</value>
+    </filters>
+    <label>Accounts To Be Reassigned</label>
+</ListView>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Product Profitability --></label>
+    <name>Product_Profitability__c</name>
+    <picklistValues>
+        <masterLabel>Break Even</masterLabel>
+        <translation><!-- Break Even --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Loss Making</masterLabel>
+        <translation><!-- Loss Making --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Profitable</masterLabel>
+        <translation><!-- Profitable --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

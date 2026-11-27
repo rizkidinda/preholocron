@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>
+        <!-- Lifetime Transaction TPV of the merchant, summation of all channels (by BID)
+
+ 
+
+Master Logic: IF master acc THEN use total -->
+    </help>
+    <label><!-- Lifetime Transaction TPV (use total) --></label>
+    <name>Lifetime_Transaction_TPV_use_total__c</name>
+</CustomFieldTranslation>

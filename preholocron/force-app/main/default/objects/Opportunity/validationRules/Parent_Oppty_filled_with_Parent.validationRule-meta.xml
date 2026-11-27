@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Oppty_filled_with_Parent</fullName>
+    <active>true</active>
+    <description>Parent opportunity record type cannot be filled with parent oppty.</description>
+    <errorConditionFormula>AND (
+   RecordType.Name = &apos;Parent Opportunity&apos;, 
+   NOT ISBLANK ( Parent_Opportunity__c )
+)</errorConditionFormula>
+    <errorDisplayField>Parent_Opportunity__c</errorDisplayField>
+    <errorMessage>Parent Opportunity Record Type is not allowed to have a Parent Opportunity filled.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Segments</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>Txn_Count__c</columns>
+    <columns>API_Call__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Segments</label>
+</ListView>

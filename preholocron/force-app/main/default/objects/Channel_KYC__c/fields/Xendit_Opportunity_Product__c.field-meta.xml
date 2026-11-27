@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Xendit_Opportunity_Product__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>KYC is a child of an Opportunity Product</description>
+    <label>Xendit Opportunity Product (Channel)</label>
+    <referenceTo>Xendit_Opportunity_Product__c</referenceTo>
+    <relationshipLabel>Channel KYC</relationshipLabel>
+    <relationshipName>Channel_KYC</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

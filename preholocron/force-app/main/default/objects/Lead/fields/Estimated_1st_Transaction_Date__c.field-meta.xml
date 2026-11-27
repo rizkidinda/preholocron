@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_1st_Transaction_Date__c</fullName>
+    <inlineHelpText>Estimated 1st transaction date of the potential deal.</inlineHelpText>
+    <label>Estimated 1st Transaction Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

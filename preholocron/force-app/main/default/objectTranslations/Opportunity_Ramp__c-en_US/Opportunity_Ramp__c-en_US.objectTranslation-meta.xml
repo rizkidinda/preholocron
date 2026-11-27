@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Ramp</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Ramp</value>
+    </caseValues>
+    <layouts>
+        <layout>Opportunity Ramp Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Parent Ramp Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Child Ramp --></label>
+        <name>Child_Ramp</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Parent Ramp --></label>
+        <name>Parent_Ramp</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

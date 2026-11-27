@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Us_Form_Queue_ID_Lead</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.COMPANY</columns>
+    <columns>LEAD.STATE_CODE</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>LEAD.UNREAD</columns>
+    <filterScope>Queue</filterScope>
+    <filters>
+        <field>LEAD.CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>5/25/2023 12:00 AM</value>
+    </filters>
+    <label>Contact Us Form Queue - ID</label>
+    <queue>Contact_Us_Form_Queue_ID</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

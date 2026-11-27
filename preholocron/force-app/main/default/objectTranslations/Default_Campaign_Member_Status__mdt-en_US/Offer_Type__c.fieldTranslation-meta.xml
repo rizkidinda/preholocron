@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Offer Type --></label>
+    <name>Offer_Type__c</name>
+    <picklistValues>
+        <masterLabel>Blog</masterLabel>
+        <translation><!-- Blog --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Contact Me</masterLabel>
+        <translation><!-- Contact Me --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer Story</masterLabel>
+        <translation><!-- Customer Story --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Infographics</masterLabel>
+        <translation><!-- Infographics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Landing Page</masterLabel>
+        <translation><!-- Landing Page --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Owned Offline Events</masterLabel>
+        <translation><!-- Owned Offline Events --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Owned Webinar</masterLabel>
+        <translation><!-- Owned Webinar --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid Offline Events</masterLabel>
+        <translation><!-- Paid Offline Events --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid Webinar</masterLabel>
+        <translation><!-- Paid Webinar --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Press Releases</masterLabel>
+        <translation><!-- Press Releases --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Product Promotion</masterLabel>
+        <translation><!-- Product Promotion --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sign up</masterLabel>
+        <translation><!-- Sign up --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Video</masterLabel>
+        <translation><!-- Video --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>White paper</masterLabel>
+        <translation><!-- White paper --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

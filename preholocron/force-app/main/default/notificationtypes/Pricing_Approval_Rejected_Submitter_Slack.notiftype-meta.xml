@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomNotificationType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customNotifTypeName>Pricing Approval Rejected - Submitter - Slack</customNotifTypeName>
+    <description>send slack notification to submitter once pricing approval get rejected</description>
+    <desktop>false</desktop>
+    <masterLabel>Pricing Approval Rejected - Submitter - Slack</masterLabel>
+    <mobile>false</mobile>
+    <slack>true</slack>
+</CustomNotificationType>

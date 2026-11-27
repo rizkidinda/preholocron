@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ACTIVE</fullName>
+                <default>false</default>
+                <label>ACTIVE</label>
+            </value>
+            <value>
+                <fullName>SUSPENDED</fullName>
+                <default>false</default>
+                <label>SUSPENDED</label>
+            </value>
+            <value>
+                <fullName>REJECTED</fullName>
+                <default>false</default>
+                <label>REJECTED</label>
+            </value>
+            <value>
+                <fullName>SIGN UP</fullName>
+                <default>false</default>
+                <label>SIGN UP</label>
+            </value>
+            <value>
+                <fullName>GO LIVE REQUEST</fullName>
+                <default>false</default>
+                <label>GO LIVE REQUEST</label>
+            </value>
+            <value>
+                <fullName>BELOW 5 TRANSACTION</fullName>
+                <default>false</default>
+                <label>BELOW 5 TRANSACTION</label>
+            </value>
+            <value>
+                <fullName>NEW CUSTOMER</fullName>
+                <default>false</default>
+                <label>NEW CUSTOMER</label>
+            </value>
+            <value>
+                <fullName>RESURRECTED</fullName>
+                <default>false</default>
+                <label>RESURRECTED</label>
+            </value>
+            <value>
+                <fullName>CHURNED</fullName>
+                <default>false</default>
+                <label>CHURNED</label>
+            </value>
+            <value>
+                <fullName>DECLINING</fullName>
+                <default>false</default>
+                <label>DECLINING</label>
+            </value>
+            <value>
+                <fullName>Terminated</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Terminated</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

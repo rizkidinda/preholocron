@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Justification2__c</fullName>
+    <defaultValue>&quot;What are the negotiated terms with the customer&quot; + BR() +
+&quot;Who are our competitoers and what is their price?&quot; + BR() + 
+&quot;Do merchant ask for shorter settlement time without interest?&quot; + BR() + 
+&quot;if yes, what product and how fast?&quot; + BR() + 
+&quot;---------------Sample------------------&quot; + BR() + 
+&quot;MIdtrans offering VA at 1000 IDR&quot; + BR() + 
+&quot;CEO agreed to sign if we can match price and agress to shift 100% Volume to Xendit&quot; + BR() + 
+&quot;CEO will sign a 3 year agreement if we can match price&quot; + BR() + 
+&quot;Merchant is expected to grow 50% in the next 2 years&quot; + BR() + 
+&quot;Merchant agreed to integrate with Xendit&apos;s other products&quot;</defaultValue>
+    <label>Justification</label>
+    <length>50000</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

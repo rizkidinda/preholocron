@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- What are the products involved that Merchant is using for this usecase? --></help>
+    <label><!-- Current Product Used (if any) --></label>
+    <name>Current_Product_Used_if_any__c</name>
+</CustomFieldTranslation>

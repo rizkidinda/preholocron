@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Heeet First Click Datetime --></label>
+    <name>Heeet__Heeet_First_Click_Datetime__c</name>
+</CustomFieldTranslation>

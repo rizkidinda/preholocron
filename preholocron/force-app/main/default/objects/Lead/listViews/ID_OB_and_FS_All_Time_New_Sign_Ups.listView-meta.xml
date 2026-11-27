@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ID_OB_and_FS_All_Time_New_Sign_Ups</fullName>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>FULL_NAME</columns>
+    <columns>Contact_Person_Role_Lead_Qual__c</columns>
+    <columns>LEAD.COMPANY</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.MOBILE_PHONE</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <columns>Weekly_Update_Status__c</columns>
+    <columns>Weekly_Update__c</columns>
+    <columns>Number_of_Employees_Lead_Qual__c</columns>
+    <columns>Expected_Transaction_Volume__c</columns>
+    <columns>How_do_you_want_to_use_Xendit__c</columns>
+    <columns>How_do_you_want_to_use_Xendit_Other__c</columns>
+    <columns>Business_ID__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CORE.USERS.FIRST_NAME</field>
+        <operation>contains</operation>
+        <value>handaru,cheng,zeson,kellin,satya,jolyn,dinna</value>
+    </filters>
+    <label>ID OB and FS All Time Leads</label>
+    <sharedTo>
+        <group>ID_OB_Team</group>
+    </sharedTo>
+</ListView>

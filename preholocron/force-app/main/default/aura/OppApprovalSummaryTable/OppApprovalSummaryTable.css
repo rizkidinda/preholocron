@@ -1,0 +1,20 @@
+.THIS .oppFieldTitle{
+    background-color: #5181FE; 
+    color: white;
+    width: 40%;
+}
+
+.THIS .overflowTable{
+    width:100%; 
+    overflow-x: scroll !important; 
+    display : inline-block;
+}
+
+.THIS .selectOption{
+    display:inline-block !important;
+    width: 100%;
+}
+
+.THIS .lowValue{
+    background-color : #EECDCD;
+}

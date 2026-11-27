@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Xst_Txn_Date__c</fullName>
+    <inlineHelpText>System trigged first transaction date. It is the minimum (earliest) system first transaction date of all related parent opportunities (deals).</inlineHelpText>
+    <label>1st Txn Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

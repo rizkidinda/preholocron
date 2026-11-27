@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Del - Products Interested In --></label>
+    <name>Products_Interested_In__c</name>
+    <picklistValues>
+        <masterLabel>Direct Debit</masterLabel>
+        <translation><!-- Direct Debit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Disbursements (Aggregator)</masterLabel>
+        <translation><!-- Disbursements (Aggregator) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Escrow (MI)</masterLabel>
+        <translation><!-- Escrow (MI) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Escrow (MO)</masterLabel>
+        <translation><!-- Escrow (MO) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>IM Disbursements</masterLabel>
+        <translation><!-- IM Disbursements --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>QR</masterLabel>
+        <translation><!-- QR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Retail Outlets (RO)</masterLabel>
+        <translation><!-- Retail Outlets (RO) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Virtual Account (VA) Aggregator</masterLabel>
+        <translation><!-- Virtual Account (VA) Aggregator --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Virtual Account (VA) Switcher</masterLabel>
+        <translation><!-- Virtual Account (VA) Switcher --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>XRS Collection Fee</masterLabel>
+        <translation><!-- XRS Collection Fee --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>XRS Disbursements</masterLabel>
+        <translation><!-- XRS Disbursements --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>eWallets</masterLabel>
+        <translation><!-- eWallets --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>eWallets QR</masterLabel>
+        <translation><!-- eWallets QR --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

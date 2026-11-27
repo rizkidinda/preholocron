@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Medium__c</fullName>
+    <label>Medium</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Direct</fullName>
+                <default>false</default>
+                <label>Direct</label>
+            </value>
+            <value>
+                <fullName>Email</fullName>
+                <default>false</default>
+                <label>Email</label>
+            </value>
+            <value>
+                <fullName>Offline - BDSP/GR</fullName>
+                <default>false</default>
+                <label>Offline - BDSP/GR</label>
+            </value>
+            <value>
+                <fullName>Offline Events</fullName>
+                <default>false</default>
+                <label>Offline Events</label>
+            </value>
+            <value>
+                <fullName>Offline - Partnerships/BDCP</fullName>
+                <default>false</default>
+                <label>Offline - Partnerships/BDCP</label>
+            </value>
+            <value>
+                <fullName>Offline - Sales Prospecting</fullName>
+                <default>false</default>
+                <label>Offline - Sales Prospecting</label>
+            </value>
+            <value>
+                <fullName>Online Events</fullName>
+                <default>false</default>
+                <label>Online Events</label>
+            </value>
+            <value>
+                <fullName>Organic Search - Google</fullName>
+                <default>false</default>
+                <label>Organic Search - Google</label>
+            </value>
+            <value>
+                <fullName>Organic Social - Facebook</fullName>
+                <default>false</default>
+                <label>Organic Social - Facebook</label>
+            </value>
+            <value>
+                <fullName>Organic Social - Instagram</fullName>
+                <default>false</default>
+                <label>Organic Social - Instagram</label>
+            </value>
+            <value>
+                <fullName>Organic Social - LinkedIn</fullName>
+                <default>false</default>
+                <label>Organic Social - LinkedIn</label>
+            </value>
+            <value>
+                <fullName>Paid Search - Google</fullName>
+                <default>false</default>
+                <label>Paid Search - Google</label>
+            </value>
+            <value>
+                <fullName>Paid Social - Facebook</fullName>
+                <default>false</default>
+                <label>Paid Social - Facebook</label>
+            </value>
+            <value>
+                <fullName>Paid Social - Instagram</fullName>
+                <default>false</default>
+                <label>Paid Social - Instagram</label>
+            </value>
+            <value>
+                <fullName>Paid Social - LinkedIn</fullName>
+                <default>false</default>
+                <label>Paid Social - LinkedIn</label>
+            </value>
+            <value>
+                <fullName>Referral</fullName>
+                <default>false</default>
+                <label>Referral</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

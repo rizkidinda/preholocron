@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Rate per transaction (selling) --></help>
+    <label><!-- Rate Per Txn (Selling Rate) --></label>
+    <name>Rate_Per_Txn_Sell__c</name>
+</CustomFieldTranslation>

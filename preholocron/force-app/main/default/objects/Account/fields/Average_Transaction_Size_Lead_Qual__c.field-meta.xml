@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Average_Transaction_Size_Lead_Qual__c</fullName>
+    <description>collected from Lead Qual</description>
+    <inlineHelpText>How big is the business of the merchant? Refers to the range total business size of merchant&apos;s TPV per month includes cash and all digital volumes. For private companies, this information has to be obtained by interviewing the customer. For public listed companies (eg. Grab, Paypal), this data can be found in the Annual Financial Reports.</inlineHelpText>
+    <label>Average Transaction Size(from Lead Qual)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Expected_TPV</valueSetName>
+    </valueSet>
+</CustomField>

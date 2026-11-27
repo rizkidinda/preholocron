@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_Opportunity_Stage_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+RecordType.Name = &apos;Child Opportunity&apos;,
+ $User.Bypass_VR__c = FALSE,
+$Profile.Name!=&apos;Xendit API Profile&apos;,
+NOT(ISBLANK( Parent_Opportunity__c )),
+ ISCHANGED( StageName ),
+OR(
+ISPICKVAL(StageName,&quot;Qualification&quot;),
+ISPICKVAL(StageName,&quot;Discovery&quot;),
+ISPICKVAL(StageName,&quot;Evaluation&quot;),
+ISPICKVAL(StageName,&quot;Negotiation&quot;),
+ISPICKVAL(StageName,&quot;Contracting&quot;)
+),
+OR(
+ISPICKVAL(Parent_Opportunity__r.StageName,&quot;Qualification&quot;),
+ISPICKVAL(Parent_Opportunity__r.StageName,&quot;Discovery&quot;),
+ISPICKVAL(Parent_Opportunity__r.StageName,&quot;Evaluation&quot;),
+ISPICKVAL(Parent_Opportunity__r.StageName,&quot;Negotiation&quot;),
+ISPICKVAL(Parent_Opportunity__r.StageName,&quot;Contracting&quot;)
+),
+TEXT(StageName) !=  TEXT(Parent_Opportunity__r.StageName),
+NOT(
+   AND(ISPICKVAL(PRIORVALUE(StageName),&quot;Closed Lost&quot;), 
+   OR(
+ISPICKVAL(StageName,&quot;Qualification&quot;),
+ISPICKVAL(StageName,&quot;Discovery&quot;),
+ISPICKVAL(StageName,&quot;Evaluation&quot;),
+ISPICKVAL(StageName,&quot;Negotiation&quot;)
+)
+)
+) 
+)</errorConditionFormula>
+    <errorDisplayField>StageName</errorDisplayField>
+    <errorMessage>Please update Stage on Parent Opportunity</errorMessage>
+</ValidationRule>

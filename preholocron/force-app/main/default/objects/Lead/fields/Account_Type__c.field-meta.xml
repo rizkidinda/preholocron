@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Type__c</fullName>
+    <label>Account Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>GROUP</fullName>
+                <default>false</default>
+                <label>Group</label>
+            </value>
+            <value>
+                <fullName>XP MASTER</fullName>
+                <default>false</default>
+                <label>XP Master</label>
+            </value>
+            <value>
+                <fullName>XP MANAGED</fullName>
+                <default>false</default>
+                <label>XP Sub (Managed)</label>
+            </value>
+            <value>
+                <fullName>REGULAR</fullName>
+                <default>false</default>
+                <label>Regular</label>
+            </value>
+            <value>
+                <fullName>NEW</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__NotifyOnError__c</fullName>
+    <deprecated>false</deprecated>
+    <description>List of recipients of email about contract creation failures.</description>
+    <inlineHelpText>List users&apos; id and/or email addresses separated by semicolon.</inlineHelpText>
+    <label>Notify on Error</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

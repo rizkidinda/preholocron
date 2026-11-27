@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Intent_API__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>auto populate upon account creation / update, everytime &quot;intent_api&quot; on How_do_you_want_to_use_Xendit__c field exist</description>
+    <externalId>false</externalId>
+    <label>Intent_API</label>
+    <precision>1</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

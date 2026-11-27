@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- VC Backed Status --></label>
+    <name>VC_Backed_Status__c</name>
+    <picklistValues>
+        <masterLabel>Angel round</masterLabel>
+        <translation><!-- Angel round --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bootstrapping</masterLabel>
+        <translation><!-- Bootstrapping --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>VC round</masterLabel>
+        <translation><!-- VC round --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

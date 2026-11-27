@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- collected from Lead Qual --></help>
+    <label><!-- Expected TPV (from Lead Qual) --></label>
+    <name>Expected_TPV_from_Lead_Qual__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Selected_Value_Source__c</fullName>
+    <description>based on the Rate Card Selected Value (higher / lower), determine which rate (txn / tpv) as the source. E.g. Selected Value = Higher, Selected Value Source = Rate per Txn --&gt; if Basket Size &gt; threshold, use Rate per Txn as value or validation</description>
+    <label>Selected Value Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Rate per Txn</fullName>
+                <default>false</default>
+                <label>Rate per Txn</label>
+            </value>
+            <value>
+                <fullName>Rate per TPV</fullName>
+                <default>false</default>
+                <label>Rate per TPV</label>
+            </value>
+            <value>
+                <fullName>Rate per API</fullName>
+                <default>false</default>
+                <label>Rate per API</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

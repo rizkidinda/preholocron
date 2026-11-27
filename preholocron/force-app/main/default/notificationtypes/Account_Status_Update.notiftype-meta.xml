@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomNotificationType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customNotifTypeName>Account Status Update</customNotifTypeName>
+    <description>send slack notification everytime account status is updated</description>
+    <desktop>false</desktop>
+    <masterLabel>Account Status Update</masterLabel>
+    <mobile>false</mobile>
+    <slack>true</slack>
+</CustomNotificationType>

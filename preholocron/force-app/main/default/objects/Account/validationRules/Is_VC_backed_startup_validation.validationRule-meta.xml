@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_VC_backed_startup_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ $User.Bypass_VR__c = FALSE,
+$Profile.Name!=&apos;Xendit API Profile&apos;,
+$Profile.Name!=&apos;System Administrator&apos;,
+ Is_VC_backed_startup__c = TRUE,
+ ISBLANK(Total_Funding_Raised__c)
+)</errorConditionFormula>
+    <errorDisplayField>Total_Funding_Raised__c</errorDisplayField>
+    <errorMessage>Please populate the value of total funding raised</errorMessage>
+</ValidationRule>

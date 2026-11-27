@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__Exclude_core_objects</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(LOWER(juro__ObjectName__c) = &apos;account&apos;, LOWER(juro__ObjectName__c) = &apos;opportunity&apos;, LOWER(juro__ObjectName__c) = &apos;contact&apos;, LOWER(juro__ObjectName__c) = &apos;user&apos;)</errorConditionFormula>
+    <errorDisplayField>juro__ObjectName__c</errorDisplayField>
+    <errorMessage>Account, Opportunity, Contact and User objects are already covered for two-way sync</errorMessage>
+</ValidationRule>

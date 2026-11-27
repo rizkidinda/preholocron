@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BD_Prospecting_Stage_Validation</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(
+   $User.Bypass_VR__c != TRUE,
+   CONTAINS($UserRole.Name, &apos;BDR Role&apos;),
+   NOT(ISNEW()), 
+   OR(ISPICKVAL( StageName , &quot;Qualification&quot;), ISPICKVAL( StageName , &quot;Closed Lost&quot;)),
+   AND(ISCHANGED( BD_Prospecting_Stage__c ),ISPICKVAL(BD_Prospecting_Stage__c,&quot;100%&quot;))
+      
+)</errorConditionFormula>
+    <errorDisplayField>BD_Prospecting_Stage__c</errorDisplayField>
+    <errorMessage>You are not allowed to change BD Prospecting Stage to 100% at Qualification Stage</errorMessage>
+</ValidationRule>

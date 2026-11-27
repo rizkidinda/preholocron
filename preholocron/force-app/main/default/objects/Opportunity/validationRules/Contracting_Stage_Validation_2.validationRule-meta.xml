@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contracting_Stage_Validation_2</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( 
+    AND(
+        RecordType.Name  = &apos;Parent Opportunity&apos;,
+        $User.Bypass_VR__c = FALSE,
+        $Profile.Name!=&apos;Xendit API Profile&apos;,
+        $User.LastName!=&apos;Biz Ops Automation&apos;, 
+        ISPICKVAL(StageName,&apos;Contracting&apos;),
+        NOT(ISPICKVAL(Type,&quot;Upsell&quot;)),
+        OR(ISNEW(), ISCHANGED(StageName)),
+        OR(
+            AND(
+                ISPICKVAL(Standard_Financial_Terms__c,&apos;No&apos;),
+                TEXT(Fin_Opp_Approval__c)!=&apos;Approved&apos;
+                ),
+            AND (
+                !ISPICKVAL(Pricing_Approval__c,&apos;Approved&apos;),
+                !ISPICKVAL(Pricing_Approval__c,&apos;No approval required&apos;)
+            ),
+            AND (
+            !ISPICKVAL(FX_Product_Approval__c,&apos;&apos;),
+            !ISPICKVAL(FX_Product_Approval__c	,&apos;Approved&apos;),
+            !ISPICKVAL(FX_Product_Approval__c	,&apos;No approval required&apos;)
+            ),
+            AND (
+                !ISPICKVAL(Upsell_Approval__c,&apos;Approved&apos;),
+                !ISPICKVAL(Upsell_Approval__c,&apos;No approval required&apos;)
+            )
+        )       
+        ),
+    true,false
+)</errorConditionFormula>
+    <errorMessage>To set stage as Contracting, make sure to get necessary approvals for Pricing, Financial (FinOps), Upsell and FX.</errorMessage>
+</ValidationRule>

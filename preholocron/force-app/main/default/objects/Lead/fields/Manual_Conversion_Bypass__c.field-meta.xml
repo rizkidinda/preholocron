@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manual_Conversion_Bypass__c</fullName>
+    <description>to by pass sales pipeline validation on account, contact, and opportunity if the lead that created automatically from VGW is manually convert by sales user. Check if lead created by bizops admin but the one that converting the lead is not bizops admin, then bypass the process</description>
+    <formula>OR(CONTAINS(CreatedBy.Email,&apos;bizops@xendit.co&apos;),  CONTAINS(CreatedBy.Email, &apos;b2bmaintegration&apos;)) &amp;&amp; NOT(CONTAINS($User.Email, &apos;bizops@xendit.co&apos;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Manual Conversion Bypass</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

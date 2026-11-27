@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_Transactions_Handle_Each_Month__c</fullName>
+    <inlineHelpText>Estimated number of transactions selected by the customer during signup</inlineHelpText>
+    <label>Estimated Transactions Handle Each Month</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Estimated_Transactions_Handle_Each_Month</valueSetName>
+    </valueSet>
+</CustomField>

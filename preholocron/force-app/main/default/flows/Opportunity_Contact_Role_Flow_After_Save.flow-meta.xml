@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_new_count_of_contact_role</name>
+        <label>Assign new count of contact role</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Related_Opportunity.No_of_Contact_Roles__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>new_contact_role_count</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opportunity_Contact_Role_Count</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>New_Contact_Role_created</name>
+        <label>New Contact Role created</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>New_Contact_Role</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_new_count_of_contact_role</targetReference>
+            </connector>
+            <label>New Contact Role</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>isNew()</expression>
+    </formulas>
+    <formulas>
+        <name>new_contact_role_count</name>
+        <dataType>Number</dataType>
+        <expression>IF (
+  OR ( {!$Record.Opportunity.No_of_Contact_Roles__c} == 0, ISNULL ({!$Record.Opportunity.No_of_Contact_Roles__c} )),
+  1,
+  {!$Record.Opportunity.No_of_Contact_Roles__c} + 1
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Opportunity Contact Role Flow - After Save {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity Contact Role Flow - After Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Related_Opportunity</name>
+        <label>Get Related Opportunity</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>New_Contact_Role_created</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.OpportunityId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Opportunity_Contact_Role_Count</name>
+        <label>Update Opportunity Contact Role Count</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Related_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>No_of_Contact_Roles__c</field>
+            <value>
+                <elementReference>new_contact_role_count</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Related_Opportunity</targetReference>
+        </connector>
+        <object>OpportunityContactRole</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

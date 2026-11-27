@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ID_AM_Team_s_Opportunities</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Weekly_Update_Status__c</columns>
+    <columns>Weekly_Update__c</columns>
+    <columns>Xst_Txn_Act_Date__c</columns>
+    <columns>Addressable_Merchant_TPV_Monthly__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Parent_Opportunity</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.FULL_NAME</field>
+        <operation>contains</operation>
+        <value>Johanan,Elaf,Jofardhan,Kevin,Mathia,Achmad,Christopher Senjaya,Nichelle,;Pradipta,Rizkia,Siiri,Stephanie,Jackson</value>
+    </filters>
+    <filters>
+        <field>Weekly_Update_Status__c</field>
+        <operation>equals</operation>
+        <value>Significant,Read Only</value>
+    </filters>
+    <label>ID AM Team&apos;s Opportunities</label>
+</ListView>

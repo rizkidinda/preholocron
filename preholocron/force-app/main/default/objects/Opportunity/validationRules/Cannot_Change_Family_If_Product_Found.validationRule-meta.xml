@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Change_Family_If_Product_Found</fullName>
+    <active>false</active>
+    <description>If count of Xendit Opportunity Product &gt; 0, cannot change Product Family</description>
+    <errorConditionFormula>$User.Bypass_VR__c = FALSE &amp;&amp; ISCHANGED(  Product_Family__c )  &amp;&amp; ( Count_Opportunity_Product__c  &gt; 0)</errorConditionFormula>
+    <errorDisplayField>Product_Family__c</errorDisplayField>
+    <errorMessage>Not allowed to change Product Family if any related Xendit Opportunity Product exists. Please remove them before changing this field.</errorMessage>
+</ValidationRule>

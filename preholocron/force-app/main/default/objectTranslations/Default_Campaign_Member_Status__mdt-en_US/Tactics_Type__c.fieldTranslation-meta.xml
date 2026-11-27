@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Tactics Type --></label>
+    <name>Tactics_Type__c</name>
+    <picklistValues>
+        <masterLabel>Content Syndication</masterLabel>
+        <translation><!-- Content Syndication --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dashboard Banner</masterLabel>
+        <translation><!-- Dashboard Banner --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Email Marketing</masterLabel>
+        <translation><!-- Email Marketing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Facebok(SM Connector)</masterLabel>
+        <translation><!-- Facebok(SM Connector) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Individual Social Media Posting (Custom Redirect)</masterLabel>
+        <translation><!-- Individual Social Media Posting (Custom Redirect) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Instagram (Custom Redirect)</masterLabel>
+        <translation><!-- Instagram (Custom Redirect) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Linkedin (SM Connector)</masterLabel>
+        <translation><!-- Linkedin (SM Connector) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Notification</masterLabel>
+        <translation><!-- Notification --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Owned Event</masterLabel>
+        <translation><!-- Owned Event --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid Ads (Digital platform based)</masterLabel>
+        <translation><!-- Paid Ads (Digital platform based) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid Ads (Publisher direct)</masterLabel>
+        <translation><!-- Paid Ads (Publisher direct) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid Event</masterLabel>
+        <translation><!-- Paid Event --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>TikTok (Custom Redirect)</masterLabel>
+        <translation><!-- TikTok (Custom Redirect) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Twitter (SM Connector)</masterLabel>
+        <translation><!-- Twitter (SM Connector) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Whatsapp Marketing</masterLabel>
+        <translation><!-- Whatsapp Marketing --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

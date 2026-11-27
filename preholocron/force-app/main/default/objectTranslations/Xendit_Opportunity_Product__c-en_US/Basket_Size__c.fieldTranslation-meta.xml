@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Refers to the average TPV per transactions for the specific channel. eg. Retail electronics has larger basket size than fashion. Auto-populates based on Product and segment but should be adjusted based on what you know of the merchants business --></help>
+    <label><!-- Basket Size --></label>
+    <name>Basket_Size__c</name>
+</CustomFieldTranslation>

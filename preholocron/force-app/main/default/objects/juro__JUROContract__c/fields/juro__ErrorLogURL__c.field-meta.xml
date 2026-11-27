@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__ErrorLogURL__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK(juro__JUROIntegrationContract__r.juro__ErrorMessage__c), &quot;&quot;, 
+IF( juro__JUROId__c &lt;&gt; &quot;&quot;, IF( $Setup.juro__JUROSettings__c.juro__APPUrl__c &lt;&gt; &quot;&quot;, $Setup.juro__JUROSettings__c.juro__APPUrl__c, 
+CASE( $Setup.juro__JUROSettings__c.juro__APIUrl__c, &quot;https://api.juro.io/v3&quot;, &quot;https://app.juro.com&quot;, &quot;https://api-sandbox.juro.io/v3&quot;, &quot;https://sandbox.juro.com&quot;, &quot;&quot;)) 
++ &quot;/settings/integrations/log/salesforce?reference=&quot; + juro__JUROId__c , 
+IF( $Setup.juro__JUROSettings__c.juro__APPUrl__c &lt;&gt; &quot;&quot;, $Setup.juro__JUROSettings__c.juro__APPUrl__c, 
+CASE( $Setup.juro__JUROSettings__c.juro__APIUrl__c, &quot;https://api.juro.io/v3&quot;, &quot;https://app.juro.com&quot;, &quot;https://api-sandbox.juro.io/v3&quot;, &quot;https://sandbox.juro.com&quot;, &quot;&quot;)) 
++ &quot;/settings/integrations/log/salesforce?reference=&quot; +  juro__JUROTemplateId__c ))</formula>
+    <label>Error Log</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

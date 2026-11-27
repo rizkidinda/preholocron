@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Founder_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>If( AND(
+NOT($Profile.Name=&apos;Xendit API Profile&apos;),
+OR(ISPICKVAL(Decision_Making_Role__c,&apos;Founder / Owner / Director&apos;),
+ISPICKVAL(Decision_Making_Role__c,&apos;Founder, Owner, Director&apos;)
+),
+AND(ISBLANK( Phone ), ISBLANK( Email ))
+) , true,false)</errorConditionFormula>
+    <errorMessage>Phone or Email for Founder / Owner / Director contact must be mandatory</errorMessage>
+</ValidationRule>

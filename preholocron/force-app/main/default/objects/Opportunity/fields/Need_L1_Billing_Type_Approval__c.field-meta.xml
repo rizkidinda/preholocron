@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Need_L1_Billing_Type_Approval__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This is to determine if parent opportunity need billing approval for indirect billing / direct billing non-standard</description>
+    <label>Need L1 Billing Type Approval?</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

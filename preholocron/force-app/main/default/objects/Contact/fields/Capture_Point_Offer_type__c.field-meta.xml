@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Capture_Point_Offer_type__c</fullName>
+    <label>Capture Point/Offer type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Xendit Sign up</fullName>
+                <default>false</default>
+                <label>Xendit Sign up</label>
+            </value>
+            <value>
+                <fullName>Contact Forms</fullName>
+                <default>false</default>
+                <label>Contact Forms</label>
+            </value>
+            <value>
+                <fullName>Owned Offline Events</fullName>
+                <default>false</default>
+                <label>Owned Offline Events</label>
+            </value>
+            <value>
+                <fullName>Paid Offline Events</fullName>
+                <default>false</default>
+                <label>Paid Offline Events</label>
+            </value>
+            <value>
+                <fullName>Owned Webinar</fullName>
+                <default>false</default>
+                <label>Owned Webinar</label>
+            </value>
+            <value>
+                <fullName>Paid Webinar</fullName>
+                <default>false</default>
+                <label>Paid Webinar</label>
+            </value>
+            <value>
+                <fullName>Gated Content</fullName>
+                <default>false</default>
+                <label>Gated Content</label>
+            </value>
+            <value>
+                <fullName>Database Purchase</fullName>
+                <default>false</default>
+                <label>Database Purchase</label>
+            </value>
+            <value>
+                <fullName>Self-prospected</fullName>
+                <default>false</default>
+                <label>Self-prospected</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

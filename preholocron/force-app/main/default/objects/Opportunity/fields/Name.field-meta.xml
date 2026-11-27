@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Name</fullName>
+    <inlineHelpText>The opportunity name helps people understand your opportunity at a glance. Opportunity naming is standardized and automatically generated in the convention of [Merchant Brand] - [Country of Merchant Legal Entity] - [Product Families] - [Opportunity Create Date]. This allows opportunities to be more easily identified and rolled up where applicable.</inlineHelpText>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>

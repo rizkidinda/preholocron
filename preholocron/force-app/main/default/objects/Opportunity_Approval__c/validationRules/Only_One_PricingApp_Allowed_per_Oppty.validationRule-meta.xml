@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Only_One_PricingApp_Allowed_per_Oppty</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISNEW(), 
+    RecordType.Name = &apos;Pricing Approval&apos;,
+    NOT(ISBLANK(Opportunity__c)), 
+    NOT(ISBLANK(TEXT(Opportunity__r.Pricing_Approval__c))),
+    ISPICKVAL ( Opportunity__r.Pricing_Approval__c , &quot;Approved&quot;)
+)</errorConditionFormula>
+    <errorMessage>There is an existing approved pricing approval. You are not allowed to create another pricing approval. If you would like to submit a new pricing approval, please recall the existing approved approval.</errorMessage>
+</ValidationRule>

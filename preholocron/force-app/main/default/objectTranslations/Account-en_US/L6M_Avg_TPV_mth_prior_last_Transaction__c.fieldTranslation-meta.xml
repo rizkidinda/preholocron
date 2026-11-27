@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>
+        <!-- The average TPV/month of the merchant in the last 6 months
+
+ 
+
+Master Logic: IF master acc THEN use (sum L6M TPV prior last txn / 6) -->
+    </help>
+    <label><!-- L6M Avg TPV/mth (prior last Transaction) --></label>
+    <name>L6M_Avg_TPV_mth_prior_last_Transaction__c</name>
+</CustomFieldTranslation>

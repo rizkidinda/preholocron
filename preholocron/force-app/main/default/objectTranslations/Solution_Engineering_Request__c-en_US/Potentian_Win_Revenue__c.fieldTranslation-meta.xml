@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Estimated Revenue we would gain if we win this deal? --></help>
+    <label><!-- Potentian Win Revenue --></label>
+    <name>Potentian_Win_Revenue__c</name>
+</CustomFieldTranslation>

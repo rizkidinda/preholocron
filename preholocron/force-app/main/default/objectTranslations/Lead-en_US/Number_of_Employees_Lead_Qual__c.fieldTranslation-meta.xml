@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Refers to the merchant&apos;s estimated number of employees. --></help>
+    <label><!-- Number of Employees (Lead Qual) --></label>
+    <name>Number_of_Employees_Lead_Qual__c</name>
+</CustomFieldTranslation>

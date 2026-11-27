@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Any interests that are highlighted by the customer --></help>
+    <label><!-- What else is the customer interested in? --></label>
+    <name>What_else_is_the_customer_interested_in__c</name>
+</CustomFieldTranslation>

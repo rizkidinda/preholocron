@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The email account that the customer uses (or will be using) to signup with a Xendit account that sales will have to input. It is also the unique identifier that will be used to attribute merchant business performance and other attributes into salesforce for you to view reports and statuses at a glance. This is vital for sales attribution. --></help>
+    <label><!-- Xendit Account Email --></label>
+    <name>Xendit_Account_Email__c</name>
+</CustomFieldTranslation>

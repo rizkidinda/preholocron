@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Products_Interested_In__c</fullName>
+    <label>Del - Products Interested In</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Virtual Account (VA) Aggregator</fullName>
+                <default>false</default>
+                <label>Virtual Account (VA) Aggregator</label>
+            </value>
+            <value>
+                <fullName>Virtual Account (VA) Switcher</fullName>
+                <default>false</default>
+                <label>Virtual Account (VA) Switcher</label>
+            </value>
+            <value>
+                <fullName>Retail Outlets (RO)</fullName>
+                <default>false</default>
+                <label>Retail Outlets (RO)</label>
+            </value>
+            <value>
+                <fullName>Disbursements (Aggregator)</fullName>
+                <default>false</default>
+                <label>Disbursements (Aggregator)</label>
+            </value>
+            <value>
+                <fullName>Escrow (MO)</fullName>
+                <default>false</default>
+                <label>Escrow (MO)</label>
+            </value>
+            <value>
+                <fullName>Escrow (MI)</fullName>
+                <default>false</default>
+                <label>Escrow (MI)</label>
+            </value>
+            <value>
+                <fullName>IM Disbursements</fullName>
+                <default>false</default>
+                <label>IM Disbursements</label>
+            </value>
+            <value>
+                <fullName>XRS Disbursements</fullName>
+                <default>false</default>
+                <label>XRS Disbursements</label>
+            </value>
+            <value>
+                <fullName>XRS Collection Fee</fullName>
+                <default>false</default>
+                <label>XRS Collection Fee</label>
+            </value>
+            <value>
+                <fullName>Direct Debit</fullName>
+                <default>false</default>
+                <label>Direct Debit</label>
+            </value>
+            <value>
+                <fullName>eWallets</fullName>
+                <default>false</default>
+                <label>eWallets</label>
+            </value>
+            <value>
+                <fullName>eWallets QR</fullName>
+                <default>false</default>
+                <label>eWallets QR</label>
+            </value>
+            <value>
+                <fullName>QR</fullName>
+                <default>false</default>
+                <label>QR</label>
+            </value>
+            <value>
+                <fullName>A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

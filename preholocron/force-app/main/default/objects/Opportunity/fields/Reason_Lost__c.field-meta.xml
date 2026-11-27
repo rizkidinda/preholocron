@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_Lost__c</fullName>
+    <inlineHelpText>Parent category of lost reasons to describe exactly why a sale wasn&apos;t closed. Selected only when stage is declared closed lost</inlineHelpText>
+    <label>Reason Lost - del</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Lost_Reasons</valueSetName>
+    </valueSet>
+</CustomField>

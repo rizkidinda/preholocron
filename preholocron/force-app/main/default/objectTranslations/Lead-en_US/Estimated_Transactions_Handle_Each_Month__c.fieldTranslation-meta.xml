@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Estimated number of transactions selected by the customer during signup --></help>
+    <label><!-- Estimated Transactions Handle Each Month --></label>
+    <name>Estimated_Transactions_Handle_Each_Month__c</name>
+</CustomFieldTranslation>

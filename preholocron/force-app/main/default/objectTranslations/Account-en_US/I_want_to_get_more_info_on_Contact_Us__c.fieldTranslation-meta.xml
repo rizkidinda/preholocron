@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- I want to get more info on (Contact Us) --></label>
+    <name>I_want_to_get_more_info_on_Contact_Us__c</name>
+    <picklistValues>
+        <masterLabel>Accepting payments from customers or partners</masterLabel>
+        <translation><!-- Accepting payments from customers or partners --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Integrate Xendit to our website or mobile app via API</masterLabel>
+        <translation><!-- Integrate Xendit to our website or mobile app via API --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Integrate Xendit via TPI such as Shopify, WooCommerce, Wix store, and etc</masterLabel>
+        <translation><!-- Integrate Xendit via TPI such as Shopify, WooCommerce, Wix store, and etc --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Offering more payment channels to customers</masterLabel>
+        <translation><!-- Offering more payment channels to customers --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other value added services</masterLabel>
+        <translation><!-- Other value added services --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sending money out to customers or partners</masterLabel>
+        <translation><!-- Sending money out to customers or partners --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

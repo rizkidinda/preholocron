@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gross_profit__c</fullName>
+    <description>Gross profit % = Gross profit / Revenue</description>
+    <formula>Gross_Profit_Annual__c /  Opportunity__r.Addressable_Merchant_Revenue_Annual__c</formula>
+    <inlineHelpText>Gross profit % = Gross profit / Revenue</inlineHelpText>
+    <label>Gross profit %</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

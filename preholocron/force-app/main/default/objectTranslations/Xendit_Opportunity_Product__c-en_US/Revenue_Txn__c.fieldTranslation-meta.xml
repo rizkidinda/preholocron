@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Total Revenue per Transaction  ( or Subaccount, or fixed rate or event) --></help>
+    <label><!-- Revenue Txn --></label>
+    <name>Revenue_Txn__c</name>
+</CustomFieldTranslation>

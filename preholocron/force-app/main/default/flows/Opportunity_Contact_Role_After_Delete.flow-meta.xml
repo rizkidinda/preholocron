@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <formulas>
+        <name>newContactRoleCount</name>
+        <dataType>Number</dataType>
+        <expression>IF ( 
+  {!$Record.Opportunity.No_of_Contact_Roles__c} == 0,
+  0,
+  {!$Record.Opportunity.No_of_Contact_Roles__c}  - 1
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Opportuit {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity Contact Role - After Delete</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Contact_Role_Count</name>
+        <label>Update Contact Role Count</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.OpportunityId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>No_of_Contact_Roles__c</field>
+            <value>
+                <elementReference>newContactRoleCount</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Contact_Role_Count</targetReference>
+        </connector>
+        <object>OpportunityContactRole</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

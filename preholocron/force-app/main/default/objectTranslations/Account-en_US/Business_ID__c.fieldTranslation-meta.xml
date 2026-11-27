@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Xendit generated merchant unique identifier on signup --></help>
+    <label><!-- Business ID --></label>
+    <name>Business_ID__c</name>
+</CustomFieldTranslation>

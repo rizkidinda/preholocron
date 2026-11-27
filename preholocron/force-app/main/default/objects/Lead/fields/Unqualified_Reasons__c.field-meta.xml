@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unqualified_Reasons__c</fullName>
+    <inlineHelpText>Parent category of reasons to describe exactly why a lead is disqualified. Selected only when lead status is declared disqualified</inlineHelpText>
+    <label>Unqualified Reasons</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Status</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Lost_Reasons</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Closed - Not Converted</controllingFieldValue>
+            <valueName>Business Contact</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed - Not Converted</controllingFieldValue>
+            <valueName>Compliance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed - Not Converted</controllingFieldValue>
+            <valueName>Covid-19 related</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed - Not Converted</controllingFieldValue>
+            <valueName>Feature missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed - Not Converted</controllingFieldValue>
+            <valueName>Integration Issues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed - Not Converted</controllingFieldValue>
+            <valueName>Merchant Timing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed - Not Converted</controllingFieldValue>
+            <valueName>Pricing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed - Not Converted</controllingFieldValue>
+            <valueName>Salesforce Data Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed - Not Converted</controllingFieldValue>
+            <valueName>Onboarding</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

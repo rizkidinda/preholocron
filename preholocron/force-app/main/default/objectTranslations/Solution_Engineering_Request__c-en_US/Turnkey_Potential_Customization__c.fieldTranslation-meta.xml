@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- For turnkey solution, involve PS team. If customization is required due to complexity involved, then please elaborate --></help>
+    <label><!-- Turnkey/Potential Customization --></label>
+    <name>Turnkey_Potential_Customization__c</name>
+</CustomFieldTranslation>

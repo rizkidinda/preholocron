@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status</fullName>
+    <inlineHelpText>Phases of the lead funnel. There are 3 stages in Xendit. For exact details please refer to &quot;Lead Stages &amp; Activities&quot;</inlineHelpText>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+</CustomField>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Audience Platform --></label>
+    <name>Heeet__Audience_Platform__c</name>
+    <picklistValues>
+        <masterLabel>Bing Ads</masterLabel>
+        <translation><!-- Bing Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Facebook Ads</masterLabel>
+        <translation><!-- Facebook Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>GA4</masterLabel>
+        <translation><!-- GA4 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Ads</masterLabel>
+        <translation><!-- Google Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Linkedin Ads</masterLabel>
+        <translation><!-- Linkedin Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>TikTok Ads</masterLabel>
+        <translation><!-- TikTok Ads --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

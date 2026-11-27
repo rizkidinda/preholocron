@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__Cannot_map_our_side_name</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(juro__IsJuroSide__c = true,  NOT(ISBLANK(juro__SFPathCounterpartyCaption__c )))</errorConditionFormula>
+    <errorDisplayField>juro__SFPathCounterpartyCaption__c</errorDisplayField>
+    <errorMessage>Our side name can’t be mapped in Salesforce. Please change the name in Juro.</errorMessage>
+</ValidationRule>

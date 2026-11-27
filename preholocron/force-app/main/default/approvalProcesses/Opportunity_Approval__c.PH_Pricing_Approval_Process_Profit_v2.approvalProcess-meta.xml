@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>RecordType</field>
+        <field>Opportunity__c</field>
+        <field>Justification2__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Reset_Update_History</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Update_Approval_Step_0</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>dang.godinez@xendit.co</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Pricing Below COGS - Profit OR Above COGS</description>
+        <label>Dang Approval</label>
+        <name>Dang_Approval</name>
+        <rejectionActions>
+            <action>
+                <name>Reset_Update_History</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Update_Approval_Step_0</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <emailTemplate>Xendit_Approval_Email_Templates/Pricing_Approval_Submission</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>NOT(ISPICKVAL(Status__c,&quot;Approved&quot;)) &amp;&amp;
+IF((NOT ISPICKVAL(Opportunity__r.FX_Product_Approval__c, &apos;Not Approval Required&apos;)) &amp;&amp; Is_Recalled__c = TRUE, FALSE, TRUE) &amp;&amp;
+RecordType.Name = &apos;Pricing Approval&apos; &amp;&amp;
+CONTAINS( Opportunity__r.Owner.UserRole.Name , &apos;PH&apos;) &amp;&amp;
+ISBLANK(Opportunity__r.Parent_Opportunity__c) &amp;&amp;
+(Billing_Type_Approved__c = TRUE ||  ISNULL(Opportunity__r.Billing_Type_Approval_Level__c) || Opportunity__r.Billing_Type_Approval_Level__c = 0 ) &amp;&amp;
+(!ISNULL(Opportunity__r.Pricing_Approver_Level__c) &amp;&amp; Opportunity__r.Pricing_Approver_Level__c &gt; 0) &amp;&amp;
+(
+(!ISNULL(Opportunity__r.Opp_Product_Below_COGS_Count__c) &amp;&amp; Opportunity__r.Opp_Product_Below_COGS_Count__c &gt; 0 &amp;&amp; Opportunity__r.Addressable_Monthly_Profitability__c &gt;= 0) ||
+ISNULL(Opportunity__r.Opp_Product_Below_COGS_Count__c) ||
+(!ISNULL(Opportunity__r.Opp_Product_Below_COGS_Count__c) &amp;&amp; Opportunity__r.Opp_Product_Below_COGS_Count__c = 0)
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Status_as_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_Pricing_Type_Submission_to_FALSE</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Status_as_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_Pricing_Type_Submission_to_FALSE</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Status_as_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_Pricing_Type_Submission_to_TRUE</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>PH Pricing Approval Process - Profit v2</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>8</processOrder>
+    <recallActions>
+        <action>
+            <name>Status_as_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_Pricing_Type_Submission_to_FALSE</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

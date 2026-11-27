@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Marketing promotional or customer referral codes (eg. cashback) that are distributed by sales and marketing teams. These are then input into forms by customers to activate a marketing promotion or capture the referral source. --></help>
+    <label><!-- Referral Code --></label>
+    <name>Referral_Code__c</name>
+</CustomFieldTranslation>

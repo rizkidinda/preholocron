@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Addressable_iY_Revenue__c</fullName>
+    <inlineHelpText>in Year Rev - refers to the estimated Revenue in the remaining time period (from first transaction date to 31 Dec) within the current year that potentially can be generated from the merchant by closing the deal. &quot;Addressable Merchant Revenue - Monthly* Ramp * remaining months in the year</inlineHelpText>
+    <label>Addressable iY Revenue</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Update_Record_Name</name>
+        <label>Update Record Name</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>RecordNameFormula</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>populate record name based on product family - country - range order</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>RecordNameFormula</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!$Record.Product_Family__c}) &amp; &quot; - &quot; &amp; TEXT({!$Record.Country__c}) &amp; &quot; - Range &quot; &amp; TEXT({!$Record.Range_Order__c})</expression>
+    </formulas>
+    <interviewLabel>Rate Card Pricing Range Flow (Before Save) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Rate Card Pricing Range Flow (Before Save)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Record_Name</targetReference>
+        </connector>
+        <object>Rate_Card_Pricing_Range__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

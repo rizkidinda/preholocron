@@ -1,0 +1,98 @@
+<aura:component implements="force:appHostable,force:hasRecordId,flexipage:availableForAllPageTypes,force:lightningQuickAction,lightning:availableForFlowScreens"
+                controller="Xendit_RampController" access="public">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="error" type="boolean" default="false"/>
+    <aura:attribute name="tableHeader" type="List"/>
+    <aura:attribute name="displayData" type="Xendit_RampController.displayData"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+    <aura:attribute name="isChild" type="boolean" default="false"/>
+    <aura:attribute name="isOverrideAutomatedValue" type="String" default="No"/>
+    <aura:html tag="style">
+        .toastMessage.forceActionsText{ 
+        white-space : pre-line !important; 
+        }
+
+        .slds-form_horizontal .slds-form-element .slds-form-element__control{
+            padding-left : 0 !important;
+        }
+    </aura:html>
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="small" />
+    </aura:if>
+    <lightning:card variant="Narrow" title="Opportunity Ramp" iconName="action:adjust_value">
+        <div class="slds-grid slds-wrap slds-p-around--large slds-gutters">
+            <table>
+                <tr>
+                    <td class="slds-form_horizontal slds-size_1-of-2">
+                        Estimated 1st Transaction Date
+                    </td>
+                    <td class="slds-form_horizontal slds-size_1-of-2" >
+                        <lightning:input type="date" class="expand-label" style="padding : 0 !important" value="{!v.displayData.opp.Xst_Txn_Act_Date__c}" onchange="{!c.refreshRamp}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="slds-form_horizontal slds-size_1-of-2">
+                        Segment
+                    </td>
+                    <td class="slds-form_horizontal slds-size_1-of-2" >
+                        <ui:outputText  value="{!v.displayData.opp.Account.Segment__c}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="slds-form_horizontal slds-size_1-of-2">
+                        Override Automated Default Ramp Value?
+                    </td>
+                    <td class="slds-form_horizontal slds-size_1-of-2" >
+                        <lightning:select aura:id="automateDefaultRamp" value="{!v.isOverrideAutomatedValue}"
+                                    variant="label-inline" onchange="{!c.updateAutomatedValue}">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </lightning:select>
+                    </td>
+                </tr>
+            </table>
+         
+            <div class="slds-align_absolute-center slds-col slds-size_1-of-1">
+                <lightning:button class="slds-m-top_small" variant="brand" label="Save" onclick="{!c.save}" />
+            </div>
+            
+            <div class="slds-col slds-size_1-of-1">
+                &nbsp; 
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-scrollable_y" style="height:17rem;">
+                <table class="slds-table slds-table--bordered slds-table--cell-buffer" width="100%">
+                    <thead>
+                        <tr>
+                            <aura:iteration items="{!v.tableHeader}" var="value">
+                                <th><h2>{!value}</h2></th>
+                            </aura:iteration>
+                        </tr>
+                    </thead>
+                    <tbody  style="text-align:center;">
+                        <aura:iteration items="{!v.displayData.oppRampList}" var="ramp" indexVar="rowIndex">
+                            <tr class="slds-hint-parent" id="{!rowIndex}">
+                                <td class="slds-truncate slds-text-align_center">
+                                    <lightning:formattedDateTime value="{!ramp.Transaction_Date__c}"/>
+                                </td>
+                                <td class="slds-truncate slds-text-align_center">
+                                    <ui:outputText  value="{!ramp.Month__c}" />
+                                </td>
+                                <td class="slds-truncate slds-text-align_center">
+                                    <ui:outputText value="{!ramp.Ramp_Percentage__c}"/>%
+                                </td>
+                                <td class="slds-text-align_center">
+                                    <lightning:input class="hide-label" type="number" step="0.01" label="{!rowIndex}" aura:id="adjPer" value="{!ramp.Adjusted_Percentage__c}" max="100" disabled="{!v.isOverrideAutomatedValue == 'No'}" />
+                                </td>
+                                <td class="slds-truncate slds-text-align_center">
+                                    <lightning:button variant="base" name="{!rowIndex}" label="Del" onclick="{!c.deleteRamp}" disabled="{!v.isOverrideAutomatedValue == 'No'}" />
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                        <lightning:button variant="base" label="Add Ramp" onclick="{!c.addRamp}" disabled="{!v.isOverrideAutomatedValue == 'No'}"/>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </lightning:card>  
+</aura:component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__SFPathCounterpartyCaption__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Path to field for signature&apos;s block counterparty caption relative to JURO Contract object</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Field path in SOQL format</inlineHelpText>
+    <label>SF Path Counterparty Caption</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

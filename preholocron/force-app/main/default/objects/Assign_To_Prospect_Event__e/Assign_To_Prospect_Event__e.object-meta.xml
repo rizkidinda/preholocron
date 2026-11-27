@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <eventType>HighVolume</eventType>
+    <label>Assign To Prospect Event</label>
+    <pluralLabel>Assign To Prospect Events</pluralLabel>
+    <publishBehavior>PublishImmediately</publishBehavior>
+</CustomObject>

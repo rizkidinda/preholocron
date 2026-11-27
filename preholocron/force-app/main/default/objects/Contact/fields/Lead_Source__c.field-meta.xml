@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Source__c</fullName>
+    <label>del - Lead Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Paid Search</fullName>
+                <default>false</default>
+                <label>Paid Search</label>
+            </value>
+            <value>
+                <fullName>Website</fullName>
+                <default>false</default>
+                <label>Website</label>
+            </value>
+            <value>
+                <fullName>Organic Display</fullName>
+                <default>false</default>
+                <label>Organic Display</label>
+            </value>
+            <value>
+                <fullName>Direct</fullName>
+                <default>false</default>
+                <label>Direct</label>
+            </value>
+            <value>
+                <fullName>Organic Search</fullName>
+                <default>false</default>
+                <label>Organic Search</label>
+            </value>
+            <value>
+                <fullName>Paid Social</fullName>
+                <default>false</default>
+                <label>Paid Social</label>
+            </value>
+            <value>
+                <fullName>Referral</fullName>
+                <default>false</default>
+                <label>Referral</label>
+            </value>
+            <value>
+                <fullName>Email</fullName>
+                <default>false</default>
+                <label>Email</label>
+            </value>
+            <value>
+                <fullName>Organic Social</fullName>
+                <default>false</default>
+                <label>Organic Social</label>
+            </value>
+            <value>
+                <fullName>Organic App Install</fullName>
+                <default>false</default>
+                <label>Organic App Install</label>
+            </value>
+            <value>
+                <fullName>Paid App - AC</fullName>
+                <default>false</default>
+                <label>Paid App - AC</label>
+            </value>
+            <value>
+                <fullName>Paid App - Search</fullName>
+                <default>false</default>
+                <label>Paid App - Search</label>
+            </value>
+            <value>
+                <fullName>Channel Partnership</fullName>
+                <default>false</default>
+                <label>Channel Partnership</label>
+            </value>
+            <value>
+                <fullName>Database Upload</fullName>
+                <default>false</default>
+                <label>Database Upload</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

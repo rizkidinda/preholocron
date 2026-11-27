@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- for marketing --></help>
+    <label><!-- Needs &amp; pain points --></label>
+    <name>Needs_pain_points__c</name>
+</CustomFieldTranslation>

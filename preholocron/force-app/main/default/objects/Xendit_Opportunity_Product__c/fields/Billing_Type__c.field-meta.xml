@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Type__c</fullName>
+    <label>Billing Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Direct Billing</fullName>
+                <default>false</default>
+                <label>Direct Billing</label>
+            </value>
+            <value>
+                <fullName>Indirect Billing</fullName>
+                <default>false</default>
+                <label>Indirect Billing</label>
+            </value>
+            <value>
+                <fullName>Manual Billing</fullName>
+                <default>false</default>
+                <label>Manual Billing</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

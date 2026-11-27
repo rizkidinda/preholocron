@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Where_are_you_selling_your_products_now__c</fullName>
+    <inlineHelpText>Defined as the channel that the customer is selling their products</inlineHelpText>
+    <label>Where are you selling your products now?</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Owned Website (free URL)</fullName>
+                <default>false</default>
+                <label>Owned Website (free URL)</label>
+            </value>
+            <value>
+                <fullName>Shopping Cart: WooCommerce, Wix, Shopify URL</fullName>
+                <default>false</default>
+                <label>Shopping Cart: WooCommerce, Wix, Shopify URL</label>
+            </value>
+            <value>
+                <fullName>eCommerce Hosting Solutions: Magento, SAP Hybris, Salesforce</fullName>
+                <default>false</default>
+                <label>eCommerce Hosting Solutions: Magento, SAP Hybris, Salesforce</label>
+            </value>
+            <value>
+                <fullName>eCommerce Platforms: Tokopedia, Lazada, Shopee</fullName>
+                <default>false</default>
+                <label>eCommerce Platforms: Tokopedia, Lazada, Shopee</label>
+            </value>
+            <value>
+                <fullName>Social Media: Instagram handle, Facebook Account</fullName>
+                <default>false</default>
+                <label>Social Media: Instagram handle, Facebook Account</label>
+            </value>
+            <value>
+                <fullName>Offline with POS Available</fullName>
+                <default>false</default>
+                <label>Offline with POS Available</label>
+            </value>
+            <value>
+                <fullName>Others (please describe in Additional notes below)</fullName>
+                <default>false</default>
+                <label>Others (please describe in Additional notes below)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

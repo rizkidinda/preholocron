@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Review_Comment_must_be_updated</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (
+  ISCHANGED ( Team_Assignment__c ),
+  NOT ISCHANGED ( Request_Review_Comment__c )
+)</errorConditionFormula>
+    <errorDisplayField>Request_Review_Comment__c</errorDisplayField>
+    <errorMessage>Request Review Comment must be updated when the Team Assignment is updated</errorMessage>
+</ValidationRule>

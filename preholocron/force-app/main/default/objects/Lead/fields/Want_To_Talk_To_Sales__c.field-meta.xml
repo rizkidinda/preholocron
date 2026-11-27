@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Want_To_Talk_To_Sales__c</fullName>
+    <description>Wants to talk to sales</description>
+    <inlineHelpText>Wants to talk to sales</inlineHelpText>
+    <label>Want To Talk To Sales</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>YesNoNotSpecified</valueSetName>
+    </valueSet>
+</CustomField>

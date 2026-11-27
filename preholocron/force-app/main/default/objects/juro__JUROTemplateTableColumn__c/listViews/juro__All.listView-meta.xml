@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__All</fullName>
+    <columns>NAME</columns>
+    <columns>juro__JUROTemplateTable__c</columns>
+    <columns>juro__Header__c</columns>
+    <columns>juro__SFPath__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

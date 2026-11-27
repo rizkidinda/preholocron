@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Verification of need (can an existing resource or solutions solve the problem) --></help>
+    <label><!-- Verification of need --></label>
+    <name>Verification_of_need__c</name>
+</CustomFieldTranslation>

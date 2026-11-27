@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- System triggered KYC status from merchant ops during legal due diligence or business due deligence process --></help>
+    <label><!-- KYC Verification Status --></label>
+    <name>KYC_Verification_Status__c</name>
+    <picklistValues>
+        <masterLabel>AWAITING_DATA</masterLabel>
+        <translation><!-- AWAITING_DATA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AWAITING_RESUBMISSION</masterLabel>
+        <translation><!-- AWAITING_RESUBMISSION --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AWAITING_SIGN</masterLabel>
+        <translation><!-- AWAITING_SIGN --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AWAITING_SUBMISSION</masterLabel>
+        <translation><!-- AWAITING_SUBMISSION --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>DATA_PROVIDED</masterLabel>
+        <translation><!-- DATA_PROVIDED --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>FAILED</masterLabel>
+        <translation><!-- FAILED --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>INVALID</masterLabel>
+        <translation><!-- INVALID --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PASSED</masterLabel>
+        <translation><!-- PASSED --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PENDING</masterLabel>
+        <translation><!-- PENDING --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PENDING_VERIFICATION</masterLabel>
+        <translation><!-- PENDING_VERIFICATION --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SUSPENDED</masterLabel>
+        <translation><!-- SUSPENDED --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

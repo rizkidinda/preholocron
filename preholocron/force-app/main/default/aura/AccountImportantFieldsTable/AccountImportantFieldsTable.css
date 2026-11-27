@@ -1,0 +1,10 @@
+.THIS .oppFieldTitle{
+    background-color: #5181FE; 
+    color: white;
+    pointer-events: none;
+}
+
+.THIS .oppFieldSubTitle{
+    background-color: #c9dbf8; 
+    pointer-events: none;
+}

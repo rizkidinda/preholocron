@@ -1,0 +1,340 @@
+<apex:component access="global" controller="PricingApprovalSubmissionTemplateCtrl">
+    <apex:attribute name="recordId" type="String" description="Opportunity Approval record Id." assignTo="{!apprRecordId}" access="global" />
+    <html>
+        <p>
+            Approval record link : <a href="{!envURL}/{!appObj.Id}">{!envURL}/{!appObj.Id}</a>
+        </p>
+        <p>
+            <table class="table" style="width:100%" cellspacing="0">
+                <thead></thead>
+                <tbody>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Opportunity Owner
+                        </td>
+                        <td style="border : 1px solid black; width : 60%; padding: 5px;">
+                            {!appObj.Opportunity__r.Owner.Name}
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Brand
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            {!appObj.Opportunity__r.Account.Brand__c}
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Segment
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            {!appObj.Opportunity__r.Account.Segment__c}
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Industry
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; border-top:none; width : 60%; padding: 5px;">
+                            {!appObj.Opportunity__r.Account.Industry_Category__c}&nbsp;<span rendered="{!NOT(ISBLANK(appObj.Opportunity__r.Account.Child_Industry_v2__c))}">- {!appObj.Opportunity__r.Account.Child_Industry_v2__c}</span>
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Monthly TPV Potential
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <apex:outputText value="{!appObj.Opportunity__r.CurrencyIsoCode}{0, number, ###,##0.00}" >
+                                <apex:param value="{!appObj.Opportunity__r.Addressable_Merchant_TPV_Monthly__c}" />
+                            </apex:outputText>
+                            <span rendered="{!AND(appObj.Opportunity__r.CurrencyIsoCode != 'USD', NOT(ISBLANK(appObj.Opportunity__r.Addressable_Merchant_TPV_Monthly__c)))}">
+                                &nbsp;(<apex:outputText value="USD {0, number, ###,##0.00}" >
+                                    <apex:param value="{!appObj.Opportunity__r.Addressable_Merchant_TPV_Monthly__c / rateOriCurrency}" />
+                                </apex:outputText>)
+                            </span>
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Monthly Rev Potential
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <apex:outputText value="{!appObj.Opportunity__r.CurrencyIsoCode}{0, number, ###,##0.00}" >
+                                <apex:param value="{!appObj.Opportunity__r.Addressable_Merchant_Revenue_Monthly__c}" />
+                            </apex:outputText>
+                            <span rendered="{!AND(appObj.Opportunity__r.CurrencyIsoCode != 'USD', NOT(ISBLANK(appObj.Opportunity__r.Addressable_Merchant_Revenue_Monthly__c)))}">
+                                &nbsp;(<apex:outputText value="USD {0, number, ###,##0.00}" >
+                                    <apex:param value="{!appObj.Opportunity__r.Addressable_Merchant_Revenue_Monthly__c / rateOriCurrency}" />
+                                </apex:outputText>)
+                            </span>
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Monthly COGS
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <apex:outputText value="{!appObj.Opportunity__r.CurrencyIsoCode}{0, number, ###,##0.00}" >
+                                <apex:param value="{!appObj.Opportunity__r.Addressable_Project_Cost_Monthly__c}" />
+                            </apex:outputText>
+                            <span rendered="{!AND(appObj.Opportunity__r.CurrencyIsoCode != 'USD', NOT(ISBLANK(appObj.Opportunity__r.Addressable_Project_Cost_Monthly__c)))}">
+                                &nbsp;(<apex:outputText value="USD {0, number, ###,##0.00}" >
+                                    <apex:param value="{!appObj.Opportunity__r.Addressable_Project_Cost_Monthly__c / rateOriCurrency}" />
+                                </apex:outputText>)
+                            </span>
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Monthly Gross Profit
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <apex:outputText value="{!appObj.Opportunity__r.CurrencyIsoCode}{0, number, ###,##0.00}" >
+                                <apex:param value="{!appObj.Opportunity__r.Total_Gross_Profit_Margin__c}" />
+                            </apex:outputText>
+                            <span rendered="{!AND(appObj.Opportunity__r.CurrencyIsoCode != 'USD', NOT(ISBLANK(appObj.Opportunity__r.Total_Gross_Profit_Margin__c)))}">
+                                &nbsp;(<apex:outputText value="USD {0, number, ###,##0.00}" >
+                                    <apex:param value="{!appObj.Opportunity__r.Total_Gross_Profit_Margin__c / rateOriCurrency}" />
+                                </apex:outputText>)
+                            </span>
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Monthly Discount against Headline Pricing (exclude Unsupported Products)
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <apex:outputText value="{!appObj.Opportunity__r.CurrencyIsoCode}{0, number, ###,##0.00}" >
+                                <apex:param value="{!totalHeadlineRevenue - appObj.Opportunity__r.Addressable_Merchant_Revenue_Monthly__c}" />
+                            </apex:outputText>
+                            <span rendered="{!AND(appObj.Opportunity__r.CurrencyIsoCode != 'USD', NOT(ISBLANK(totalHeadlineRevenue)))}">
+                                &nbsp;(<apex:outputText value="USD {0, number, ###,##0.00}" >
+                                    <apex:param value="{!(totalHeadlineRevenue - appObj.Opportunity__r.Addressable_Merchant_Revenue_Monthly__c) / rateOriCurrency}" />
+                                </apex:outputText>)
+                            </span>
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Gross Take Rate (%)
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <apex:outputText value="{0, number, ###,##0.00%}" >
+                                <apex:param value="{!appObj.Opportunity__r.Gross_Take_Rate__c / 100}" />
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Gross Profit (%)
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <apex:outputText value="{0, number, ###,##0.00%}" >
+                                <apex:param value="{!appObj.Opportunity__r.Addressable_Monthly_Profitability__c / 100}" />
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Estimated 1st Txn Date
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                <apex:param value="{!appObj.Opportunity__r.Xst_Txn_Act_Date__c}" /> 
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Request
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <apex:outputtext style="white-space:pre-wrap;" value="{!appObj.Requests__c}" escape="false" />
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Justification
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <apex:outputtext style="white-space:pre-wrap;" value="{!appObj.Justification2__c}" escape="false" />
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Oppty Link
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <a href="{!envURL}/{!appObj.Opportunity__c}">{!appObj.Opportunity__r.Name}</a>
+                        </td>
+                    </tr>
+                    <tr border="1px solid black;">
+                        <td style="border : 1px solid black; border-top:none; background-color: #5181FE; color: white; padding: 5px; width : 40%;">
+                            Acct Link
+                        </td>
+                        <td style="border : 1px solid black; border-top:none; width : 60%; padding: 5px;">
+                            <a href="{!envURL}/{!appObj.Opportunity__r.AccountId}">{!appObj.Opportunity__r.Account.Name}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+        <br/>
+        <p>
+            <table class="table" style="width:100%" cellspacing="0">
+                <thead>
+                    <tr border="1px solid black" style="text-align:center">
+                        <td style= "border : 1px solid black; padding: 5px; border-bottom : none;">&nbsp;</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-bottom : none; border-left : none; " colspan="5">Channel P&amp;L (USD)</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-bottom : none; border-left : none;" colspan="10">Pricing &amp; COGS per Transaction (Local)</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-bottom : none; border-left : none;">Billing</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr border="1px solid black" style="text-align:center">
+                        <td style= "border : 1px solid black; padding: 5px;">Channel Name</td>
+                        <!-- P&L USD Start -->
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Monthly Rev Potential</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Monthly COGS</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Monthly Gross Profit</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Gross Profit (%)</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Discount Given against Headline Pricing</td>
+                        <!-- P&L USD End -->
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Lower than Pre-Approved Rate?</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Offered MDR</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Available Lowest Pre-Approved MDR</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">MDR Headline Price</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">COGS MDR</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Offered Rate / Txn</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Available Lowest Pre-Approved Rate / Txn</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Rate / Txn Headline Price</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">COGS Fixed Fee</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Below COGS</td>
+                        <td style= "border : 1px solid black; padding: 5px; border-left : none">Billing Type</td>
+                    </tr>
+                    <apex:repeat id="repeatRecords" value="{!oppProdList}" var="channel">
+                        <tr border="1px solid black;">
+                            <td style= "border : 1px solid black; padding: 5px; border-top : none">
+                               {!channel.channelName}
+                            </td>
+                            <!-- P&L USD Start -->
+                            <td style= "border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText value="USD {0, number, ###,##0.00}" >
+                                    <apex:param value="{!channel.totalRevenue / rateOriCurrency}" />
+                                </apex:outputText>
+                             </td>
+                             <td style= "border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText value="USD {0, number, ###,##0.00}" >
+                                    <apex:param value="{!channel.projectedCost / rateOriCurrency}" />
+                                </apex:outputText>
+                             </td>
+                             <td style= "border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText value="USD {0, number, ###,##0.00}" >
+                                    <apex:param value="{!(channel.totalRevenue - channel.projectedCost) / rateOriCurrency}" />
+                                </apex:outputText>
+                             </td>
+                             <td style= "border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText value="{0, number, ###,##0.00%}" >
+                                    <apex:param value="{!IF(AND(NOT(ISBLANK(channel.totalRevenue)), channel.totalRevenue > 0), ((channel.totalRevenue - channel.projectedCost) / channel.totalRevenue) , 0)}" />
+                                </apex:outputText>
+                             </td>
+                             <td style= "border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText value="USD {0, number, ###,##0.00}" rendered="{!IF(channel.isUnsupportedProduct, false, true)}" >
+                                    <apex:param value="{!(channel.headlineTotalRevenue - channel.totalRevenue) / rateOriCurrency}" />
+                                </apex:outputText>
+                             </td>
+                            <!-- P&L USD End -->
+                            <td style="{!IF(channel.withDiscount = 'Yes', 'border : 1px solid black; padding: 5px; border-top : none; border-left : none; background-color : #EECDCD', 'border : 1px solid black; padding: 5px; border-top : none; border-left : none')}"> 
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, false, true)}">
+                                    {!channel.withDiscount}
+                                </apex:outputText>
+                            </td>
+                            <td style= "{!IF(channel.offeredMDR < channel.availableLowestMDR || channel.offeredMDR < channel.cogsMDR, 'border : 1px solid black; padding: 5px; border-top : none; border-left : none; background-color : #EECDCD', 'border : 1px solid black; padding: 5px; border-top : none; border-left : none')}">
+                                <apex:outputText rendered="{!IF(channel.productFamily == 'Unsupported Product - Non PG/VAS', true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText value="{0, number, ###,##0.00%}" rendered="{!IF(channel.productFamily == 'Unsupported Product - Non PG/VAS', false, true)}">
+                                    <apex:param value="{!channel.offeredMDR / 100}" />
+                                </apex:outputText>
+                             </td>
+                             <td style= "border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText value="{0, number, ###,##0.00%}" rendered="{!IF(channel.isUnsupportedProduct, false, true)}" >
+                                    <apex:param value="{!channel.availableLowestMDR / 100}" />
+                                </apex:outputText>
+                             </td>
+                             <td style= "border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText value="{0, number, ###,##0.00%}" rendered="{!IF(channel.isUnsupportedProduct, false, true)}">
+                                    <apex:param value="{!channel.thresholdMDR / 100}" />
+                                </apex:outputText>
+                             </td>
+                             <td style= "border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText value="{0, number, ###,##0.00%}" rendered="{!IF(channel.isUnsupportedProduct, false, true)}">
+                                    <apex:param value="{!channel.cogsMDR / 100}" />
+                                </apex:outputText>
+                             </td>
+                             <td style="{!IF(channel.offeredRatePerTxn < channel.availableLowestRatePerTxn || channel.offeredRatePerTxn < channel.cogsRatePerTxn, 'border : 1px solid black; padding: 5px; border-top : none; border-left : none; background-color : #EECDCD', 'border : 1px solid black; padding: 5px; border-top : none; border-left : none')}"> 
+                                <apex:outputText rendered="{!IF(channel.productFamily == 'Unsupported Product - Non PG/VAS', true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText value="{!channel.currencyIsoCode}{0, number, ###,##0.00}" rendered="{!IF(channel.productFamily == 'Unsupported Product - Non PG/VAS', false, true)}">
+                                    <apex:param value="{!channel.offeredRatePerTxn}" />
+                                </apex:outputText>
+                            </td>
+                            <td style="border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText value="{!channel.currencyIsoCode}{0, number, ###,##0.00}" rendered="{!IF(channel.isUnsupportedProduct, false, true)}">
+                                    <apex:param value="{!channel.availableLowestRatePerTxn}" />
+                                </apex:outputText>
+                            </td>
+                            <td style="border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText value="{!channel.currencyIsoCode}{0, number, ###,##0.00}" rendered="{!IF(channel.isUnsupportedProduct, false, true)}">
+                                    <apex:param value="{!channel.thresholdRatePerTxn}" />
+                                </apex:outputText>
+                            </td>
+                            <td style="border : 1px solid black; padding: 5px; border-top : none; border-left : none">
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText value="{!channel.currencyIsoCode}{0, number, ###,##0.00}" rendered="{!IF(channel.isUnsupportedProduct, false, true)}">
+                                    <apex:param value="{!channel.cogsRatePerTxn}" />
+                                </apex:outputText>
+                            </td>
+                            <td style="{!IF(channel.belowCOGS = 'Yes', 'border : 1px solid black; padding: 5px; border-top : none; border-left : none; background-color : #EECDCD', 'border : 1px solid black; padding: 5px; border-top : none; border-left : none')}"> 
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, true, false)}">
+                                    N/A
+                                </apex:outputText>
+                                <apex:outputText rendered="{!IF(channel.isUnsupportedProduct, false, true)}">
+                                    {!channel.belowCOGS}
+                                </apex:outputText>
+                            </td>
+                            <td style="{!IF(channel.billingType != 'Direct Billing - Standard', 'border : 1px solid black; padding: 5px; border-top : none; border-left : none; background-color : #EECDCD', 'border : 1px solid black; padding: 5px; border-top : none; border-left : none')}"> 
+                                {!channel.billingType}
+                            </td>
+                        </tr>
+                    </apex:repeat>
+                </tbody>
+            </table>
+        </p>
+    </html>
+</apex:component>

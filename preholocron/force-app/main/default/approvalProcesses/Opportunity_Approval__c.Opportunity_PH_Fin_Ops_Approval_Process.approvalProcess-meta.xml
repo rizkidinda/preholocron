@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>RecordType</field>
+        <field>Opportunity__c</field>
+        <field>Justification2__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>gerald.cumlat@xendit.co</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Fin Ops Approval</description>
+        <label>PH Fin Ops Approval</label>
+        <name>PH_Fin_Ops_Approval</name>
+    </approvalStep>
+    <description>Opportunity Fin Ops Approval Process</description>
+    <emailTemplate>Xendit_Approval_Email_Templates/Opportunity_Fin_Ops_Approval_Submission_Template</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND (
+   RecordType.Name = &apos;Fin Ops Approval&apos;,
+   ISPICKVAL ( Opportunity__r.Standard_Financial_Terms__c, &apos;No&apos; ),
+   Opportunity__r.Country__c = &apos;Philippines&apos;
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Opportunity_Fin_Ops_Approval_Approval_Alert</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Status_as_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Opportunity_Fin_Ops_Approval_Rejected_Alert</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Status_as_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Status_as_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Opportunity PH Fin Ops Approval Process</label>
+    <processOrder>10</processOrder>
+    <recallActions>
+        <action>
+            <name>Status_as_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

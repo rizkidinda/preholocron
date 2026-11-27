@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Defined as the channel that the customer is selling their products --></help>
+    <label><!-- Where are you selling your products now? --></label>
+    <name>Where_are_you_selling_your_products_now__c</name>
+    <picklistValues>
+        <masterLabel>Offline with POS Available</masterLabel>
+        <translation><!-- Offline with POS Available --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Others (please describe in Additional notes below)</masterLabel>
+        <translation><!-- Others (please describe in Additional notes below) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Owned Website (free URL)</masterLabel>
+        <translation><!-- Owned Website (free URL) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Shopping Cart: WooCommerce, Wix, Shopify URL</masterLabel>
+        <translation><!-- Shopping Cart: WooCommerce, Wix, Shopify URL --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Social Media: Instagram handle, Facebook Account</masterLabel>
+        <translation><!-- Social Media: Instagram handle, Facebook Account --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>eCommerce Hosting Solutions: Magento, SAP Hybris, Salesforce</masterLabel>
+        <translation><!-- eCommerce Hosting Solutions: Magento, SAP Hybris, Salesforce --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>eCommerce Platforms: Tokopedia, Lazada, Shopee</masterLabel>
+        <translation><!-- eCommerce Platforms: Tokopedia, Lazada, Shopee --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

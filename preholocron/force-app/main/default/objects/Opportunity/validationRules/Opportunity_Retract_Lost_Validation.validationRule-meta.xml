@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Retract_Lost_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>If( AND(
+NOT(
+OR(
+$User.Bypass_VR__c = TRUE,
+$Profile.Name=&apos;Xendit API Profile&apos;,
+$Profile.Name=&apos;System Administrator&apos;,
+$Profile.Name=&apos;Xendit Sales Ops Profile&apos;
+)
+),
+ISCHANGED(StageName),
+ISPICKVAL(StageName,&apos;Qualification&apos;),
+OR(
+AND(
+ISPICKVAL(PRIORVALUE(StageName),&apos;Closed Lost&apos;),
+ISPICKVAL( Reason_Lost_Opp__c ,&apos;Dead - No Opportunity&apos;)
+),
+No_Opportunity_Lost_Flag__c 
+)
+
+
+) , true,false
+)</errorConditionFormula>
+    <errorMessage>Cannot move stage back to Qualification</errorMessage>
+</ValidationRule>

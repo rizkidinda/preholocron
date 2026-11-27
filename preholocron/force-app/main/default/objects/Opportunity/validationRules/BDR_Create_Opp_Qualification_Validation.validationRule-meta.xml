@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BDR_Create_Opp_Qualification_Validation</fullName>
+    <active>true</active>
+    <description>Only enable BDR Role to create opp with status as Qualification</description>
+    <errorConditionFormula>AND(
+    $User.Bypass_VR__c = FALSE,
+    CONTAINS($UserRole.Name, &apos;BDR Role&apos;),
+     Addressable_Merchant_Revenue_Monthly_USD__c &gt;= 500,
+    OR(
+        AND(
+            ISNEW(),
+            NOT(
+                ISPICKVAL( StageName , &quot;Qualification&quot;)
+            )
+        )
+    ,
+        AND(
+            !ISNEW(), 
+            ISCHANGED(StageName),
+            NOT(
+                OR(
+                    ISPICKVAL( StageName , &quot;Qualification&quot;), 
+                    ISPICKVAL( StageName , &quot;Closed Lost&quot;)
+                )
+            )
+        )
+    )
+)</errorConditionFormula>
+    <errorDisplayField>StageName</errorDisplayField>
+    <errorMessage>BDR only be able to update opportunity with stage as &quot;Qualification&quot;</errorMessage>
+</ValidationRule>

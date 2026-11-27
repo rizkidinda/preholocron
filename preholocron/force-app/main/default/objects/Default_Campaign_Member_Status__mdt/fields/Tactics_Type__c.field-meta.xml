@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tactics_Type__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Tactics Type</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Email Marketing</fullName>
+                <default>true</default>
+                <label>Email Marketing</label>
+            </value>
+            <value>
+                <fullName>Whatsapp Marketing</fullName>
+                <default>false</default>
+                <label>Whatsapp Marketing</label>
+            </value>
+            <value>
+                <fullName>Paid Ads (Digital platform based)</fullName>
+                <default>false</default>
+                <label>Paid Ads (Digital platform based)</label>
+            </value>
+            <value>
+                <fullName>Paid Ads (Publisher direct)</fullName>
+                <default>false</default>
+                <label>Paid Ads (Publisher direct)</label>
+            </value>
+            <value>
+                <fullName>Content Syndication</fullName>
+                <default>false</default>
+                <label>Content Syndication</label>
+            </value>
+            <value>
+                <fullName>Owned Event</fullName>
+                <default>false</default>
+                <label>Owned Event</label>
+            </value>
+            <value>
+                <fullName>Paid Event</fullName>
+                <default>false</default>
+                <label>Paid Event</label>
+            </value>
+            <value>
+                <fullName>Linkedin (SM Connector)</fullName>
+                <default>false</default>
+                <label>Linkedin (SM Connector)</label>
+            </value>
+            <value>
+                <fullName>Twitter (SM Connector)</fullName>
+                <default>false</default>
+                <label>Twitter (SM Connector)</label>
+            </value>
+            <value>
+                <fullName>Facebok(SM Connector)</fullName>
+                <default>false</default>
+                <label>Facebok(SM Connector)</label>
+            </value>
+            <value>
+                <fullName>Instagram (Custom Redirect)</fullName>
+                <default>false</default>
+                <label>Instagram (Custom Redirect)</label>
+            </value>
+            <value>
+                <fullName>TikTok (Custom Redirect)</fullName>
+                <default>false</default>
+                <label>TikTok (Custom Redirect)</label>
+            </value>
+            <value>
+                <fullName>Individual Social Media Posting (Custom Redirect)</fullName>
+                <default>false</default>
+                <label>Individual Social Media Posting (Custom Redirect)</label>
+            </value>
+            <value>
+                <fullName>Notification</fullName>
+                <default>false</default>
+                <label>Notification</label>
+            </value>
+            <value>
+                <fullName>Dashboard Banner</fullName>
+                <default>false</default>
+                <label>Dashboard Banner</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

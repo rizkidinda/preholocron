@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Scope_and_deliverables__c</fullName>
+    <inlineHelpText>Scope and deliverables (Required functionality and capabilities)</inlineHelpText>
+    <label>Scope and deliverables</label>
+    <length>50000</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>

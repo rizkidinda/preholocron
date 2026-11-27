@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- What is the expected average payment amount per transaction? - Please provide breakdown by Payment channel (i.e. VA, eWallet, QR, DD and etc) --></help>
+    <label><!-- Avg ticket size --></label>
+    <name>Avg_ticket_size_breakdown_per_product__c</name>
+</CustomFieldTranslation>

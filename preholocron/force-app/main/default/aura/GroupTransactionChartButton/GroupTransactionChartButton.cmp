@@ -1,0 +1,33 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" controller="GroupTransactionChartButtonController" > 
+    <ltng:require scripts="{!$Resource.chartjs}" afterScriptsLoaded="{!c.createPlannedchart}"/>
+    <aura:attribute name="showSpinner" type="boolean" default="false" access="global"/>
+    <aura:attribute name="currURL" type="string" default="" access="global"/>
+    <aura:attribute name="showMonthlyReport" type="boolean" default="false" access="global"/>
+    <aura:attribute name="reportName" type="String" default="" access="global"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="small" />
+    </aura:if>
+    <div style="background: white; padding-top : 10px; padding-bottom : 10px">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-1">
+                <div style="display:inline-block; width : 80%; height : auto">
+                    <canvas aura:id="plannedChart" id="plannedChart" height="250"></canvas>
+                </div>
+                <aura:if isTrue="{!v.showMonthlyReport}">
+                    <div style="display:inline-block; width : 20%; height : auto">
+                        <div id="js-legend-monthly" class="chart-legend"></div>
+                    </div>
+                    <aura:set attribute="else">
+                        <div style="display:inline-block; width : 20%; height : auto">
+                            <div id="js-legend" class="chart-legend"></div>
+                        </div>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </div>
+        <div class="slds-align_absolute-center slds-col slds-size_1-of-1">
+            <lightning:button class="slds-m-top_small" variant="brand" label="View Report" onclick="{!c.openReportWindow}" />
+        </div>
+    </div>
+</aura:component>

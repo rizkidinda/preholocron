@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Xendit_Entity_on_contract__c</fullName>
+    <inlineHelpText>Which entity will be used to contract with the merchant (i.e. PT Sinar, XRS, XRP and etc.)?</inlineHelpText>
+    <label>Xendit Entity on contract</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Xendit_Entity_List</valueSetName>
+    </valueSet>
+</CustomField>

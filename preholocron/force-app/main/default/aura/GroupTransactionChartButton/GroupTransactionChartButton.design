@@ -1,0 +1,4 @@
+<design:component >
+    <design:attribute name="showMonthlyReport" label="Show Monthly Report?" description="Toggle for Monthly Transaction Filter"  />
+    <design:attribute name="reportName" label="Report Name" description="Selected Report Name for Group Account"  />
+</design:component>

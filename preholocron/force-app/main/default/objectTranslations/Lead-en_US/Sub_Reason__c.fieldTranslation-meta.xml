@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Child category of reasons to describe exactly why a lead is disqualified. Selected only when lead status is declared disqualified --></help>
+    <label><!-- Sub Reason --></label>
+    <name>Sub_Reason__c</name>
+</CustomFieldTranslation>

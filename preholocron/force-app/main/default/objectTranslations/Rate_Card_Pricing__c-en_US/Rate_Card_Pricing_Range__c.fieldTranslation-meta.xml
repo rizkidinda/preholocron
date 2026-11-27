@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Rate Card Pricing Range --></label>
+    <name>Rate_Card_Pricing_Range__c</name>
+    <relationshipLabel><!-- Rate Card Pricings --></relationshipLabel>
+</CustomFieldTranslation>

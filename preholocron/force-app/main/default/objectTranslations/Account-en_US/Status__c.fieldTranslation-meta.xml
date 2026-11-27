@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>Status__c</name>
+    <picklistValues>
+        <masterLabel>ACTIVE</masterLabel>
+        <translation><!-- ACTIVE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BELOW 5 TRANSACTION</masterLabel>
+        <translation><!-- BELOW 5 TRANSACTION --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CHURNED</masterLabel>
+        <translation><!-- CHURNED --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>DECLINING</masterLabel>
+        <translation><!-- DECLINING --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>GO LIVE REQUEST</masterLabel>
+        <translation><!-- GO LIVE REQUEST --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>NEW CUSTOMER</masterLabel>
+        <translation><!-- NEW CUSTOMER --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>REJECTED</masterLabel>
+        <translation><!-- REJECTED --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RESURRECTED</masterLabel>
+        <translation><!-- RESURRECTED --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SIGN UP</masterLabel>
+        <translation><!-- SIGN UP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SUSPENDED</masterLabel>
+        <translation><!-- SUSPENDED --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

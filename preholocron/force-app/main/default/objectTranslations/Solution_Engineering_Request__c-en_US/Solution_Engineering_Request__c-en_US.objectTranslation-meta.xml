@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Solution Engineering Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Solution Engineering Requests</value>
+    </caseValues>
+    <layouts>
+        <layout>Solution Engineering Request Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Opportunity or Account must be filled in. Please select at least one. --></errorMessage>
+        <name>Cannot_allow_oppty_and_account_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunity is mandatory when Solution PIC is assigned. --></errorMessage>
+        <name>Opportunity_Required_for_Solution_PIC</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Request Review Comment must be updated when the Team Assignment is updated --></errorMessage>
+        <name>Review_Comment_must_be_updated</name>
+    </validationRules>
+</CustomObjectTranslation>

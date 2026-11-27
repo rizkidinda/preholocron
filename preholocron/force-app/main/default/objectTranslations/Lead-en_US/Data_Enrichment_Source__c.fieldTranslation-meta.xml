@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Data source that is used to enrich the leads. Example, Zoominfo, Dun &amp; Bradstreet --></help>
+    <label><!-- Data Enrichment Source --></label>
+    <name>Data_Enrichment_Source__c</name>
+</CustomFieldTranslation>

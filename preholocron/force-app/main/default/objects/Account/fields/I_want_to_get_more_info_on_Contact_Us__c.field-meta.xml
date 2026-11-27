@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>I_want_to_get_more_info_on_Contact_Us__c</fullName>
+    <label>I want to get more info on (Contact Us)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accepting payments from customers or partners</fullName>
+                <default>false</default>
+                <label>Accepting payments from customers or partners</label>
+            </value>
+            <value>
+                <fullName>Sending money out to customers or partners</fullName>
+                <default>false</default>
+                <label>Sending money out to customers or partners</label>
+            </value>
+            <value>
+                <fullName>Integrate Xendit to our website or mobile app via API</fullName>
+                <default>false</default>
+                <label>Integrate Xendit to our website or mobile app via API</label>
+            </value>
+            <value>
+                <fullName>Integrate Xendit via TPI such as Shopify, WooCommerce, Wix store, and etc</fullName>
+                <default>false</default>
+                <label>Integrate Xendit via TPI such as Shopify, WooCommerce, Wix store, and etc</label>
+            </value>
+            <value>
+                <fullName>Offering more payment channels to customers</fullName>
+                <default>false</default>
+                <label>Offering more payment channels to customers</label>
+            </value>
+            <value>
+                <fullName>Other value added services</fullName>
+                <default>false</default>
+                <label>Other value added services</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

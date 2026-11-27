@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Expansion_Type_Validation</fullName>
+    <active>false</active>
+    <description>Deprecated (SFDC-400)</description>
+    <errorConditionFormula>AND(
+ $User.Bypass_VR__c = FALSE,
+ $Profile.Name != &quot;Xendit API Profile&quot;,
+ ISPICKVAL(Type,&quot;Account Expansion&quot;),
+ !ISBLANK( AccountId ),
+ ISBLANK( Account.ParentId ) 
+)</errorConditionFormula>
+    <errorDisplayField>AccountId</errorDisplayField>
+    <errorMessage>For Account Expansion Type, the Account of the opportunity must have Parent Account</errorMessage>
+</ValidationRule>

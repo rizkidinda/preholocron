@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_Opportunity_Account_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+RecordType.Name = &apos;Child Opportunity&apos;,
+$User.Bypass_VR__c = FALSE,
+$Profile.Name!=&apos;Xendit API Profile&apos;,
+NOT(ISBLANK( Parent_Opportunity__c )),
+ Parent_Opportunity__r.AccountId !=  AccountId 
+)</errorConditionFormula>
+    <errorDisplayField>AccountId</errorDisplayField>
+    <errorMessage>Please select the same Account as Parent Opportunity</errorMessage>
+</ValidationRule>

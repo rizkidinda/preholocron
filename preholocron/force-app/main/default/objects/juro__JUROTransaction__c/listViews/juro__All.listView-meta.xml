@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__All</fullName>
+    <columns>NAME</columns>
+    <columns>juro__Message__c</columns>
+    <columns>juro__JUROContract__c</columns>
+    <columns>juro__Integration_Direction__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>juro__IsProcessed__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

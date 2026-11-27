@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This checkbox will bypass the CW validation rule and allow the user to manually CW the opportunity --></help>
+    <label><!-- Allowed to manually Closed Won --></label>
+    <name>Allowed_to_manually_Closed_Won__c</name>
+</CustomFieldTranslation>

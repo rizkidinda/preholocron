@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Account Layout</layout>
+        <sections>
+            <label><!-- Additional Details --></label>
+            <section>Additional Details</section>
+        </sections>
+        <sections>
+            <label><!-- Company Details --></label>
+            <section>Company Details</section>
+        </sections>
+        <sections>
+            <label><!-- Revenue Details --></label>
+            <section>Revenue Details</section>
+        </sections>
+        <sections>
+            <label><!-- Sales Alignment --></label>
+            <section>Sales Alignment</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Group Account Layout</layout>
+        <sections>
+            <label><!-- Company Details --></label>
+            <section>Company Details</section>
+        </sections>
+        <sections>
+            <label><!-- Revenue Details --></label>
+            <section>Revenue Details</section>
+        </sections>
+        <sections>
+            <label><!-- Sales Alignment --></label>
+            <section>Sales Alignment</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Child Account --></label>
+        <name>Child_Account</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Forecasting --></label>
+        <name>Forecasting</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Add to Nurture List --></label>
+        <name>pi__Add_to_Nurture_List</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Send to Slack --></label>
+        <name>slackv2__Send_to_Slack</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Slack Alerts --></label>
+        <name>slackv2__Slack_Alerts</name>
+    </quickActions>
+    <recordTypes>
+        <description><!-- Group Account --></description>
+        <label><!-- Group --></label>
+        <name>Group</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Partner --></label>
+        <name>Partner</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Account with BID --></description>
+        <label><!-- Synced --></label>
+        <name>Synced</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Account without BID --></description>
+        <label><!-- Unsynced --></label>
+        <name>Unsynced</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Please select billing country --></errorMessage>
+        <name>Billing_Country_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select parent account with Type as Group --></errorMessage>
+        <name>Group_Account_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please populate the value of total funding raised --></errorMessage>
+        <name>Is_VC_backed_startup_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select parent account with Type as Group --></errorMessage>
+        <name>Regular_Account_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can only update the Pipeline Source value to Internal Referral/Outbound/ABM/Partner Referral/Events --></errorMessage>
+        <name>Sales_PipelineSource_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- To populate total funding raised, make sure &quot;Is VC backed startup?&quot; field is ticked --></errorMessage>
+        <name>Total_Funding_Raised_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select parent account with Type as Group --></errorMessage>
+        <name>XPM_Account_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select parent account with Type as XP Master --></errorMessage>
+        <name>XPSub_Account_Validation</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Pardot_Emails --></label>
+        <name>pi__Send_Pardot_Emails</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Single_Pardot_Email --></label>
+        <name>pi__Send_Single_Pardot_Email</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_To_Prospect_Insight --></label>
+        <name>pi__Send_To_Prospect_Insight</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_to_Slack --></label>
+        <name>slackv2__Send_to_Slack</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Slack_Alerts --></label>
+        <name>slackv2__Slack_Alerts</name>
+    </webLinks>
+</CustomObjectTranslation>

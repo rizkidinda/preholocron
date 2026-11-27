@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contracting_Approver_Level_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>If( AND(
+NOT(
+OR(
+$User.Bypass_VR__c = TRUE,
+$Profile.Name=&apos;Xendit API Profile&apos;,
+$Profile.Name=&apos;System Administrator&apos;,
+$Profile.Name=&apos;Xendit Sales Ops Profile&apos;
+)
+),
+ISPICKVAL(StageName,&apos;Contracting&apos;),
+ISCHANGED(StageName),
+(AND(NOT(ISBLANK(TEXT( Pricing_Approver_Level__c ))),
+(ISBLANK(TEXT($User.Approval_Level__c)) || VALUE(TEXT($User.Approval_Level__c)) &lt; Pricing_Approver_Level__c)) ||
+NOT(ISBLANK(TEXT(  Billing_Type_Approval_Level__c  )))
+),
+ RecordType.Name = &apos;Parent Opportunity&apos;,
+ (TEXT(Pricing_Approval__c) = &apos;Approval Required&apos; || TEXT(Pricing_Approval__c) = &apos;Submitted&apos; || TEXT(Pricing_Approval__c) = &apos;Reject&apos; )
+) , true,false
+)</errorConditionFormula>
+    <errorMessage>To update stage as Contracting, Pricing Approval has to be approved</errorMessage>
+</ValidationRule>

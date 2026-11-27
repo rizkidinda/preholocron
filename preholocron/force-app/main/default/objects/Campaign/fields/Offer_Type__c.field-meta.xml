@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Offer_Type__c</fullName>
+    <inlineHelpText>Specific asset type being promoted though a marketing campaign effort</inlineHelpText>
+    <label>Offer Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Press Releases</fullName>
+                <default>false</default>
+                <label>Press Releases</label>
+            </value>
+            <value>
+                <fullName>Product Promotion</fullName>
+                <default>false</default>
+                <label>Product Promotion</label>
+            </value>
+            <value>
+                <fullName>White paper</fullName>
+                <default>false</default>
+                <label>White paper</label>
+            </value>
+            <value>
+                <fullName>Blog</fullName>
+                <default>false</default>
+                <label>Blog</label>
+            </value>
+            <value>
+                <fullName>Video</fullName>
+                <default>false</default>
+                <label>Video</label>
+            </value>
+            <value>
+                <fullName>Infographics</fullName>
+                <default>false</default>
+                <label>Infographics</label>
+            </value>
+            <value>
+                <fullName>Contact Me</fullName>
+                <default>false</default>
+                <label>Contact Me</label>
+            </value>
+            <value>
+                <fullName>Customer Story</fullName>
+                <default>false</default>
+                <label>Customer Story</label>
+            </value>
+            <value>
+                <fullName>Sign up</fullName>
+                <default>false</default>
+                <label>Sign up</label>
+            </value>
+            <value>
+                <fullName>Owned Offline Events</fullName>
+                <default>false</default>
+                <label>Owned Offline Events</label>
+            </value>
+            <value>
+                <fullName>Paid Offline Events</fullName>
+                <default>false</default>
+                <label>Paid Offline Events</label>
+            </value>
+            <value>
+                <fullName>Owned Webinar</fullName>
+                <default>false</default>
+                <label>Owned Webinar</label>
+            </value>
+            <value>
+                <fullName>Paid Webinar</fullName>
+                <default>false</default>
+                <label>Paid Webinar</label>
+            </value>
+            <value>
+                <fullName>Landing Page</fullName>
+                <default>false</default>
+                <label>Landing Page</label>
+            </value>
+            <value>
+                <fullName>Newsletter</fullName>
+                <default>false</default>
+                <label>Newsletter</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

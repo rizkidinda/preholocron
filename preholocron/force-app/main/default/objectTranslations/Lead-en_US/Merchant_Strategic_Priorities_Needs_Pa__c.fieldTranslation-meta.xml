@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Merchant Strategic Priorities, Needs, Pains and Challenges, Metrics --></help>
+    <label><!-- Strategic Priorities,Needs,Pains,Metrics --></label>
+    <name>Merchant_Strategic_Priorities_Needs_Pa__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Creation_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>If( AND(
+NOT(
+OR(
+$Profile.Name=&apos;Xendit API Profile&apos;,
+$Profile.Name=&apos;System Administrator&apos;)
+),
+IsConverted=true, 
+ISBLANK(ConvertedOpportunityId)
+) , true,false)</errorConditionFormula>
+    <errorMessage>Opportunity creation is mandatory upon lead conversion</errorMessage>
+</ValidationRule>

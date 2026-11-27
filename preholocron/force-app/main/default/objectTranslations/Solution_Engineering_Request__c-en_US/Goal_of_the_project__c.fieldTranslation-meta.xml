@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- What strategic or tactical goal is this project tied to? --></help>
+    <label><!-- Goal of the project --></label>
+    <name>Goal_of_the_project__c</name>
+</CustomFieldTranslation>

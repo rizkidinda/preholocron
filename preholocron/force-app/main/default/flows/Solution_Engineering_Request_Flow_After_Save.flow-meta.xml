@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Slack_Notification_to_PIC</name>
+        <label>Send Slack Notification to PIC</label>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+        <actionName>custom__Assign_Solution_PIC_in_SE</actionName>
+        <actionType>sendNotification</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>ListOfPIC</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>custom__Assign_Solution_PIC_in_SE</nameSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Add_Recipient_List</name>
+        <label>Add Recipient List</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>ListOfPIC</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Solution_PIC__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Send_Slack_Notification_to_PIC</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Oppty_Team_Member</name>
+        <label>Assign Oppty Team Member</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>new_oppty_team_member.OpportunityAccessLevel</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Edit</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>new_oppty_team_member.OpportunityId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Opportunity__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>new_oppty_team_member.TeamMemberRole</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>oppty_team_member_role</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>new_oppty_team_member.UserId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Solution_PIC__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Opportunity_Team_Member</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Is_PIC_assigned</name>
+        <label>Is PIC assigned?</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Assigned</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Solution_PIC__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Solution_PIC__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Oppty_Team_Member</targetReference>
+            </connector>
+            <label>Assigned</label>
+        </rules>
+    </decisions>
+    <description>add slack notification for solution PIC</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>isNew()</expression>
+    </formulas>
+    <formulas>
+        <name>oppty_team_member_role</name>
+        <dataType>String</dataType>
+        <expression>IF (
+  CONTAINS( {!$Record.Solution_PIC__r.UserRole.Name}, &apos;Solution&apos; ),
+  &apos;Solution Engineer&apos;,
+  IF (
+    CONTAINS( {!$Record.Solution_PIC__r.UserRole.Name}, &apos;Product Specialist&apos; ),
+    &apos;Customer Product Specialist&apos;,
+    &apos;Channel Partnership Team&apos;
+  )
+)</expression>
+    </formulas>
+    <interviewLabel>Solution Engineering Request Flow - After Save {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Solution Engineering Request Flow - After Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Opportunity_Team_Member</name>
+        <label>Create Opportunity Team Member</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Add_Recipient_List</targetReference>
+        </connector>
+        <inputReference>new_oppty_team_member</inputReference>
+    </recordCreates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_PIC_assigned</targetReference>
+        </connector>
+        <object>Solution_Engineering_Request__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>ListOfPIC</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>new_oppty_team_member</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>OpportunityTeamMember</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Department__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Departments are the major functional divisions or teams in the company to which the lead belongs. Examples.include Human Resources, IT, Accounting and Finance, Marketing, Research and Development (R&amp;D), and Production</inlineHelpText>
+    <label>Department</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

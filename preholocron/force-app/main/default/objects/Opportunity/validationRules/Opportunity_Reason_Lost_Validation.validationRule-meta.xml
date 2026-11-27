@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Reason_Lost_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>If( AND(
+NOT(
+OR(
+$User.Bypass_VR__c = TRUE,
+$Profile.Name=&apos;Xendit API Profile&apos;,
+$Profile.Name=&apos;System Administrator&apos;
+)
+),
+NOT(ISPICKVAL(PRIORVALUE(StageName),&apos;Qualification&apos;)),
+ISPICKVAL(StageName,&apos;Closed Lost&apos;),
+ISCHANGED(StageName),
+ISPICKVAL( Reason_Lost_Opp__c ,&apos;Dead - No Opportunity&apos;)
+) , true,false
+)</errorConditionFormula>
+    <errorMessage>Reason Lost selected is only available for Qualification stage</errorMessage>
+</ValidationRule>

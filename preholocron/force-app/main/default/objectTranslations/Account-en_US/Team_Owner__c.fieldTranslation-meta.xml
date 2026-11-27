@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The team of the account owner is responsible for driving the acquisition, growth or retention of the account --></help>
+    <label><!-- Team Owner --></label>
+    <name>Team_Owner__c</name>
+</CustomFieldTranslation>

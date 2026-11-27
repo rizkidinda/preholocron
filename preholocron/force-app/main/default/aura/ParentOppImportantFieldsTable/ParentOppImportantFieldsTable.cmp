@@ -1,0 +1,284 @@
+<aura:component implements="force:appHostable,force:hasRecordId,flexipage:availableForRecordHome,flexipage:availableForAllPageTypes" access="global" controller="ParentOppImportantFieldsTableController">
+    <aura:attribute name="error" type="boolean" default="false"/>
+    <aura:attribute name="OppObject" type="Object"/>
+    <aura:attribute name="showEdit" type="Boolean" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+    <aura:html tag="style">
+        .toastMessage.forceActionsText{ 
+        white-space : pre-line !important; 
+        }
+        .slds-table td{
+            height: 40px !important;
+        }
+        label.slds-form-element__label.slds-m-right_xxx-small{
+            display: none !important;
+        }
+
+        div .productTiles .slds-tile .slds-truncate a {
+            cursor: default;
+            color : black;
+        }
+
+        div .productTiles .slds-tile .slds-truncate a:hover {
+            text-decoration: none;
+            color : black;
+        }
+        
+        div .urlCls {
+            pointer-events: auto;
+        }
+    </aura:html>
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="small" />
+    </aura:if>
+    <div class="slds-grid slds-wrap slds-p-around--large slds-gutters">
+        <div class="slds-align_absolute-center slds-col slds-size_1-of-1" aura:id="div-grp-edit">
+            <lightning:button  variant="base" label="Edit" title="Edit" 
+                              class="slds-button slds-button_brand" onclick="{!c.handleEdit}"/>
+        </div>
+        <div class="slds-align_absolute-center slds-col slds-size_1-of-1 slds-hide" aura:id="div-grp-save">
+            <lightning:button  variant="base" label="Cancel" title="Cancel" 
+                              class="slds-button slds-button_neutral" onclick="{!c.handleCancel}"/>
+            <lightning:button  variant="base" label="Save" title="Save"
+                              class="slds-button slds-button_brand" onclick="{!c.handleSave}" />
+        </div>
+        <div class="slds-col slds-size_1-of-1">
+            &nbsp; 
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-scrollable_y" style="max-height:1000px;">
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table_col-bordered" width="100%">
+                <thead width="100%">
+                    <tr>
+                        <th><h2>Field Name</h2></th>
+                        <th><h2>Value</h2></th>
+                    </tr>
+                </thead>
+                <tbody  style="text-align:left;" width="100%">
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Brand Name" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left">
+                            <lightning:formattedText value="{!v.OppObject.brandName}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Addressable Merchant TPV - Monthly" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedNumber value="{!v.OppObject.tpvMonthly}" style="currency" currencyCode="{!v.OppObject.oppCurrency}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Addressable Merchant Revenue - Monthly" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedNumber value="{!v.OppObject.revMonthly}" style="currency" currencyCode="{!v.OppObject.oppCurrency}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                        </td>
+                    </tr>
+                     <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Monthly Gross Profit" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedNumber value="{!v.OppObject.totalGrossProfit}" style="currency" currencyCode="{!v.OppObject.oppCurrency}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Gross Take Rate (%)" />
+                            <lightning:helptext content="Addressable Merchant Revenue Monthly / Addressable Merchant TPV Monthly" style="display: inline-flex"></lightning:helptext>
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedNumber value="{!v.OppObject.grossTakeRate}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Gross Profit (%)" />&nbsp;
+                            <lightning:helptext content="(Addressable Merchant Revenue Monthly - Addressable Project Cost Monthly) / Addressable Merchant Revenue Monthly" style="display: inline-flex"></lightning:helptext>
+                        </td>
+                        <td class="slds-truncate slds-text-align_left">
+                            <lightning:formattedNumber value="{!v.OppObject.grossProfit}" style="percent" minimumFractionDigits="0" maximumFractionDigits="2" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Segment" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedText value="{!v.OppObject.segment}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Opportunity Owner" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedText value="{!v.OppObject.ownerName}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Estimated 1st Transaction Date" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedDateTime value="{!v.OppObject.estTxnDate}" year="numeric" month="numeric" day="numeric"/>
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Account Status" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedText value="{!v.OppObject.accStatus}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Deal Stage" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedText value="{!v.OppObject.stageName}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Why Us?" />
+                        </td>
+                        <aura:if isTrue="{!v.showEdit}">
+                            <td class="slds-truncate slds-text-align_left"> 
+                                <lightning:inputRichText value="{!v.OppObject.whyUs}" formats="['font', 'size', 'bold', 'italic', 'underline', 'strike',
+                                'list', 'indent', 'align', 'link', 'image', 'clean', 'table',
+                                'header', 'color', 'background', 'code', 'code-block', 'script', 'blockquote', 'direction']">
+                                    <lightning:insertImageButton />
+                                </lightning:inputRichText>
+                            </td>
+                            <aura:set attribute="else">
+                                <td class="slds-truncate slds-text-align_left"> 
+                                    <lightning:formattedRichText value="{!v.OppObject.whyUs}" />
+                                </td>
+                            </aura:set>
+                        </aura:if>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Weekly Update Status" />
+                        </td>
+                        <aura:if isTrue="{!v.showEdit}">
+                            <td class="slds-truncate slds-text-align_left">
+                                <lightning:select variant="label-hidden" label="Weekly Update Status" name="weeklyUpdateStatus" aura:id="weeklyUpdateStatus" value="{!v.OppObject.weeklyUpdateStatus}" >
+                                    <option text="--None--" value=""/>    
+                                    <aura:iteration items="{!v.OppObject.weeklyUpdateStatusPicklist}" var="option">
+                                        <option text="{!option}" value="{!option}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </td>
+                            <aura:set attribute="else">
+                                <td class="slds-truncate slds-text-align_left"> 
+                                    <lightning:formattedText value="{!v.OppObject.weeklyUpdateStatus}" />
+                                </td>
+                            </aura:set>
+                        </aura:if>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Weekly Update" />
+                        </td>
+                        <aura:if isTrue="{!v.showEdit}">
+                            <td class="slds-truncate slds-text-align_left"> 
+                                <lightning:inputRichText value="{!v.OppObject.weeklyUpdate}" formats="['font', 'size', 'bold', 'italic', 'underline', 'strike',
+                                'list', 'indent', 'align', 'link', 'image', 'clean', 'table',
+                                'header', 'color', 'background', 'code', 'code-block', 'script', 'blockquote', 'direction']">
+                                    <lightning:insertImageButton />
+                                </lightning:inputRichText>
+                            </td>
+                            <aura:set attribute="else">
+                                <td class="slds-truncate slds-text-align_left"> 
+                                    <lightning:formattedRichText value="{!v.OppObject.weeklyUpdate}"  />
+                                </td>
+                            </aura:set>
+                        </aura:if>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Weekly Update (with History)" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedRichText value="{!v.OppObject.weeklyUpdateWithHistory}"  />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Next Steps / Blockers" />
+                        </td>
+                        <aura:if isTrue="{!v.showEdit}">
+                            <td class="slds-truncate slds-text-align_left"> 
+                                <lightning:inputRichText value="{!v.OppObject.nextStepBlocker}" formats="['font', 'size', 'bold', 'italic', 'underline', 'strike',
+                                'list', 'indent', 'align', 'link', 'image', 'clean', 'table',
+                                'header', 'color', 'background', 'code', 'code-block', 'script', 'blockquote', 'direction']">
+                                    <lightning:insertImageButton />
+                                </lightning:inputRichText>
+                            </td>
+                            <aura:set attribute="else">
+                                <td class="slds-truncate slds-text-align_left"> 
+                                    <lightning:formattedRichText value="{!v.OppObject.nextStepBlocker}"  />
+                                </td>
+                            </aura:set>
+                        </aura:if>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Manager Thoughts" />
+                        </td>
+                        <aura:if isTrue="{!v.showEdit}">
+                            <td class="slds-truncate slds-text-align_left"> 
+                                <lightning:textarea value="{!v.OppObject.managerThoughts}" maxlength="50000" />
+                            </td>
+                            <aura:set attribute="else">
+                                <td class="slds-truncate slds-text-align_left"> 
+                                    <lightning:formattedText value="{!v.OppObject.managerThoughts}"  />
+                                </td>
+                            </aura:set>
+                        </aura:if>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Products in Opportunity" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <aura:iteration items="{!v.OppObject.oppProductList}" var="childOpp" indexVar="i">
+                                <div class="productTiles">
+                                    <lightning:tile label="{!childOpp.productFamily}">
+                                        <aura:iteration items="{!childOpp.productNames}" var="prd" indexVar="j">
+                                            <p style="padding:5px 10px" title="{!prd}">{!j+1}. {!prd}</p>
+                                        </aura:iteration>
+                                    </lightning:tile> 
+                                </div>                 
+                            </aura:iteration>
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Current Product Activated (If Any)" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <lightning:formattedText value="{!v.OppObject.activeProductsName}" />
+                        </td>
+                    </tr>
+                    <tr class="slds-line-height_reset">
+                        <td class="slds-truncate slds-text-align_left" style="width:40%">
+                            <lightning:formattedText value="Opportunity Link" />
+                        </td>
+                        <td class="slds-truncate slds-text-align_left"> 
+                            <div class="urlCls"><lightning:formattedUrl value="{!'/' + v.OppObject.oppId}" label="{!v.OppObject.oppName}" target="_blank"/></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>RecordType</field>
+        <field>Opportunity__c</field>
+        <field>Justification2__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>adhoc</type>
+            </approver>
+        </assignedApprover>
+        <description>Submit to Legal Team</description>
+        <label>Legal Team</label>
+        <name>Legal_Team</name>
+    </approvalStep>
+    <description>Opportunity Legal Approval Process</description>
+    <emailTemplate>Xendit_Approval_Email_Templates/Opportunity_Legal_Approval_Submission_Template</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Opportunity_Approval__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Legal Approval</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Standard_Legal_Terms__c</field>
+            <operation>equals</operation>
+            <value>No</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Opportunity_Legal_Approval_Approved_Alert</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Status_as_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Opportunity_Legal_Approval_Rejected_Alert</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Status_as_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Status_as_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Opportunity Legal Approval Process</label>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

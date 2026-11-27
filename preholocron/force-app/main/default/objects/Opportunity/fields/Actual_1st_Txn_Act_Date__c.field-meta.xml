@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actual_1st_Txn_Act_Date__c</fullName>
+    <inlineHelpText>System trigged first transaction date. At the parent opportunity level, it is the minimum (earliest) system first transaction date of all related child opportunities. At the child opportunity, it refers to the earliest system first transaction date of the associated product(s)</inlineHelpText>
+    <label>Actual 1st Txn / Act Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

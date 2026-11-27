@@ -1,0 +1,557 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:availableForFlowScreens" access="global" controller="ForecastUIController">
+    <aura:attribute name="showSpinner" type="boolean" default="false" access="global"/>
+    <aura:attribute name="showEdit" type="Boolean" />
+
+    <!--period dates-->
+    <aura:attribute name="currentPeriodStart" type="Date" default="" access="global"/>
+    <aura:attribute name="currentPeriodEnd" type="Date" default="" access="global"/>
+    <aura:attribute name="nextPeriodStart" type="Date" default="" access="global"/>
+    <aura:attribute name="nextPeriodEnd" type="Date" default="" access="global"/>
+    <aura:attribute name="estAnnualTPV" type="Decimal" default="" access="global"/>
+    <aura:attribute name="currMonthInt" type="Integer" default="0" />
+    <aura:attribute name="currDatePeriod" type="boolean" default="false"/>
+    <aura:attribute name="currYearInt" type="Integer" default="0" />
+
+    <!--total tpv variables-->
+    <aura:attribute name="totalFinalForecastTPVUSD" type="Decimal" default="" access="global"/>
+    <aura:attribute name="totalDisplayTPVUSD" type="Decimal" default="" access="global"/>
+    <aura:attribute name="totalSalesInputperMonthTPVUSD" type="List" default="[]" access="global"/> <!--total sales approved tpv from master & sub accounts per month-->
+    <aura:attribute name="totalSalesInputAllMonth" type="Decimal" default="" access="global"/>
+    <aura:attribute name="totalMasterTPV" type="Decimal" default="" access="global"/>
+
+    <aura:attribute name="accType" type="String" default="" access="global"/>
+    <aura:attribute name="strHistory" type="String" default="" access="global"/>
+    <aura:attribute name="forecastList" type="List" default="[]" />
+    <aura:attribute name="subAccountforecastList" type="List" default="[]" />
+
+    <!-- Pagination -->
+    <aura:attribute name="PaginationList" type="Object"  description="Stores the pagination rows." />
+    <aura:attribute name="startPage" 		type="Integer" default="0"/>
+    <aura:attribute name="endPage" 			type="Integer" default="0"/>
+    <aura:attribute name="totalRecords" 	type="Integer" default="0"/>
+    <aura:attribute name="pageSize" 		type="Integer" default="10"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:html tag="style">
+        .toastMessage.forceActionsText{ 
+        white-space : pre-line !important; 
+        }
+
+        .slds-modal__container{
+            max-width: 95% !important;
+            width:90% !important;
+        }
+
+        .slds-p-around--medium{
+            max-height: 100% !important;
+            height: 100% !important;
+        }
+    </aura:html>
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="small" />
+    </aura:if>
+    <aura:if isTrue="{!v.accType == 'XP MASTER' || v.accType == 'REGULAR'}">
+        <div class="slds-modal__content slds-p-around--medium" id="modal-content-1">
+            <div class="slds-col slds-size_1-of-1" style="margin-bottom : 7px">
+                <span style="font-size : 16px; font-weight : bold">Account Profile</span>
+            </div>
+            <div class="slds-box bgGrey" id="account-details">
+                <lightning:recordViewForm recordId="{!v.recordId}" objectApiName="Account">
+                    <table style="width:100%;"  class="slds-table bgGrey">
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap" style="width : 40%"><span><strong>Business ID</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap" style="width : 60%"><lightning:outputField fieldName="Business_ID__c" variant="label-hidden" /></td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap"><span><strong>Account Name</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap"><lightning:outputField fieldName="Name" variant="label-hidden" /></td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap"><span><strong>Brand Name</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap"><lightning:outputField fieldName="Brand__c" variant="label-hidden" /></td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap"><span><strong>Group Name</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap"><lightning:outputField fieldName="Ultimate_Parent_Name_Formula__c" variant="label-hidden" /></td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap"><span><strong>Currency</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap defaultFont">USD</td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap"><span><strong>Current Planning Period</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap defaultFont">{!v.currentPeriodStart}&nbsp;-&nbsp;{!v.currentPeriodEnd}</td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap"><span><strong>Next Planning Period</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap defaultFont">{!v.nextPeriodStart}&nbsp;-&nbsp;{!v.nextPeriodEnd}</td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap"><span><strong>Estimated Annual TPV (USD)</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap defaultFont"><lightning:formattedNumber value="{!v.estAnnualTPV}" minimumFractionDigits="2" maximumFractionDigits="2"/></td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap"><span><strong>L3M Avg TPV</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap"><lightning:outputField fieldName="L3M_Avg_TPV_mth_prior_Today__c" variant="label-hidden" /></td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap"><span><strong>5th Txn Date</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap"><lightning:outputField fieldName="X5th_Transaction_Date__c" variant="label-hidden" /></td>
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_left slds-cell-wrap"><span><strong>Planning Year</strong></span></td>
+                            <td class="slds-text-align_left slds-cell-wrap defaultFont">{!v.currYearInt}</td>
+                        </tr>
+                    </table>
+                </lightning:recordViewForm>
+            </div>
+            <div class="title-body-divider">
+                <div class="slds-align_absolute-left slds-col slds-size_1-of-1" style="font-size : 16px;">
+                    <span><b>1. Account Roll Up TPV -&nbsp;</b>Please Review the total roll up tpv by the end of current planning period.</span>
+                    <br/>
+                    <span class="title-definition-style">*Total Roll Up TPV is the sum of all approved accounts forecasting TPV. To Edit the value please update the Account/Sub-account TPV in the next section.</span>
+                </div>
+            </div>
+            <div id="tpv-forecasting" class="hd-body-divider">
+                <table id="tpv-forecasting-table" class="slds-table slds-table_bordered slds-table_col-bordered overflowTable" style="width:100%;">
+                    <thead class="slds-text-title_caps">
+                        <th class="slds-text-align_center slds-cell-wrap monthWidthTitle" >TPV Forecasting</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">Total</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">January</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">February</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">March</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">April</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">May</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">June</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">July</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">August</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">September</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">October</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">November</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">December</th>
+                    </thead>
+                    <tbody>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-cell-wrap defaultFont bgGrey">
+                            </td>
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont bgGrey">
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                    <lightning:formattedText value="{! if(and(x.month > 0, x.month >= v.currMonthInt),'Forecast',if(and(x.month > 0, x.month lt v.currMonthInt),'Actuals','')) }" />
+                                </td>
+                            </aura:iteration> 
+                        </tr>
+                        <tr class="slds-line-height_reset bgGrey">
+                            <td class="slds-cell-wrap defaultFont">
+                                <span><strong><lightning:formattedText value="Forecasting Engine TPV" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                <!-- <span>
+                                    <lightning:formattedNumber value="{!v.totalFinalForecastTPVUSD}" minimumFractionDigits="0" maximumFractionDigits="2"/> 
+                                </span> -->
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                    <lightning:formattedNumber value="{!x.allTotalWrapper.totalForecastTPV}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                </td>
+                            </aura:iteration> 
+                        </tr>
+                        <tr class="slds-line-height_reset bgGrey">
+                            <td class="slds-cell-wrap defaultFont">
+                                <span><strong><lightning:formattedText value="Sales Team Approved TPV" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                <!-- <span>
+                                    <lightning:formattedNumber value="{!v.totalSalesInputAllMonth}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                </span> -->
+                            </td>
+                            <!-- <aura:iteration items="{!v.totalSalesInputperMonthTPVUSD}" var="x" indexVar="indVal">
+                                <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                    <lightning:formattedNumber value="{!x}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                </td> 
+                            </aura:iteration>  -->
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                    <aura:if isTrue="{!or(and(and(x.allTotalWrapper.totalPopulatedSalesTPV != null, x.allTotalWrapper.totalPopulatedSalesTPV > 0),and(x.month > 0, x.month >= v.currMonthInt)), and(x.month > 0, x.month lt v.currMonthInt))}">
+                                        <lightning:formattedNumber value="{!x.allTotalWrapper.totalSalesTeamApprovedTPV}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                    </aura:if>
+                                </td>
+                            </aura:iteration> 
+                        </tr>
+                        <tr class="slds-line-height_reset bgGrey">
+                            <td class="slds-cell-wrap defaultFont">
+                                <span><strong><lightning:formattedText value="Actual TPV" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                    <lightning:formattedNumber value="{!x.allTotalWrapper.totalActualTPV}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                </td>
+                            </aura:iteration> 
+                        </tr>
+                        <tr class="slds-line-height_reset bgGrey">
+                            <td class="slds-cell-wrap defaultFont">
+                                <span><strong><lightning:formattedText value="Final Estimation" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                <span>
+                                    <lightning:formattedNumber value="{!v.totalDisplayTPVUSD}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                </span>
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                    <lightning:formattedNumber value="{!x.allTotalWrapper.totalDisplayTPV}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                </td>
+                            </aura:iteration> 
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+            <div id="tpv-forecasting-side-metrics" class="hd-body-divider" style="margin-top : 20px !important">
+                <table id="tpv-forecasting-table-side-metrics" class="slds-table slds-table_bordered slds-table_col-bordered overflowTable" style="width:100%;">
+                    <thead class="slds-text-title_caps">
+                        <th class="slds-text-align_center slds-cell-wrap monthWidthTitle" >Side Metrics</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">Total</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">January</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">February</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">March</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">April</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">May</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">June</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">July</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">August</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">September</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">October</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">November</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">December</th>
+                    </thead>
+                    <tbody>
+                        <tr class="slds-line-height_reset bgGrey">
+                            <td class="slds-cell-wrap defaultFont">
+                                <span><strong><lightning:formattedText value="MoM TPV Growth" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                    <lightning:formattedNumber value="{!x.MoMTPVGrowth}" style="percent" maximumFractionDigits="2"/>
+                                </td>
+                            </aura:iteration> 
+                        </tr>
+                        <!-- <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                                <span><strong><lightning:formattedText value="Take Rate" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                                    <lightning:formattedNumber value="{!x.forecastDetail.Take_Rate__c / 100}" style="percent" maximumFractionDigits="2"/>
+                                </td>
+                            </aura:iteration> 
+                        </tr> -->
+                        <!-- <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                                <span><strong><lightning:formattedText value="Est. Basket Size" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                                    <lightning:formattedNumber value="{!x.forecastDetail.Avg_Basket_Size__c}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                </td>
+                            </aura:iteration> 
+                        </tr> -->
+                        <tr class="slds-line-height_reset bgGrey">
+                            <td class="slds-cell-wrap defaultFont">
+                                <span><strong><lightning:formattedText value="No. of Transaction" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                    <lightning:formattedNumber value="{!x.forecastDetail.No_of_Transactions__c}" minimumFractionDigits="0" maximumFractionDigits="0"/>
+                                </td>
+                            </aura:iteration> 
+                        </tr>
+                        <tr class="slds-line-height_reset bgGrey">
+                            <td class="slds-cell-wrap defaultFont">
+                                <span><strong><lightning:formattedText value="MoM Txn Growth" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                    <lightning:formattedNumber value="{!x.MoMTxnGrowth}" style="percent" maximumFractionDigits="2"/>
+                                </td>
+                            </aura:iteration> 
+                        </tr>
+                        <!-- <tr class="slds-line-height_reset">
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                                <span><strong><lightning:formattedText value="Revenue" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_center slds-cell-wrap defaultFont">
+                                    <lightning:formattedNumber value="{!x.forecastDetail.Final_Forecast_Revenue_USD__c}" minimumFractionDigits="0" maximumFractionDigits="0"/>
+                                </td>
+                            </aura:iteration> 
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="title-body-divider">
+                <div class="slds-align_absolute-left slds-col slds-size_1-of-1" style="font-size : 16px;">
+                    <span><b>2. Main Account &amp; Sub Account TPV Breakdown - &nbsp;</b>Please <span style="color : red">edit and commit forecasting numbers</span>&nbsp;by account to reflect the total TPV changes.</span>
+                    <br/>
+                    <span class="title-definition-style">*It takes around one working day to refresh the final estimation number updates.</span>
+                </div>
+            </div>
+            <div class="hd-body-divider">
+                <div class="slds-col slds-size_1-of-1" aura:id="div-grp-edit">
+                    <lightning:button  variant="base" label="Edit" title="Edit" 
+                                      class="slds-button slds-button_brand" onclick="{!c.handleEdit}"/>
+                    <aura:if isTrue="{!v.currDatePeriod}">
+                        <lightning:button  variant="base" label="Commit This Month TPV" title="Commit This Month TPV" 
+                                      class="slds-button slds-button_success" onclick="{!c.handleCommit}"/>
+                    </aura:if>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-hide" aura:id="div-grp-save">
+                    <lightning:button  variant="base" label="Cancel" title="Cancel" 
+                                      class="slds-button slds-button_neutral" onclick="{!c.handleCancel}"/>
+                    <lightning:button  variant="base" label="Save" title="Save"
+                                      class="slds-button slds-button_brand" onclick="{!c.save}" />
+                </div>
+            </div>
+            <div class="title-body-divider" style="margin: 7px 0px !important">
+                <div class="slds-col slds-size_1-of-1" style="font-size : 14px;">
+                    <span><u>Main Account TPV</u></span>
+                    <br/>
+                    <span class="title-definition-style">*Owned accounts TPV have been rolled up.</span>
+                </div>
+            </div>
+            <div id="tpv-forecasting-main-account" class="hd-body-divider">
+                <table id="tpv-forecasting-table-main-account" class="slds-table slds-table_bordered slds-table_col-bordered overflowTable" style="width:100%;">
+                    <thead class="slds-text-title_caps">
+                        <th class="slds-text-align_center slds-cell-wrap monthWidthTitle" >Main Account</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">Annual TPV</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">January</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">February</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">March</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">April</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">May</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">June</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">July</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">August</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">September</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">October</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">November</th>
+                        <th class="slds-text-align_center slds-cell-wrap monthWidth">December</th>
+                    </thead>
+                    <tbody>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-cell-wrap defaultFont bgGrey">
+                                <span><strong><lightning:formattedText value="Master / Regular Account TPV" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_center slds-cell-wrap defaultFont bgGrey">
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x">
+                                <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                    <lightning:formattedText value="{! if(and(x.month > 0, x.month >= v.currMonthInt),'Forecast',if(and(x.month > 0, x.month lt v.currMonthInt),'Actuals','')) }" />
+                                </td>
+                            </aura:iteration> 
+                        </tr>
+                        <tr class="slds-line-height_reset">
+                            <td class="slds-cell-wrap defaultFont bgGrey">
+                                <span><strong><lightning:formattedText value="Master / Regular Account TPV" /></strong></span>
+                            </td>
+                            <td class="slds-text-align_right slds-cell-wrap defaultFont bgGrey">
+                                <span>
+                                    <lightning:formattedNumber value="{!v.totalMasterTPV}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                    <aura:if isTrue="{!and(and(v.totalMasterTPV, v.totalDisplayTPVUSD), v.totalSalesInputAllMonth > 0)}">
+                                        &nbsp;(<lightning:formattedNumber value="{!(v.totalMasterTPV / v.totalDisplayTPVUSD)}" style="percent" maximumFractionDigits="2"/>&nbsp;of Total Master TPV)
+                                    </aura:if> 
+                                </span>
+                            </td>
+                            <aura:iteration items="{!v.forecastList}" var="x" indexVar="indVal">
+                                <aura:if isTrue="{!v.showEdit}">
+                                    <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                        <lightning:input aura:id="salesinput1" title="{!x.helpText}" class="{!and(and(x.month == v.currMonthInt, v.currDatePeriod), x.forecastDetail.Commited_Value__c) ? 'rightInput commitedValue' : 'rightInput'}" onchange="{!c.inputUpdateCSS}" type="number" value="{!x.tempTPVDisplay}" step="any" label="{!indVal}" min="0" variant="label-hidden" disabled="{!!and(x.month > 0, or(x.month > v.currMonthInt, and(x.month == v.currMonthInt, v.currDatePeriod)))}"/> 
+                                    </td>
+                                    <aura:set attribute="else">
+                                        <td class="slds-text-align_right slds-cell-wrap defaultFont" 
+                                            style="{!if(and(x.month > 0,or(x.month lt v.currMonthInt,x.month == v.currMonthInt)),if(x.forecastDetail.Commited_Value__c,'background-color : #ABEA7C', if(and(!x.forecastDetail.Commited_Value__c,or(x.month lt v.currMonthInt,and(x.month == v.currMonthInt,!v.currDatePeriod))),'background-color : #F2E34C','')),'')}">
+                                            <lightning:formattedNumber value="{!x.tempTPVDisplay}" minimumFractionDigits="0" maximumFractionDigits="2" title="{!x.helpText}"/>
+                                        </td>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:iteration> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--pagination-->
+            <aura:if isTrue="{!not(empty(v.subAccountforecastList))}">
+                <div class="title-body-divider" style="margin: 25px 0 0 0 !important">
+                    <div class="slds-col slds-size_1-of-1" style="font-size : 14px;">
+                        <span><u>Sub  Accounts TPV (if any)</u></span>
+                        <br/>
+                    </div>
+                </div>
+                <div id="tpv-forecasting-sub-account" class="hd-body-divider" style="margin-top : 20px !important">
+                    <table id="tpv-forecasting-table-sub-account" class="slds-table slds-table_bordered slds-table_col-bordered overflowTable" style="width:100%;">
+                        <thead class="slds-text-title_caps">
+                            <tr class="slds-line-height_reset slds-text-title">
+                                <th class="slds-text-align_center slds-cell-wrap monthWidthTitle" >Sub Account TPV Forecasting</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth"></th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">January</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">February</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">March</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">April</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">May</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">June</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">July</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">August</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">September</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">October</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">November</th>
+                                <th class="slds-text-align_center slds-cell-wrap monthWidth">December</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="slds-line-height_reset">
+                                <td class="slds-cell-wrap defaultFont bgGrey">
+                                </td>
+                                <td class="slds-text-align_center slds-cell-wrap defaultFont bgGrey">
+                                </td>
+                                <aura:iteration items="{!v.forecastList}" var="x">
+                                    <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                        <lightning:formattedText value="{! if(and(x.month > 0, x.month >= v.currMonthInt),'Forecast',if(and(x.month > 0, x.month lt v.currMonthInt),'Actuals','')) }" />
+                                    </td>
+                                </aura:iteration>  
+                            </tr>
+                            <aura:iteration items="{!v.PaginationList}" var="x" indexVar="indVal0">
+                                <tr class="slds-line-height_reset">
+                                    <td class="slds-cell-wrap defaultFont bgGrey">
+                                        <span><strong><lightning:formattedText value="{!x.subAccObj.Name}" /></strong></span>
+                                    </td>
+                                    <td class="slds-text-align_right slds-cell-wrap defaultFont bgGrey">
+                                        <span>
+                                            <lightning:formattedNumber value="{!x.subAccAnnualTPVDisplay}" minimumFractionDigits="0" maximumFractionDigits="2"/>
+                                            <aura:if isTrue="{!and(and(x.subAccAnnualTPVDisplay, v.totalDisplayTPVUSD), v.totalSalesInputAllMonth > 0)}">
+                                                &nbsp;(<lightning:formattedNumber value="{!(x.subAccAnnualTPVDisplay / v.totalDisplayTPVUSD)}" style="percent" maximumFractionDigits="2"/>&nbsp;of Total Master TPV)
+                                                <aura:set attribute="else">
+                                                    &nbsp;(<lightning:formattedNumber value="0" style="percent" maximumFractionDigits="2"/>&nbsp;of Total Master TPV)
+                                                </aura:set>
+                                            </aura:if> 
+                                        </span>
+                                    </td>
+                                    <aura:iteration items="{!x.subAccForecastDetails}" var="y" indexVar="indVal">
+                                        <aura:if isTrue="{!v.showEdit}">
+                                            <td class="slds-text-align_right slds-cell-wrap defaultFont">
+                                                <lightning:input aura:id="salesinput2" title="{!y.helpText}" class="{!and(and(y.month == v.currMonthInt, v.currDatePeriod), y.forecastDetail.Commited_Value__c) ? 'rightInput commitedValue' : 'rightInput'}" onchange="{!c.inputSubUpdateCSS}" type="number" value="{!y.tempTPVDisplay}" step="any" label="{!indVal0 + ':::' + indVal}" min="0" variant="label-hidden" disabled="{!!and(y.month > 0, or(y.month > v.currMonthInt, and(y.month == v.currMonthInt, v.currDatePeriod)))}"/> 
+                                            </td>
+                                            <aura:set attribute="else">
+                                                <td class="slds-text-align_right slds-cell-wrap defaultFont " 
+                                                style="{!if(and(y.month > 0,or(y.month lt v.currMonthInt,y.month == v.currMonthInt)),if(y.forecastDetail.Commited_Value__c,'background-color : #ABEA7C', if(and(!y.forecastDetail.Commited_Value__c,or(y.month lt v.currMonthInt,and(y.month == v.currMonthInt,!v.currDatePeriod))),'background-color : #F2E34C','')),'')}">
+                                                    <lightning:formattedNumber value="{!y.tempTPVDisplay}" minimumFractionDigits="0" maximumFractionDigits="2" title="{!y.helpText}"/>
+                                                </td>
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:iteration> 
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <div class="slds-grid" style="margin-top : 15px;">
+                        <div class="slds-col slds-size_4-of-8 ">
+                            <lightning:select label="Page Size:" aura:id="recNumId" 
+                                              onchange="{!c.onPageValChange}"  class="slds-form_inline slds-float_right">
+                                <option value="10">10</option>   
+                                <option value="20">20</option> 
+                            </lightning:select>
+                        </div>
+						<div class="slds-col slds-size_4-of-8" style="margin: 0px 7px;">
+                            <!-- Pagination -->
+                            <lightning:buttonGroup class="slds-align_absolute-center slds-form_inline slds-float_left">
+                                <lightning:button label="Previous" disabled="{!v.startPage == 0}"  
+                                                  onclick="{!c.previous}" variant="brand"
+                                                  iconName='utility:back'/> &nbsp; &nbsp; &nbsp;
+                                <lightning:button label="Next" disabled="{!v.endPage >= v.totalRecords}" 
+                                                  onclick="{!c.next}" variant="brand"
+                                                  iconName='utility:forward' iconPosition='right'/>
+                            </lightning:buttonGroup>  
+                        </div>
+                    </div>
+                </div>
+            </aura:if>
+            <div class="slds-grid slds-text-longform" style="margin-top : 15px; font-size:14px;">
+                <div class="slds-size_3-of-4">
+                    <p>Default System Forecasting Values:</p>
+                    <p>
+                        <ul>
+                            <li>New Account TPV Forecast = Opportunity Ramp Values based of sales estimated monthly TPV (eTPV)
+                                <ul>
+                                    <li>Please go to parent opportunities to confirm or modify the ramp values</li>
+                                </ul>
+                            </li>
+                            <li>Existing Account TPV Forecast = Organic TPV based on last 3 months + Opportunities Ramp (Cross Selling)</li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="slds-size_1-of-4">
+                    <p>Color Code:</p>
+                    <p>
+                        <ul>
+                            <li>Normal: Values pending to be updated / available to edit before planning period</li>
+                            <li><span style="color : #ABEA7C">Green</span>: Values are committed within planning period</li>
+                            <li><span style="color : #F2E34C">Yellow</span>: Already passed related planning period but not committed</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="hd-body-divider">
+                <div class="slds-col slds-size_1-of-1" aura:id="div-grp-edit2">
+                    <lightning:button  variant="base" label="Edit" title="Edit" 
+                                      class="slds-button slds-button_brand" onclick="{!c.handleEdit}"/>
+                    <aura:if isTrue="{!v.currDatePeriod}">
+                        <lightning:button  variant="base" label="Commit This Month TPV" title="Commit This Month TPV" 
+                                      class="slds-button slds-button_success" onclick="{!c.handleCommit}"/>
+                    </aura:if>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-hide" aura:id="div-grp-save2">
+                    <lightning:button  variant="base" label="Cancel" title="Cancel" 
+                                      class="slds-button slds-button_neutral" onclick="{!c.handleCancel}"/>
+                    <lightning:button  variant="base" label="Save" title="Save"
+                                      class="slds-button slds-button_brand" onclick="{!c.save}" />
+                </div>
+            </div>
+            <div class="title-body-divider">
+                <div class="slds-col slds-size_1-of-1" style="font-size : 16px;">
+                    <span><b>3. New Opportunities &amp; Products -&nbsp;</b>To enable more accounts or products please create new opportunities or accounts associated with current account</span>
+                    <br/><br/>
+                    <span class="title-definition-style" style="color : black">If you have any questions about forecasting engine, please feel free to reach growth analytics team via sales ops channel.
+                    </span>
+                </div>
+            </div>
+            <div class="hd-body-divider" id="modal-content-1a">
+                <br/>
+                <span id="history-notes" class="defaultFont"><b>Change Log</b></span>
+                <br/>
+                <span id="history-notes" class="defaultFont" style="font-size : 11px !important;"><aura:unescapedHtml value="{!v.strHistory}" /></span>
+            </div>
+        </div>
+        <aura:set attribute="else">
+            <div class="slds-modal__content slds-p-around--medium slds-align_absolute-center" id="modal-content-2">
+                <h2 id="table-notes" class="slds-text-color_error">Forecasting Engine only available for XP Master and Regular Accounts.</h2>
+            </div>
+        </aura:set>
+    </aura:if>
+    
+
+</aura:component>

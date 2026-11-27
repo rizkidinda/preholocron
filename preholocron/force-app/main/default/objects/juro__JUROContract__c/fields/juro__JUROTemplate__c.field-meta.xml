@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__JUROTemplate__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>JURO Template</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1 AND ((2 AND 3 AND 4) OR 5) AND 6</booleanFilter>
+        <filterItems>
+            <field>juro__JUROTemplate__c.juro__Status__c</field>
+            <operation>equals</operation>
+            <value>published</value>
+        </filterItems>
+        <filterItems>
+            <field>juro__JUROTemplate__c.juro__FailedDataItemCount__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filterItems>
+        <filterItems>
+            <field>juro__JUROTemplate__c.juro__FailedSignerCount__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filterItems>
+        <filterItems>
+            <field>juro__JUROTemplate__c.juro__StrictValidation__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>juro__JUROTemplate__c.juro__StrictValidation__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </filterItems>
+        <filterItems>
+            <field>juro__JUROTemplate__c.juro__MappedDataItemCount__c</field>
+            <operation>notEqual</operation>
+            <value>0</value>
+        </filterItems>
+        <infoMessage>Select one of published templates</infoMessage>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>juro__JUROTemplate__c</referenceTo>
+    <relationshipLabel>Contracts</relationshipLabel>
+    <relationshipName>JURO_Contracts</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

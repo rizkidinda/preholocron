@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Acquisition Type --></label>
+    <name>Heeet__Acquisition_Type__c</name>
+    <picklistValues>
+        <masterLabel>Post Acquisition</masterLabel>
+        <translation><!-- Post Acquisition --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pre Acquisition</masterLabel>
+        <translation><!-- Pre Acquisition --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

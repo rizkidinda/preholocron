@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Insurance_Content_Syndication_Qn4__c</fullName>
+    <description>When will you be looking to review or upgrade your online payment gateway?</description>
+    <inlineHelpText>When will you be looking to review or upgrade your online payment gateway?</inlineHelpText>
+    <label>Insurance Content Syndication Qn4</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Insurance_Content_Syndication_Qn4</valueSetName>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company</fullName>
+    <inlineHelpText>Refers to the legal entity name of the merchant eg. PT. Adidas</inlineHelpText>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Estimated basket size selected by the customer during signup --></help>
+    <label><!-- Expected Transaction Volume --></label>
+    <name>Expected_Transaction_Volume__c</name>
+</CustomFieldTranslation>

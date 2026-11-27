@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Unlock_Opportunity_Approval</name>
+        <label>Unlock Opportunity Approval</label>
+        <locationX>644</locationX>
+        <locationY>350</locationY>
+        <actionName>OpportunityRecalledAction</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Check_Record_Type</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>listOpptyAppID</name>
+            <value>
+                <elementReference>Get_Opportunity_Approval.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>OpportunityRecalledAction</nameSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Set_Approval_Required</name>
+        <label>Set Approval Required</label>
+        <locationX>50</locationX>
+        <locationY>674</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Opportunity.Pricing_Approval__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Approval Required</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_FX</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_FinOps_Approval</name>
+        <label>Set FinOps Approval</label>
+        <locationX>578</locationX>
+        <locationY>674</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Opportunity.Fin_Opp_Approval__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Approval Required</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opportunity</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_FinOps_not_approval_required</name>
+        <label>Set FinOps not approval required</label>
+        <locationX>842</locationX>
+        <locationY>674</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Opportunity.Fin_Opp_Approval__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>No approval required</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opportunity</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_FX_approval_required</name>
+        <label>Set FX approval required</label>
+        <locationX>50</locationX>
+        <locationY>974</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Opportunity.FX_Product_Approval__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Approval Required</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opportunity</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_FX_not_approval_required</name>
+        <label>Set FX not approval required</label>
+        <locationX>314</locationX>
+        <locationY>974</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Opportunity.FX_Product_Approval__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>No approval required</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Opportunity</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Not_approval_required</name>
+        <label>Set Not approval required</label>
+        <locationX>314</locationX>
+        <locationY>674</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Opportunity.Pricing_Approval__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>No approval required</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_FX</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_finOps_Approval</name>
+        <label>Check finOps Approval</label>
+        <locationX>710</locationX>
+        <locationY>566</locationY>
+        <defaultConnector>
+            <targetReference>Set_FinOps_not_approval_required</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_FinOps</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Fin_Opp_Approval__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>No approval required</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_FinOps_Approval</targetReference>
+            </connector>
+            <label>Is FinOps</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_FX</name>
+        <label>Check FX</label>
+        <locationX>182</locationX>
+        <locationY>866</locationY>
+        <defaultConnector>
+            <targetReference>Set_FX_not_approval_required</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_FX_Product</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.FX_Product_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approval Required</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity.FX_Product_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Submitted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity.FX_Product_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity.FX_Product_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reject</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_FX_approval_required</targetReference>
+            </connector>
+            <label>Is FX Product</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Pricing_Approval</name>
+        <label>Check Pricing Approval</label>
+        <locationX>182</locationX>
+        <locationY>566</locationY>
+        <defaultConnector>
+            <targetReference>Set_Not_approval_required</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Pricing</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Pricing_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approval Required</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Pricing_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Submitted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Pricing_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Pricing_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reject</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Approval_Required</targetReference>
+            </connector>
+            <label>Is Pricing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Record_Type</name>
+        <label>Check Record Type</label>
+        <locationX>644</locationX>
+        <locationY>458</locationY>
+        <defaultConnector>
+            <targetReference>Update_Opportunity</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>RT_Is_Pricing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Approval.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pricing Approval</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Pricing_Approval</targetReference>
+            </connector>
+            <label>RT Is Pricing</label>
+        </rules>
+        <rules>
+            <name>RT_is_Fin_Ops</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Approval.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Fin Ops Approval</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_finOps_Approval</targetReference>
+            </connector>
+            <label>RT is Fin Ops</label>
+        </rules>
+    </decisions>
+    <description>Unlock record before update to recalled</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>OwnerOppId</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!Get_Opportunity_Approval.Opportunity__r.OwnerId},15)</expression>
+    </formulas>
+    <interviewLabel>Recalled oppty approval {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Recalled oppty approval</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Opportunity</name>
+        <label>Get Opportunity</label>
+        <locationX>644</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Unlock_Opportunity_Approval</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity_Approval.Opportunity__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Opportunity_Approval</name>
+        <label>Get Opportunity Approval</label>
+        <locationX>644</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity_Approval__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Opportunity</name>
+        <label>Update Opportunity</label>
+        <locationX>644</locationX>
+        <locationY>1250</locationY>
+        <connector>
+            <targetReference>sc_success</targetReference>
+        </connector>
+        <inputReference>Get_Opportunity</inputReference>
+    </recordUpdates>
+    <screens>
+        <name>sc_success</name>
+        <label>sc_success</label>
+        <locationX>644</locationX>
+        <locationY>1358</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>lb_success</name>
+            <fieldText>&lt;p&gt;The {!Get_Opportunity_Approval.RecordType.Name} {!Get_Opportunity_Approval.Name} is recalled.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>518</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Opportunity_Approval</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

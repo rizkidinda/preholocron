@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Required_for_Solution_PIC</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISBLANK(Solution_PIC__c)),
+ISBLANK(Opportunity__c)
+)</errorConditionFormula>
+    <errorMessage>Opportunity is mandatory when Solution PIC is assigned.</errorMessage>
+</ValidationRule>

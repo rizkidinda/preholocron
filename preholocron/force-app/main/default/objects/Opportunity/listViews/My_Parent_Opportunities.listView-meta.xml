@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Parent_Opportunities</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Weekly_Update__c</columns>
+    <columns>Weekly_Update_Status__c</columns>
+    <columns>Xst_Txn_Act_Date__c</columns>
+    <columns>Addressable_Merchant_Revenue_Annual__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Parent_Opportunity</value>
+    </filters>
+    <label>My Parent Opportunities</label>
+</ListView>

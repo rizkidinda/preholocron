@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rejecter_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>Rejecter__r.FirstName + IF(ISBLANK( Rejecter__r.MiddleName ), &quot;&quot;, &quot; &quot;) + BLANKVALUE(Rejecter__r.MiddleName, &quot;&quot;) + IF(ISBLANK( Rejecter__r.LastName ), &quot;&quot;, &quot; &quot;) + BLANKVALUE(Rejecter__r.LastName,&quot;&quot;)</formula>
+    <label>Rejecter Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

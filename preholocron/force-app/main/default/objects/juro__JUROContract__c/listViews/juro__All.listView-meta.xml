@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__All</fullName>
+    <columns>NAME</columns>
+    <columns>juro__ContractTeamName__c</columns>
+    <columns>juro__ContractURL__c</columns>
+    <columns>juro__Account__c</columns>
+    <columns>juro__Opportunity__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>juro__StatusFormatted__c</columns>
+    <columns>juro__IntegrationStatus__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

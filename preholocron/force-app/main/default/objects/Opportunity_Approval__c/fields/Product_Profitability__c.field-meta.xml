@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Profitability__c</fullName>
+    <label>Product Profitability</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Break Even</fullName>
+                <default>false</default>
+                <label>Break Even</label>
+            </value>
+            <value>
+                <fullName>Loss Making</fullName>
+                <default>false</default>
+                <label>Loss Making</label>
+            </value>
+            <value>
+                <fullName>Profitable</fullName>
+                <default>false</default>
+                <label>Profitable</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

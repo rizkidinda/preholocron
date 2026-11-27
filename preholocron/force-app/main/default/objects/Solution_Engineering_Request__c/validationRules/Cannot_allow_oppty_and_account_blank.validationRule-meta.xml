@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_allow_oppty_and_account_blank</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  ISBLANK( Opportunity__c),
+  ISBLANK( Account__c )
+)</errorConditionFormula>
+    <errorMessage>Opportunity or Account must be filled in. Please select at least one.</errorMessage>
+</ValidationRule>

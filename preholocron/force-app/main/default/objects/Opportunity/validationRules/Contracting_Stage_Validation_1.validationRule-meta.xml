@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contracting_Stage_Validation_1</fullName>
+    <active>true</active>
+    <errorConditionFormula>If( 
+   AND( 
+       RecordType.Name  = &apos;Parent Opportunity&apos;,
+       $User.Bypass_VR__c = FALSE,
+       $Profile.Name!=&apos;Xendit API Profile&apos;,
+       $Profile.Name!=&apos;System Administrator&apos;,
+       ISPICKVAL(StageName,&apos;Contracting&apos;),
+       OR(ISNEW(), ISCHANGED(StageName)),
+       OR(
+          ISBLANK ( Pains_Priorities_and_Needs__c ),
+          ISBLANK( TEXT(Has_Competitor__c) ),
+          AND(
+			TEXT(Has_Competitor__c) = &apos;Yes&apos;,
+			ISBLANK( Primary_Competitor__c )
+		  ),
+		  OR (
+          No_of_Contact_Roles__c &lt; 1,
+          ISBLANK( No_of_Contact_Roles__c ), 
+          LEN(Sales_Goals_Plan__c)=0,
+          ISPICKVAl(Standard_Financial_Terms__c,&apos;&apos;),
+          LEN(Account.Customer_Folder_URL__c)=0,
+          AND(NOT(ISPICKVAL(Type,&quot;Upsell&quot;)),LEN( Customer_Signed_Contract_URL__c)=0) 
+         )
+       )
+      ), true,false)</errorConditionFormula>
+    <errorMessage>To set stage as Contracting, make sure all fields in Discovery/Evaluation/Contracting Stage sections are filled ; there is at least one product linked to opportunity and at least 1 Contact Role has been added to the Opportunity.</errorMessage>
+</ValidationRule>

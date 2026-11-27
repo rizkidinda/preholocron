@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Is Bottom 5 L30D TPV --></label>
+    <name>is_btm5_L30D_growth_ultiparent_of_owner__c</name>
+</CustomFieldTranslation>

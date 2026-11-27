@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Field path in SOQL format --></help>
+    <label><!-- SF Path Counterparty Caption --></label>
+    <name>juro__SFPathCounterpartyCaption__c</name>
+</CustomFieldTranslation>

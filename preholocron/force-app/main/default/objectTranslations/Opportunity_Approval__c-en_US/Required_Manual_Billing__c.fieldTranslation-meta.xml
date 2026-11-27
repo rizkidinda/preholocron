@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Please select Yes if it requires manual billing --></help>
+    <label><!-- Required Manual Billing? --></label>
+    <name>Required_Manual_Billing__c</name>
+</CustomFieldTranslation>

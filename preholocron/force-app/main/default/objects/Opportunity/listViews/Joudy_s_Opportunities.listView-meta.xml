@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Joudy_s_Opportunities</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Weekly_Update_Status__c</columns>
+    <columns>Weekly_Update__c</columns>
+    <columns>Xst_Txn_Act_Date__c</columns>
+    <columns>Addressable_Merchant_Revenue_Monthly__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Parent_Opportunity</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.FULL_NAME</field>
+        <operation>contains</operation>
+        <value>Joudy Parera</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Closed Lost</value>
+    </filters>
+    <label>Joudy&apos;s Opportunities</label>
+    <sharedTo>
+        <group>ID_IS_Group</group>
+    </sharedTo>
+</ListView>

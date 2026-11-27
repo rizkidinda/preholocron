@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BD_Prospecting_Stage_Prevent_Update_100P</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+   $User.Bypass_VR__c = FALSE,
+   $Profile.Name != &apos;Xendit Sales Ops Profile&apos;,
+   $Profile.Name != &apos;Xendit API Profile&apos;,
+   $Profile.Name != &apos;System Administrator&apos;,
+   NOT(ISNEW()),
+   AND(
+       ISCHANGED( BD_Prospecting_Stage__c ),
+       !ISBLANK(TEXT(BD_Prospecting_Stage__c)),
+       NOT(ISPICKVAL(BD_Prospecting_Stage__c,&quot;100%&quot;)),
+       ISPICKVAL(PRIORVALUE(BD_Prospecting_Stage__c),&quot;100%&quot;)
+   )
+)</errorConditionFormula>
+    <errorDisplayField>BD_Prospecting_Stage__c</errorDisplayField>
+    <errorMessage>You cannot update BD Prospecting Stage once value is 100%</errorMessage>
+</ValidationRule>

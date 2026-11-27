@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Pending Verification/Data_PROVIDED date --></label>
+    <name>Pending_Verification_Data_PROVIDED_date__c</name>
+</CustomFieldTranslation>

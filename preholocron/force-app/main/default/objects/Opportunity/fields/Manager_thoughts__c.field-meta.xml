@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manager_thoughts__c</fullName>
+    <inlineHelpText>For sales manager, VP sales, sales ops to comment on deal. Can only be populated by sales managers, sales ops profile.</inlineHelpText>
+    <label>Manager thoughts</label>
+    <length>50000</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

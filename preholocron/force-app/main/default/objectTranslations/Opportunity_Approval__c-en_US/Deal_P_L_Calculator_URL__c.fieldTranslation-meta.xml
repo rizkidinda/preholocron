@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Deal P&amp;L Calculator URL --></label>
+    <name>Deal_P_L_Calculator_URL__c</name>
+</CustomFieldTranslation>

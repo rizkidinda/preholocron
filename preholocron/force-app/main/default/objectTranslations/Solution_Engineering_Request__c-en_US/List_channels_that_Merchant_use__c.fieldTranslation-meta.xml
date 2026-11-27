@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Please provide the channels they currently using us for (i.e. Money-in, Money-out)? --></help>
+    <label><!-- List channels that Merchant use --></label>
+    <name>List_channels_that_Merchant_use__c</name>
+</CustomFieldTranslation>

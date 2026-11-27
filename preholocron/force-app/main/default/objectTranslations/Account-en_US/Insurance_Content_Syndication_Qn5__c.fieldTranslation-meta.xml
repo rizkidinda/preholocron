@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Insurance Content Syndication Qn5 --></label>
+    <name>Insurance_Content_Syndication_Qn5__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ultimate_Response_Goal__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Target number of responses defined at the beginning of first underlying program. Cannot be more than IQL</inlineHelpText>
+    <label>Ultimate Response Goal</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

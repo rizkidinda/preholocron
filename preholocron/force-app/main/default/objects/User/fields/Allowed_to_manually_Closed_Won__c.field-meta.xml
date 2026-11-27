@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allowed_to_manually_Closed_Won__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This checkbox will bypass the CW validation rule and allow the user to manually CW the opportunity</description>
+    <inlineHelpText>This checkbox will bypass the CW validation rule and allow the user to manually CW the opportunity</inlineHelpText>
+    <label>Allowed to manually Closed Won</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

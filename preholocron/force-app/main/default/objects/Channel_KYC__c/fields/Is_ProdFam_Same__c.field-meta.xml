@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_ProdFam_Same__c</fullName>
+    <formula>TEXT(Product__r.Family) =  Product_Family__c</formula>
+    <label>Is ProdFam Same</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,67 @@
+.THIS .defaultFont{
+    font-size : 14px !important;
+    font-weight : 400 !important;
+    word-break: break-word;
+}
+
+.THIS .hd-body-divider{
+    margin-top: 20px !important;
+    margin-bottom: 7px !important;
+}
+
+.THIS .title-body-divider{
+    margin-top: 30px !important;
+    margin-bottom: 7px !important;
+}
+
+.THIS .title-definition-style{
+    color : darkgrey; 
+    font-size : 14px;
+    font-style: italic;
+}
+
+.THIS .overflowTable{
+    width:100%; 
+    zoom: 85%;
+    overflow-x: scroll !important; 
+    display : inline-block;
+}
+
+.THIS .monthWidth{
+    min-width: 12vw !important;
+    word-wrap:break-word;
+    word-break:break-word;
+}
+
+.THIS .monthWidthTitle{
+    min-width: 25vw !important;
+    max-width: 25vw !important;
+    word-wrap:break-word;
+}
+
+.THIS .changeValue input{
+    background-color:#B2D7DA;
+}
+
+.THIS .commitedValue input{
+    background-color:#ABEA7C;
+}
+
+.THIS .subTitle{
+    font-weight: 700 !important;
+    background-color: rgb(243, 243, 243) !important;
+    color: rgb(68, 68, 68) !important;
+    font-size: 0.75rem !important;
+}
+
+.THIS .inputAccCls input{
+    
+}
+
+.THIS .bgGrey{
+    background-color : #F5F5F5;
+}
+
+.THIS .rightInput input { 
+    text-align: right;
+}

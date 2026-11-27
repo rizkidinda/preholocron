@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- in Year TPV - refers to the estimated TPV in the remaining time period (from first transaction date to 31 Dec) within the current year that potentially can be generated from the merchant by closing the deal. &quot;Addressable Merchant TPV - Monthly* Ramp * remaining months in the year --></help>
+    <label><!-- Addressable iY TPV --></label>
+    <name>Addressable_iY_TPV__c</name>
+</CustomFieldTranslation>

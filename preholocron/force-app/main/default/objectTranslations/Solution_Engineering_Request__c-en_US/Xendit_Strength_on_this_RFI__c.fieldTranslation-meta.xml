@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- What are our strength in participating for this RFP/RFI? --></help>
+    <label><!-- Xendit Strength on this RFI --></label>
+    <name>Xendit_Strength_on_this_RFI__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Which entity will be used to contract with the merchant (i.e. PT Sinar, XRS, XRP and etc.)? --></help>
+    <label><!-- Xendit Entity on contract --></label>
+    <name>Xendit_Entity_on_contract__c</name>
+</CustomFieldTranslation>

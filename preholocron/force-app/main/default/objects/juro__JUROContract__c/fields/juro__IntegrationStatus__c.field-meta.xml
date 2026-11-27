@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>juro__IntegrationStatus__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF(AND(ISBLANK(juro__JUROIntegrationContract__r.juro__JuroStatus__c),(ISBLANK(juro__JUROIntegrationContract__r.juro__ErrorMessage__c))), &quot;&quot;, IF((ISBLANK(juro__JUROIntegrationContract__r.juro__ErrorMessage__c)), IMAGE(&quot;/changemgmt/img/checkgreen.png&quot;, &quot;green&quot;),
+IMAGE(&quot;/changemgmt/img/closered.png&quot;, &quot;red&quot;)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Integration Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

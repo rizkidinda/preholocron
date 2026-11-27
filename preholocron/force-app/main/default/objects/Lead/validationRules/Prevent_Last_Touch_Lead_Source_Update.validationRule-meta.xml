@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Last_Touch_Lead_Source_Update</fullName>
+    <active>true</active>
+    <description>VR to block user from updating the First Touch Lead Source values if it has a value already.</description>
+    <errorConditionFormula>AND(
+$User.Bypass_VR__c = FALSE,
+$Profile.Name != &quot;Xendit API Profile&quot;,
+$Profile.Name != &quot;Analytics Cloud Integration User&quot;,	
+$Profile.Name != &quot;Analytics Cloud Security User&quot;,
+$Profile.Name != &quot;B2BMA Integration User&quot;,
+$Profile.Name != &quot;System Administrator&quot;,
+OR(
+ISNEW(),
+ISCHANGED( Last_Touch_Lead_source__c  )
+),
+OR(
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;direct&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;google organic&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;google cpc&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;google display&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;linkedin social&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;linkedin paid&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;facebook social&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;facebook paid&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;youtube organic&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;youtube paid&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;pardot email&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;clevertap email&quot;,
+LOWER(TEXT(Last_Touch_Lead_source__c)) =&quot;clevertap whatsapp&quot;
+)
+)</errorConditionFormula>
+    <errorDisplayField>Last_Touch_Lead_source__c</errorDisplayField>
+    <errorMessage>You are not allowed to update Last Touch Lead Source</errorMessage>
+</ValidationRule>

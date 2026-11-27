@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Specific_merchant_teams_impacted__c</fullName>
+    <inlineHelpText>Which merchant&apos;s teams / individuals are impacted?</inlineHelpText>
+    <label>Specific User impacted</label>
+    <length>50000</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- supporting sales / AM pic on the account. Usually for only large enterprise deals, country expansions or regional deals --></help>
+    <label><!-- Secondary Account Owner --></label>
+    <name>Secondary_Account_Owner__c</name>
+    <relationshipLabel><!-- Accounts (Secondary Account Owner) --></relationshipLabel>
+</CustomFieldTranslation>

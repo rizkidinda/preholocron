@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Transaction_Date__c</fullName>
+    <description>The last transaction date/time of the merchant, regardless of channel
+
+Master Logic: IF master acc THEN use (max. latest transaction date)</description>
+    <inlineHelpText>The last transaction date/time of the merchant, regardless of channel
+
+Master Logic: IF master acc THEN use (max. latest transaction date)</inlineHelpText>
+    <label>Last Transaction Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

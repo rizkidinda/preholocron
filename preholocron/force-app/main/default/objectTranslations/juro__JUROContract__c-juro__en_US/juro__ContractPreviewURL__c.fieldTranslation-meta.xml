@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This link opens a read-only version of the contract for review. You don’t need a Juro login. --></help>
+    <label><!-- Draft Link --></label>
+    <name>juro__ContractPreviewURL__c</name>
+</CustomFieldTranslation>

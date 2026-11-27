@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomNotificationType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customNotifTypeName>Channel KYC Passed</customNotifTypeName>
+    <description>if Channel KYC status inserted as PASSED / LIVE, or status updated as PASSED , send Slack notification to account owner</description>
+    <desktop>false</desktop>
+    <masterLabel>Channel KYC Passed</masterLabel>
+    <mobile>false</mobile>
+    <slack>true</slack>
+</CustomNotificationType>

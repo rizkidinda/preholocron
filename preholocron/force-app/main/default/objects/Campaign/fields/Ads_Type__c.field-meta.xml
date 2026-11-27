@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ads_Type__c</fullName>
+    <label>Ads Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Natural Search</fullName>
+                <default>false</default>
+                <label>Natural Search</label>
+            </value>
+            <value>
+                <fullName>Paid Search Marketing</fullName>
+                <default>false</default>
+                <label>Paid Search Marketing</label>
+            </value>
+            <value>
+                <fullName>Display Ads</fullName>
+                <default>false</default>
+                <label>Display Ads</label>
+            </value>
+            <value>
+                <fullName>Social Media Ads</fullName>
+                <default>false</default>
+                <label>Social Media Ads</label>
+            </value>
+            <value>
+                <fullName>Retargeting PPC Ads</fullName>
+                <default>false</default>
+                <label>Retargeting PPC Ads</label>
+            </value>
+            <value>
+                <fullName>Price Comparison Website Ads</fullName>
+                <default>false</default>
+                <label>Price Comparison Website Ads</label>
+            </value>
+            <value>
+                <fullName>Affiliate marketing</fullName>
+                <default>false</default>
+                <label>Affiliate marketing</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

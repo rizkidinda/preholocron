@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Audience(s) --></label>
+    <name>Heeet__Audience_s__c</name>
+    <picklistValues>
+        <masterLabel>Facebook Ads - Exclusion List</masterLabel>
+        <translation><!-- Facebook Ads - Exclusion List --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Facebook Ads - Lookalike</masterLabel>
+        <translation><!-- Facebook Ads - Lookalike --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Facebook Ads - Retargeting</masterLabel>
+        <translation><!-- Facebook Ads - Retargeting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Facebook Ads - Upsell</masterLabel>
+        <translation><!-- Facebook Ads - Upsell --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Ads - Exclusion List</masterLabel>
+        <translation><!-- Google Ads - Exclusion List --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Ads - Lookalike</masterLabel>
+        <translation><!-- Google Ads - Lookalike --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Ads - Retargeting</masterLabel>
+        <translation><!-- Google Ads - Retargeting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Ads - Upsell</masterLabel>
+        <translation><!-- Google Ads - Upsell --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Linkedin Ads - Exclusion List</masterLabel>
+        <translation><!-- Linkedin Ads - Exclusion List --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Linkedin Ads - Lookalike</masterLabel>
+        <translation><!-- Linkedin Ads - Lookalike --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Linkedin Ads - Retargeting</masterLabel>
+        <translation><!-- Linkedin Ads - Retargeting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Linkedin Ads - Upsell</masterLabel>
+        <translation><!-- Linkedin Ads - Upsell --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

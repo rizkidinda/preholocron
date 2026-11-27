@@ -1,0 +1,10 @@
+.THIS .overflowTable{
+    width:100%; 
+    overflow-x: scroll !important; 
+    display : inline-block;
+}
+
+.THIS .selectOption{
+    display:inline-block !important;
+    width: 100%;
+}

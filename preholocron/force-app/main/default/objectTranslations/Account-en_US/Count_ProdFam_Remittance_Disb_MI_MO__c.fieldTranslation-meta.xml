@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Count ProdFam Remittance Disb (MI+MO) --></label>
+    <name>Count_ProdFam_Remittance_Disb_MI_MO__c</name>
+</CustomFieldTranslation>

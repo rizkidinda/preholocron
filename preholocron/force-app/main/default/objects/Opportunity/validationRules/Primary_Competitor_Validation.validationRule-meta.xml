@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_Competitor_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(
+AND(
+     RecordType.Name = &apos;Parent Opportunity&apos;,
+     $User.Bypass_VR__c = FALSE,
+     $Profile.Name!=&apos;Xendit API Profile&apos;,
+     NOT(ISBLANK(Primary_Competitor__c)),
+     OR(
+        ISBLANK( Primary_Competitor_Product__c ),
+        ISBLANK( Primary_Competitor_Differentiators__c ),
+        ISBLANK( Other_Competitor_Description__c ),
+        ISBLANK(TEXT( Is_Current_Provider__c ))
+
+     )
+)
+,TRUE,FALSE
+)</errorConditionFormula>
+    <errorMessage>To set Primary Competitor, make sure all related competitor fields in Discovery Stage sections are filled</errorMessage>
+</ValidationRule>

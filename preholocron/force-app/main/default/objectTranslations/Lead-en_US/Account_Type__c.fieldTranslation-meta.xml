@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Account Type --></label>
+    <name>Account_Type__c</name>
+    <picklistValues>
+        <masterLabel>Group</masterLabel>
+        <translation><!-- Group --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New</masterLabel>
+        <translation><!-- New --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Regular</masterLabel>
+        <translation><!-- Regular --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>XP Master</masterLabel>
+        <translation><!-- XP Master --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>XP Sub (Managed)</masterLabel>
+        <translation><!-- XP Sub (Managed) --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

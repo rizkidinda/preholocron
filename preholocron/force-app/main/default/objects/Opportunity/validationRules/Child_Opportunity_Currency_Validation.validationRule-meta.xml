@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_Opportunity_Currency_Validation</fullName>
+    <active>true</active>
+    <description>When parent oppty is selected as local currency (non USD), the child oppty must use the same currency as parent</description>
+    <errorConditionFormula>AND(
+  $User.Bypass_VR__c = FALSE,
+ $Profile.Name != &quot;Xendit API Profile&quot;,
+ RecordType.Name = &quot;Child Opportunity&quot;,
+ AND(NOT(ISNULL(Parent_Opportunity__c)), Parent_Opportunity__c != &apos;null&apos;, NOT(ISBLANK(Parent_Opportunity__c))),
+ AND(NOT(ISBLANK(TEXT(Parent_Opportunity__r.CurrencyIsoCode))),NOT(ISPICKVAL(Parent_Opportunity__r.CurrencyIsoCode, &quot;USD&quot;))),
+ TEXT(CurrencyIsoCode) != TEXT(Parent_Opportunity__r.CurrencyIsoCode) 
+)</errorConditionFormula>
+    <errorDisplayField>CurrencyIsoCode</errorDisplayField>
+    <errorMessage>Please select the same currency as Parent Opportunity</errorMessage>
+</ValidationRule>

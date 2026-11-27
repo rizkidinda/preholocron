@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_Onboarding_Accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Business_Entity_Type__c</columns>
+    <columns>Business_ID__c</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Xendit_Account_Email__c</columns>
+    <columns>Risk_Category__c</columns>
+    <columns>KYC_Verification_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country_of_HQ__c</field>
+        <operation>equals</operation>
+        <value>Philippines</value>
+    </filters>
+    <label>PH Onboarding Accounts</label>
+</ListView>
