@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Influence_Category__c</fullName>
+    <label>Influence Category</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>true</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Channel Partnership</fullName>
+                <default>false</default>
+                <label>Channel Partnership</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

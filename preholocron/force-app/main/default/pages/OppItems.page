@@ -1,0 +1,1206 @@
+<apex:page docType="html-5.0" lightningStylesheets="true" controller="OppItemController" action="{!init}" id="pg" title="Opportunity - Add/Edit Products" >
+    <style>
+        .input_num {
+        	width:100px;
+        	text-align:right;
+        }
+        .tableheader, .tableheader div {
+        	white-space: normal;
+            vertical-align: top;
+        }
+        .width8Rem, .width8Rem div {
+            min-width:8rem;
+        }
+        .msgBox {
+        	width:400px;
+        	margin:10px auto;
+        	text-align:center;
+        	z-index: 500;
+        	position:fixed;
+        	left: calc((100%/2) - 200px);
+        	top: 150px;
+        }
+        .msgBox a, .msgBox a:hover, .msgBox a:active {
+        	color: white;
+        }
+        .msgBox div {
+        	padding: 10px;
+        }
+        .msgBox .close {
+            color:white:
+            font-weight:bold;
+            float:right;
+            margin:-5px 5px;
+            font-size:20px;
+        }
+        .notes {
+        	font-weight: bold;
+        }
+
+        .headerTitle {
+            display : inline-block;
+            vertical-align : middle;
+            height : 100% !important;
+            width : fit-content;
+            max-width : 80%;
+            white-space: break-spaces;
+        }
+
+        .displayNone {
+            display : none;
+        }
+
+        .tooltipIcon{
+            display : inline-block;
+            vertical-align : middle;
+            background-size : cover;
+            width : 15px;
+            margin-left : 2px;
+            background-image: url("/servlet/servlet.FileDownload?file=0150p000000RQou"); //to update
+        }   
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+    </style>
+    <apex:sectionHeader title="OPPORTUNITY - {!objOpp.Name}{!IF(objOpp.Account.Is_Reseller__c,' (Reseller Account)',' (Non-Reseller Account)')}"
+                        subtitle="Close Date: {!objOpp.CloseDate}, 
+                                  Amount:  {!objOpp.CurrencyIsoCode} {!oppAmount},  
+                                  Type : {!objOpp.Type}, 
+                                  Stage: {!objOpp.StageName},
+                                  Is Reseller : {!objOpp.Account.Is_Reseller__c} " />
+    <apex:form id="mainform" >
+    <apex:actionStatus id="loadingstatus">
+        <apex:facet name="start">
+            <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                &nbsp;
+            </div>
+            <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+                <div style="display: inline-block; background-color: #fff; opacity: 0.7; width: 125px;">
+                    <img src="/img/loading.gif" style="float: left; margin: 10px;" />
+                    <span style="display: inline-block;padding: 10px 0px;">Please Wait...</span>
+                </div>
+            </div>
+        </apex:facet>
+    </apex:actionStatus>
+    <apex:outputPanel id="panelErrorMsg">
+        <apex:outputText rendered="{!strErrorMsg != ''}" id="outputTextError">
+            <div id="msgError" style="border:1px solid red;" class="msgBox">
+                <div style="color:white;background-color:red;border-bottom:1px solid red;">
+                    <b>ERROR</b>
+                    <a class="close" href="#" style="" onclick="document.getElementById('msgError').style.display = 'none';">&times;</a>
+                </div>
+                <div style="background-color:white;" class="">
+                  {!strErrorMsg}
+                </div>
+            </div>
+        </apex:outputText>
+    </apex:outputPanel>
+    <apex:outputPanel id="panelSuccessMsg">
+        <apex:outputText rendered="{!strSuccessMsg != ''}" id="outputTextSuccess">
+            <div id="msgSuccess" style="border:1px solid green;" class="msgBox">
+                <div style="color:white;background-color:green;border-bottom:1px solid green;">
+                    <b>SUCCESS</b>
+                    <a class="close" href="#" style="" onclick="document.getElementById('msgSuccess').style.display = 'none';">&times;</a>
+                </div>
+                <div style="background-color:white;">
+                  {!strSuccessMsg}
+                </div>
+            </div>
+        </apex:outputText>
+    </apex:outputPanel>
+    <apex:pageBlock id="mainblock" >
+        <!-- HACK: Fake pbSection to inject the twistSection JS function -->
+        <apex:pageBlockSection title="Test" showHeader="true" rendered="false">
+            <apex:pageBlockSectionItem >
+                <apex:outputText value="Label" />
+                <apex:outputText value="Value" />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+        <apex:outputText escape="false" value="{!allHelptext}">
+        </apex:outputText>
+        <apex:outputText escape="false" rendered="{!IsParentLocked != ''}">
+            <div style="text-align:center; padding-bottom:10px;font-weight:bold;color:red;">
+                {!IsParentLocked}
+            </div>
+        </apex:outputText>
+        <apex:pageBlockButtons >
+            <apex:outputPanel id="panelBtn">
+                    <apex:commandButton value="Pricing Playbook" title="Click here to see pricing playbook" rendered="{!showType = showOPP && bolEditable}" id="btn-pricing-table" onclick="openPricingTableURL(event); return false;" />
+                    <apex:commandButton value="Edit Pricebook" rendered="{!oppProductCount = 0 && showType = showOPP && bolEditable}" id="btn-show-pricebook" action="{!showEditPricebook}" />
+                    <apex:commandButton value="Save Pricebook" rendered="{!showType = showPB && bolEditable}" id="btn-save-pricebook" action="{!savePricebook}" />
+                    <apex:commandButton value="Add Selected Products" rendered="{!showType = showPRD && bolEditable}" id="btn-add" action="{!addProducts}" reRender="mainform" status="loadingstatus" oncomplete="refreshAllCalcFields();"/>
+                    <apex:commandButton value="Cancel" rendered="{!showType = showPRD && bolEditable}" id="btn-cancel-add" action="{!hideProductList}" immediate="true" />
+                    <apex:commandButton value="Add Products" rendered="{!showType = showOPP && bolEditable}" id="btn-new-items" action="{!showProductList}" />
+                    <apex:commandButton value="Save" title="Save changes on opportunity products" rendered="{!showType = showOPP && bolEditable}" id="btn-save-items" action="{!saveProducts}" reRender="mainform" status="loadingstatus" oncomplete="refreshAllCalcFields();"/>
+                    <apex:commandButton value="Delete Selected" title="Delete selected opportunity products" rendered="{!showType = showOPP && oppProductCount > 0 && bolEditable}" id="btn-del-items" action="{!deleteProducts}" reRender="mainform" status="loadingstatus" oncomplete="refreshAllCalcFields();"/>
+                    <apex:commandButton value="Back to Opportunity" action="{!back}" immediate="true" />
+            </apex:outputPanel>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection rendered="{!showType = showPB}" columns="1" collapsible="false"  title="Please update Pricebook" >
+            <apex:inputField required="true" value="{!objOpp.Xendit_Price_Book__c}" />
+        </apex:pageBlockSection>
+        
+        <apex:outputPanel id="panelShowPRD">
+            <apex:pageBlockSection rendered="{!showType = showPRD}" columns="1" collapsible="false" id="productslist" title="Search Products" >    
+                <apex:variable value="{!0}" var="famCol" />
+                <apex:repeat value="{!ProductFamilySet}" var="Key" id="ratecardRepeat">
+                    <apex:pageBlockSection collapsible="true" title="{!Key}" id="pb" columns="1">
+                        <apex:pageBlockSectionItem id="ratepbsitem">
+                            <apex:outputpanel id="prodFamPanel">
+                                <apex:variable value="{!0}" var="famRow" />
+                                <apex:inputCheckbox id="selectAllFlag" onchange="updateSelectAllProductFlag({!famCol})"/>
+                                <apex:outputLabel value="Select All" style="color : rgb(3, 45, 96);font-size : 13px" for="selectAllFlag"/>
+                                <p>&nbsp;</p>
+                                <apex:pageBlockTable value="{!arrRateMap[Key]}" var="r" id="ratecardtable">
+                                    <apex:column title="{!r.Notes}">
+                                        <apex:inputCheckbox id="productFlag" value="{!r.isSelected}" rendered="{!r.isDisabled = false}" onchange="updateRatecardFlag({!famCol})"></apex:inputCheckbox>
+                                    </apex:column>
+                                    <apex:column value="{!r.P.Name}"/>
+                                    <apex:column value="{!r.R.Brand__c}"/>
+                                    <apex:column value="{!r.R.Description__c}"/>
+                                    <apex:column headerValue="Fixed Spread for Xendit rate (BPS)" value="{!r.R.Xendit_Rate_BPS__c}" rendered="{!Key == 'Remittance FX' || Key == 'Cross Border PG FX'}"/>
+                                    <apex:column headerValue="Rate per Txn" value="{!r.R.Rate_Per_Txn__c}" rendered="{!Key != 'Remittance FX' && Key != 'Cross Border PG FX'}"/>
+                                    <apex:column headerValue="Rate per Tpv" value="{!r.R.Rate_Per_TPV__c}" rendered="{!Key != 'Remittance FX' && Key != 'Cross Border PG FX'}"/>
+                                    
+                                    <apex:column headerValue="Remarks/Not selectable reason" style="width : 20%">
+                                        <apex:outputText value="{!r.Notes}" />
+                                        <apex:variable value="{!famRow + 1}" var="famRow" />
+                                    </apex:column>
+                                    
+                                </apex:pageBlockTable>
+                                <apex:inputHidden id="maxFamRow" value="{!productFamilyMap[Key]}" />
+                            </apex:outputpanel>
+                            
+                        </apex:pageBlockSectionItem>
+                        <script> twistSection(document.getElementById('{!$Component.pb}').childNodes[0].childNodes[0]) </script>
+                    </apex:pageBlockSection>
+                    <apex:variable value="{!famCol + 1}" var="famCol" />
+                </apex:repeat>
+            </apex:pageBlockSection>
+        </apex:outputPanel>
+                    
+                    
+        <apex:outputPanel id="panelShowOpp">
+            <apex:pageBlockSection rendered="{!showType = showOPP}" columns="1" collapsible="false" title="Opportunity Products" id="itemsection" >
+                <apex:variable value="{!0}" var="keyCol" />
+                <apex:repeat value="{!xOppProductFamilySet}" var="Key" id="productRepeat">
+                    <apex:pageBlockSection collapsible="true" title="{!Key}" id="pb2" columns="1">
+                        <apex:pageBlockSectionItem id="pbsitem">
+                            <apex:outputpanel >
+                                <apex:variable value="{!0}" var="fRow" />
+                                <apex:pageBlockTable value="{!arrOppProductsMap[Key]}" var="item" id="itemtable">
+                                    <apex:column >
+                                        <apex:inputCheckbox value="{!item.isSelected}"></apex:inputCheckbox>
+                                    </apex:column>
+                                    <apex:column headerValue="" headerClass="tableheader">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                            <table>
+                                                <tr style="height:80px !important; ">
+                                                    <td style="min-width: 100px !important; border:none !important;">
+                                                        <apex:outputText styleClass="headerTitle" value="Name"/>
+                                                        <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Product2.fields.Name.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Product2.fields.Name.InlineHelpText))}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width=100%; border:none !important;" >
+                                                        <apex:commandButton value="Apply All" id="btn-apply-all" onclick="applyAll({!keyCol})" onComplete="return false;"/>
+                                                    </td>
+                                                </tr>
+                                            </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputField value="{!item.P.Name}" />
+                                    </apex:column>
+                                        
+                                    <apex:column headerValue="" headerClass="tableheader" rendered="{!prodFamMap[Key].showFXProduct}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Brand"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputText value="{!item.XP.Rate_Card__r.Brand__c}" styleClass="" />
+                                    </apex:column>     
+                                        
+                                    <apex:column headerValue="" headerClass="tableheader" rendered="{!prodFamMap[Key].showDescription}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Description"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Rate_Card__c.fields.Description__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Rate_Card__c.fields.Description__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputField value="{!item.XP.Rate_Card__r.Description__c}" />
+                                    </apex:column>
+                                      <apex:column headerValue="" headerClass="tableheader" >
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Currency"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.CurrencyIsoCode.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.CurrencyIsoCode.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputField value="{!item.XP.CurrencyIsoCode}" rendered="{!NOT(prodFamMap[Key].showFXProduct)}"/>
+                                        <apex:outputField value="{!item.XP.Rate_Card__r.CurrencyIsoCode}" rendered="{!prodFamMap[Key].showFXProduct}"/>
+                                    </apex:column>  
+                                        
+                                    //------------------------TRIAL VAS Subscription
+                                     <apex:column headerClass="tableheader width8Rem" headerValue="">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Tier Structure"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Tier_Structure__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Tier_Structure__c.InlineHelpText))}"/>
+														</td>
+                                                    </tr>
+                                                    <tr>
+                                                       <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Tier_Structure__c}" id="tierStructure" />
+                                    </apex:column>
+                                   
+                                    //-----------------------VAS PRODUCT-----------------
+                                    <apex:column headerValue="" headerClass="tableheader" rendered="{!prodFamMap[Key].showVASProduct}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="No of API Calls"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.No_of_API_Calls__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.No_of_API_Calls__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allAPICall" value="{!prodFamMap[Key].applyAllVal.No_of_API_Calls__c}"/>
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.No_of_API_Calls__c}" styleClass="width:100%; text-align:right;" id="noOfAPICall" />
+                                    </apex:column>
+
+                                    <apex:column headerValue="" headerClass="tableheader" rendered="{!prodFamMap[Key].showVASProduct}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Rate per API Call"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Rate_per_API_Call__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Rate_per_API_Call__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allRateAPICall" value="{!prodFamMap[Key].applyAllVal.Rate_per_API_Call__c}"/>
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Rate_per_API_Call__c}" styleClass="width:100%; text-align:right;" id="rateAPICall" />
+                                    </apex:column>
+
+                                        
+                                    //-----------------------FX PRODUCT-----------------
+                                     
+                                    <apex:column headerValue="" headerClass="tableheader" rendered="{!prodFamMap[Key].showFXProduct}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Fixed Spread for Xendit rate (BPS)"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Xendit_Rate_BPS__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Xendit_Rate_BPS__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputText value="{!item.XP.Xendit_Rate_BPS__c}" style="width:100%; text-align:right;" />
+                                    </apex:column>
+                                        
+                                     <apex:column headerValue="" headerClass="tableheader" rendered="{!prodFamMap[Key].showFXProduct}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Rate to customer (BPS)"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Rate_to_customer_BPS__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Xendit_Rate_BPS__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allColRateToCust" value="{!prodFamMap[Key].applyAllVal.Rate_to_customer_BPS__c}"/>
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Rate_to_customer_BPS__c}" styleClass="width:100%; text-align:right;" onchange="refreshNotes({!keyCol},{!fRow})" id="rateToCust" />
+                                    </apex:column>
+
+                                   <apex:column headerValue="" headerClass="tableheader" rendered="{!prodFamMap[Key].showFXProduct}" >
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Margin (BPS)"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Margin_BPS__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Margin_BPS__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputText value="{!item.XP.Margin_BPS__c}" style="width:100%; text-align:right;"/>
+                                    </apex:column>     
+                                   
+                                        
+                                    <apex:column headerValue="" headerClass="tableheader" rendered="{!prodFamMap[Key].showFXProduct}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Expected Monthly Volume"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Expected_Monthly_Volume__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Expected_Monthly_Volume__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allMVol" value="{!prodFamMap[Key].applyAllVal.Expected_Monthly_Volume__c}"/>
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Expected_Monthly_Volume__c}" style="width=100%; !important; text-align:right;" id="monthlyVol"/>
+                                    </apex:column>
+                                        
+                                    <apex:column headerValue="" headerClass="tableheader" rendered="{!prodFamMap[Key].showProductLabel}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Product Label"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Product_Label__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Product_Label__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Product_Label__c}" styleClass="" />
+                                    </apex:column>
+                                        
+                                   
+                                    <apex:column headerValue="" headerClass="tableheader" styleClass="input_num" rendered="{!prodFamMap[Key].showProjectedCost}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Estimated Monthly COGS"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Projected_Cost__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Projected_Cost__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allProjectedCost" value="{!prodFamMap[Key].applyAllVal.Projected_Cost__c}" styleClass="input_num" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Projected_Cost__c}" id="projectedCost" styleClass="input_num" onchange="refreshNotes({!keyCol},{!fRow})" />
+                                    </apex:column>
+
+                                    <apex:column headerValue="" rendered="{!prodFamMap[Key].showColSubaccount}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="No. of Active Subaccount"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Number_Subaccount__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Number_Subaccount__c.InlineHelpText))}"/> 
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allColSubaccount" value="{!prodFamMap[Key].applyAllVal.Number_Subaccount__c}" styleClass="input_num"  />
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Number_Subaccount__c}" id="numberofsubaccount" styleClass="input_num" />
+                                    </apex:column>
+                                    <apex:column headerValue="" rendered="{!prodFamMap[Key].showColSubaccount}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Rate per Subaccount"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Rate_Per_Subaccount_Sell__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Rate_Per_Subaccount_Sell__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allRateSubaccount" value="{!prodFamMap[Key].applyAllVal.Rate_Per_Subaccount_Sell__c}" styleClass="input_num" />
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Rate_Per_Subaccount_Sell__c}" styleClass="input_num" id="subaccsell" onchange="refreshNotes({!keyCol},{!fRow})"  />
+                                        <apex:inputHidden value="{!item.XP.Rate_Per_Subaccount_List__c}" id="subacclist" />
+                                    </apex:column>
+
+
+                                    <!--
+                                    <apex:column headerValue="Rate per Subaccount (List)" rendered="{!showColSubaccount}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:outputField value="{!item.XP.Rate_Per_Subaccount_List__c}" />
+                                    </apex:column>
+                                    <apex:column headerValue="Revenue Subaccount (A)" rendered="{!showColSubaccount}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:outputText value="{!item.totalRevenueSubaccount}" style="font-weight:bold;" />
+                                    </apex:column>
+                                    -->
+                                    <apex:column headerValue="" rendered="{!prodFamMap[Key].showColFixedRate}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Fixed Rate"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Fixed_Rate_Sell__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Fixed_Rate_Sell__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allColFixedRate" value="{!prodFamMap[Key].applyAllVal.Fixed_Rate_Sell__c}" styleClass="input_num" />
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Fixed_Rate_Sell__c}" styleClass="input_num" id="fixedratesell" onchange="refreshNotes({!keyCol},{!fRow})" />
+                                        <apex:inputHidden value="{!item.XP.Fixed_Rate_List__c}" id="fixedratelist" />
+                                    </apex:column>
+                                    <!--
+                                    <apex:column headerValue="Fixed Rate (List)" rendered="{!showColFixedRate}" styleClass="input_num">
+                                        <apex:outputField value="{!item.XP.Fixed_Rate_List__c}" />
+                                    </apex:column>
+                                    -->
+                                    <apex:column headerValue="" rendered="{!prodFamMap[Key].showColTPV}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Estimated Monthly Channel Potential TPV"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.TPV__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.TPV__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allColTPV" value="{!prodFamMap[Key].applyAllVal.TPV__c}" styleClass="input_num" />
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.TPV__c}" id="estimatedtpv" styleClass="input_num" />
+                                    </apex:column>
+                                    <apex:column headerValue="" rendered="{!OR(prodFamMap[Key].showColTPVRate,prodFamMap[Key].hasRateCardCalc)}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                    <table>
+                                                        <tr style="height:80px !important">
+                                                            <td style="width : 100%; border:none !important;">
+                                                                <apex:outputText styleClass="headerTitle" value="Merchant Discount Rate (%)"/>
+                                                                <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Rate_Per_TPV_Sell__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Rate_Per_TPV_Sell__c.InlineHelpText))}"/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width=100%; border:none !important;" >
+                                                                <apex:inputField id="input_allColTPVRate" value="{!prodFamMap[Key].applyAllVal.Rate_Per_TPV_Sell__c}" styleClass="input_num" />
+                                                            </td>
+                                                        </tr>
+                                                    </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputHidden value="{!item.XP.Rate_Per_TPV_List__c}" id="ratetpvlist" />
+                                        <apex:inputField value="{!item.XP.Rate_Per_TPV_Sell__c}" styleClass="input_num" id="ratetpvsell" onchange="refreshNotes({!keyCol},{!fRow})" />
+                                    </apex:column>
+                                    <!-- <apex:column headerValue="" rendered="{!OR(prodFamMap[Key].showColTPVRate,prodFamMap[Key].hasRateCardCalc)}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                    <apex:outputText styleClass="headerTitle" value="Available Lowest Rate per TPV"/>
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputText value="{0, number, ###,##0.00%}" >
+                                            <apex:param value="{!item.availableLowestRatePerTPV}"/>
+                                        </apex:outputText>
+                                        <apex:inputHidden value="{!item.availableLowestRatePerTPV}" id="lowestratetpv" />
+                                        <apex:inputHidden value="{!prodFamMap[Key].showColTPVRate}" id="showColTPVRate" />
+                                    </apex:column> --> <!--temporary disabled-->
+                                    <!--
+                                    <apex:column headerValue="Rate per TPV (List)" rendered="{!showColTPVRate}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:outputField value="{!item.XP.Rate_Per_TPV_List__c}" />
+                                    </apex:column>
+                                    -->
+                                    <apex:column headerValue="" rendered="{!prodFamMap[Key].showColFXRate}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="FX Rate"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.FX_Rate__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.FX_Rate__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputText value="{!item.XP.FX_Rate__c}" />
+                                    </apex:column>
+                                    <!--
+                                    <apex:column headerValue="Revenue TPV" rendered="{!showColRevenueTPV}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:outputText value="{!item.totalRevenueTPV}" style="font-weight:bold;" />
+                                    </apex:column>
+                                    -->
+                                    <apex:column headerValue="" rendered="{!prodFamMap[Key].showColBucket}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Avg TPV Per Txn"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Basket_Size__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Basket_Size__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allColBucket" value="{!prodFamMap[Key].applyAllVal.Basket_Size__c}" styleClass="input_num" />
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Basket_Size__c}" id="inputbasketsize" styleClass="input_num" onchange="updateBasketSize({!keyCol},{!fRow})"/>
+                                        <apex:inputHidden value="{!item.calcThreshold}" id="calcThreshold" /> 
+                                        <apex:inputHidden value="{!item.calcSelectionType}" id="calcSelectionType" /> 
+                                        <apex:inputHidden value="{!item.selectedFieldForHigherThreshold}" id="selectedFieldForHigherThreshold" /> 
+                                        <apex:inputHidden value="{!item.rateCardAutoCalc}" id="rateCardAutoCalc" />
+                                    </apex:column>
+                                    <apex:column headerValue="" rendered="{!prodFamMap[Key].showColTransCount}" styleClass="input_num" headerClass="tableheader">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Estimated Monthly Transaction Count"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Transaction_Count__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Transaction_Count__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputText value="{!item.trxCount}" />
+                                    </apex:column>
+                                    <apex:column headerValue="" rendered="{!OR(prodFamMap[Key].showColTxnRate,prodFamMap[Key].hasRateCardCalc)}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Rate per Txn"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Rate_Per_Txn_Sell__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Rate_Per_Txn_Sell__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allColTxnRate" value="{!prodFamMap[Key].applyAllVal.Rate_Per_Txn_Sell__c}" styleClass="input_num" />
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Rate_Per_Txn_Sell__c}" id="ratetxnsell" styleClass="input_num" onchange="refreshNotes({!keyCol},{!fRow})"  />
+                                        <apex:inputHidden value="{!item.XP.Rate_Per_Txn_List__c}" id="ratetxnlist" />
+                                        <apex:inputHidden value="{!item.availableLowestRatePerTxn}" id="lowestratetxn" />
+                                        <apex:inputHidden value="{!prodFamMap[Key].showColTxnRate}" id="showColTxnRate" />
+                                    </apex:column>
+                                    <!-- <apex:column headerValue="" rendered="{!OR(prodFamMap[Key].showColTxnRate,prodFamMap[Key].hasRateCardCalc)}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                    <apex:outputText styleClass="headerTitle" value="Available Lowest Rate per Txn"/>
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputText value="{0, number, ###,##0.00}" >
+                                            <apex:param value="{!item.availableLowestRatePerTxn}"/>
+                                        </apex:outputText>
+                                    </apex:column> --> <!--temporary disabled-->
+                                    <!--
+                                    <apex:column headerValue="Rate per Txn (List)" rendered="{!showColTxnRate}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:outputField value="{!item.XP.Rate_Per_Txn_List__c}" />
+                                    </apex:column>
+                                    -->
+                                    <!--
+                                    <apex:column headerValue="Revenue Txn" rendered="{!showColRevenueTxn}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:outputText value="{!item.totalRevenueTxn}" style="font-weight:bold;" />
+                                    </apex:column>
+                                    -->
+                                    <apex:column headerValue="" rendered="{!prodFamMap[Key].showColEvent}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Event Count / API Hit"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Event_Count__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Event_Count__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allColEvent" value="{!prodFamMap[Key].applyAllVal.Event_Count__c}" styleClass="input_num" />
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Event_Count__c}" id="eventcount" styleClass="input_num" />
+                                    </apex:column>
+                                    <apex:column headerValue="" rendered="{!prodFamMap[Key].showColEvent}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Rate per Event"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Rate_Per_Event_Sell__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Rate_Per_Event_Sell__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            <apex:inputField id="input_allColRatePerEvent" value="{!prodFamMap[Key].applyAllVal.Rate_Per_Event_Sell__c}" styleClass="input_num" />
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Rate_Per_Event_Sell__c}" id="rateeventsell" styleClass="input_num" onchange="refreshNotes({!keyCol},{!fRow})" />
+                                        <apex:inputHidden value="{!item.XP.Rate_Per_Event_List__c}" id="rateeventlist" />
+                                    </apex:column>
+
+                                    <!--
+                                    <apex:column headerValue="Rate per Event (List)" rendered="{!showColEvent}" headerClass="tableheader" styleClass="input_num">
+                                        <apex:outputField value="{!item.XP.Rate_Per_Event_List__c}" />
+                                    </apex:column>
+                                    -->
+                                            
+                                    <apex:column headerValue="" headerClass="tableheader" styleClass="input_num" rendered="{!!prodFamMap[Key].showEditMonthlyRev}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                    <table>
+                                                        <tr style="height:80px !important">
+                                                            <td style="width : 100%; border:none !important;">
+                                                                <apex:outputText styleClass="headerTitle" value="Estimated Monthly Revenue"/>
+                                                                <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Total_Revenue__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Total_Revenue__c.InlineHelpText))}"/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width=100%; border:none !important;" >
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                    </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:outputText value="{!item.totalRevenue}" style="font-weight:bold;" />
+                                    </apex:column>
+                                    <apex:column headerValue="" headerClass="tableheader" styleClass="input_num" rendered="{!prodFamMap[Key].showEditMonthlyRev}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                    <table>
+                                                        <tr style="height:80px !important">
+                                                            <td style="width : 100%; border:none !important;">
+                                                                <apex:outputText styleClass="headerTitle" value="Estimated Monthly Revenue"/>
+                                                                <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Total_Revenue__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Total_Revenue__c.InlineHelpText))}"/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width=100%; border:none !important;" >
+                                                                <apex:inputField id="input_allEstMonthlyRev" value="{!prodFamMap[Key].applyAllVal.Total_Revenue__c}" styleClass="input_num" />
+                                                            </td>
+                                                        </tr>
+                                                    </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Total_Revenue__c}" id="estMonthlyRev" styleClass="input_num" onchange="refreshNotes({!keyCol},{!fRow})" />
+                                    </apex:column>
+                                    <apex:column headerValue="" headerClass="tableheader" rendered="{!prodFamMap[Key].showCustomPricingDesc}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Custom Pricing Description"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Custom_Pricing_Description__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Custom_Pricing_Description__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Custom_Pricing_Description__c}" styleClass="" />
+                                    </apex:column>
+                                        
+                                    <apex:column headerValue="" headerClass="tableheader" rendered="{!NOT(prodFamMap[Key].showFXProduct)}">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Contract Remarks"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Special_Notes__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Special_Notes__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Special_Notes__c}" styleClass="" />
+                                    </apex:column>
+                                        
+                                    <!-- <apex:column headerClass="tableheader" id="col_manual">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                    <apex:outputText styleClass="headerTitle" value="Manual Billing"/>
+                                                    <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Manual_Billing__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Manual_Billing__c.InlineHelpText))}"/>
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Manual_Billing__c}" id="manual" onclick="refreshNotes({!keyCol},{!fRow})" />
+                                    </apex:column> -->
+                                    <apex:column headerClass="tableheader width8Rem" id="billingType" rendered="{!NOT(prodFamMap[Key].showFXProduct)}"> <!--Billing Type-->
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Billing Type"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Billing_Type__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Billing_Type__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Billing_Type__c}"/>
+                                    </apex:column>
+                                    <apex:column headerClass="tableheader width8Rem" id="billingSubType" rendered="{!NOT(prodFamMap[Key].showFXProduct)}"> <!--Billing Sub Type-->
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Billing Sub Type"/>
+                                                            <apex:image styleClass="tooltipIcon" value="/s.gif" title="{!$ObjectType.Xendit_Opportunity_Product__c.fields.Billing_Sub_Type__c.InlineHelpText}" rendered="{!NOT(ISBLANK($ObjectType.Xendit_Opportunity_Product__c.fields.Billing_Sub_Type__c.InlineHelpText))}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <apex:inputField value="{!item.XP.Billing_Sub_Type__c}"/>
+                                    </apex:column>
+                                    <apex:column headerClass="tableheader width8Rem" id="billingNotes">
+                                        <apex:facet name="header">
+                                            <apex:outputPanel style="display : inline-block; width : 100%">
+                                                <table>
+                                                    <tr style="height:80px !important">
+                                                        <td style="width : 100%; border:none !important;">
+                                                            <apex:outputText styleClass="headerTitle" value="Notes"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width=100%; border:none !important;" >
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+                                                </table> 
+                                            </apex:outputPanel>
+                                        </apex:facet>
+                                        <!--<div id="note_tpv_sell_{!keyCol}_{!fRow}" class="notes">Updating Merchant Discount Rate will require pricing approval</div>
+                                        <div id="note_txn_sell_{!keyCol}_{!fRow}" class="notes">Updating Txn Rate will require pricing approval</div>
+                                        <div id="note_event_sell_{!keyCol}_{!fRow}" class="notes">Updating Rate will require pricing approval</div>
+                                        <div id="note_subacc_sell_{!keyCol}_{!fRow}" class="notes">Updating Rate will require pricing approval</div>
+                                        <div id="note_fixed_sell_{!keyCol}_{!fRow}" class="notes">Updating Rate will require pricing approval</div>
+                                        <div id="note_manual_{!keyCol}_{!fRow}" class="notes">Manual Billing will require pricing approval</div> -->
+                                        <div id="note_billingapproval_{!keyCol}_{!fRow}" class="notes" style="{!IF(item.BillingApprovalLevel > 0, 'display : block' , 'display : none')}">Selected billing type will require pricing approval</div>
+                                        <div id="note_pricingapproval_{!keyCol}_{!fRow}" class="notes" style="{!IF(item.PricingApprovalLevel > 0, 'display : block' , 'display : none')}">Updated Merchant Discount Rate / Txn Rate will require L{!item.PricingApprovalLevel} Manager pricing approval</div>
+                                        <div id="note_fx_rate{!keyCol}_{!fRow}" class="notes" style="{!IF(item.xp.FX_Product_Approval__c,'display : block','display : none')}">
+                                            Updated Rate to customer will require<br/>approval from the FX Team
+                                            </div>
+										<apex:variable value="{!fRow + 1}" var="fRow" />
+                                    </apex:column>
+                                </apex:pageBlockTable>
+                                <apex:inputHidden id="maxRow" value="{!prodFamMap[Key].totalOppProduct}" />
+                            </apex:outputpanel>
+                            
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <apex:variable value="{!keyCol + 1}" var="keyCol" />
+                </apex:repeat>
+                <input type="hidden" name="maxKeyCol" id="maxKeyCol" value="{!keyCol}" />
+            </apex:pageBlockSection>
+        </apex:outputPanel>
+    </apex:pageBlock>
+    </apex:form>
+<script>
+    
+    var PREFIX1 = 'pg:mainform:mainblock:itemsection:productRepeat';
+    var PREFIX2 = 'pg:mainform:mainblock:productslist:ratecardRepeat';
+    // refresh notes display in specific row
+    function refreshNotes(keyCol,iRow)
+    {
+        //console.log('keyCol refresh notes : ' + keyCol);
+        //console.log('iRow refresh notes : ' + iRow);
+        //document.getElementById('note_tpv_sell_' + keyCol + '_' + iRow).style.display = 'none';
+        //document.getElementById('note_txn_sell_' + keyCol + '_' + iRow).style.display = 'none';
+        //document.getElementById('note_event_sell_' + keyCol + '_' + iRow).style.display = 'none';
+        //document.getElementById('note_subacc_sell_' + keyCol + '_' + iRow).style.display = 'none';
+        //document.getElementById('note_fixed_sell_' + keyCol + '_' + iRow).style.display = 'none';
+        //document.getElementById('note_manual_' + keyCol + '_' + iRow).style.display = 'none';
+        //console.log('test 123');
+        // var obj = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':manual');
+        // console.log('obj manual : ' , obj);
+        // if (typeof (obj) != 'undefined' && obj != null) {
+        //     console.log('ada manual');
+        //     if (obj.checked) { 
+        //         document.getElementById('note_manual_' + keyCol + '_' + iRow).style.display = 'block';
+        //     }
+        // }
+        // var objSell = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':ratetpvsell');
+        // var objList = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':lowestratetpv'); //temp
+        // if (typeof (objSell) != 'undefined' && objSell != null && typeof (objList) != 'undefined' && objList != null) {
+        //     console.log('objList lowest : ' + objList.value);
+        //     console.log('objSell lowest : ' + objSell.value);
+        //     if ((objSell.value * 1000) < (objList.value * 1000 * 100)) { 
+        //         document.getElementById('note_tpv_sell_' + keyCol + '_' + iRow).style.display = 'block';
+        //     }
+        // }
+        
+        // objSell = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':ratetxnsell');
+        // objList = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':lowestratetxn');
+        // if (typeof (objSell) != 'undefined' && objSell != null && typeof (objList) != 'undefined' && objList != null) {
+        //     if ((objSell.value.replace(',', '') * 100) < (objList.value.replace(',', '') * 100)) { 
+        //         document.getElementById('note_txn_sell_' + keyCol + '_' + iRow).style.display = 'block';
+        //     }
+        // }
+        // objSell = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':rateeventsell');
+        // objList = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':rateeventlist');
+        // if (typeof (objSell) != 'undefined' && objSell != null && typeof (objList) != 'undefined' && objList != null) {
+        //     if ((objSell.value.replace(',', '') * 100) < (objList.value.replace(',', '') * 100)) { 
+        //         document.getElementById('note_event_sell_' + keyCol + '_' + iRow).style.display = 'block';
+        //     }
+        // }
+        // objSell = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':subaccsell');
+        // objList = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':subacclist');
+        // if (typeof (objSell) != 'undefined' && objSell != null && typeof (objList) != 'undefined' && objList != null) {
+        //     if ((objSell.value.replace(',', '') * 100) < (objList.value.replace(',', '') * 100)) { 
+        //         document.getElementById('note_subacc_sell_' + keyCol + '_' + iRow).style.display = 'block';
+        //     }
+        // }
+        // objSell = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':fixedratesell');
+        // objList = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':fixedratelist');
+        // if (typeof (objSell) != 'undefined' && objSell != null && typeof (objList) != 'undefined' && objList != null) {
+        //     if ((objSell.value.replace(',', '') * 100) < (objList.value.replace(',', '') * 100)) { 
+        //         document.getElementById('note_fixed_sell_' + keyCol + '_' + iRow).style.display = 'block';
+        //     }
+        // }
+    }
+
+    function parseStringtoFloat(data){
+        var tempData = data.toString();
+        var temp = (tempData.replaceAll(',', ''));
+        var returnVal = parseFloat(temp);
+        return returnVal;
+    }
+
+    function updateBasketSize(keyCol,iRow){
+        console.log('go to updateBasketSize')
+        var objBasketSize = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':inputbasketsize');
+        var objcalcThreshold = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':calcThreshold');
+        var objcalcSelectionType = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':calcSelectionType');
+        var objselectedFieldForHigherThreshold = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':selectedFieldForHigherThreshold');
+        var objMDRSell = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':ratetpvsell');
+        var objRateTxnSell = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':ratetxnsell');
+        
+        if (typeof (objBasketSize) != 'undefined' && objBasketSize != null && 
+            typeof (objcalcThreshold) != 'undefined' && objcalcThreshold != null &&
+            typeof (objselectedFieldForHigherThreshold) != 'undefined' && objselectedFieldForHigherThreshold != null
+        ) {
+            console.log('testing 123');
+            console.log(objBasketSize.value);
+            console.log(parseStringtoFloat(objBasketSize.value));
+            console.log(objcalcThreshold.value);
+            console.log(objselectedFieldForHigherThreshold.value);
+            if((parseStringtoFloat(objBasketSize.value) > parseStringtoFloat(objcalcThreshold.value) && objselectedFieldForHigherThreshold.value == 'RatePerTxn') ||
+                                    (parseStringtoFloat(objBasketSize.value) <= parseStringtoFloat(objcalcThreshold.value) && objselectedFieldForHigherThreshold.value == 'MDR')){
+                                        console.log('updateBasketSize IF');
+                                        objRateTxnSell.disabled = false;
+                                        objMDRSell.disabled = true;
+
+            }else if((parseStringtoFloat(objBasketSize.value) > parseStringtoFloat(objcalcThreshold.value) && objselectedFieldForHigherThreshold.value == 'MDR') ||
+                                    (parseStringtoFloat(objBasketSize.value) <= parseStringtoFloat(objcalcThreshold.value) && objselectedFieldForHigherThreshold.value == 'RatePerTxn')){
+                                       console.log('updateBasketSize ELSE IF');
+                                        objMDRSell.disabled = false;
+                                        objRateTxnSell.disabled = true;
+
+            }else{
+                console.log('opt 2');
+                refreshTPVandRevenueFields(keyCol,iRow);
+            }
+
+        }else{
+            console.log('opt 3');
+            refreshTPVandRevenueFields(keyCol,iRow);
+        }
+    }
+    
+    //refresh TPV & Revenue fields
+    function refreshTPVandRevenueFields(keyCol,iRow){
+        console.log('go to refreshTPVandRevenueFields');
+        var objMDRSell = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':ratetpvsell');
+        var objRateTxnSell = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + iRow + ':ratetxnsell');
+
+        if(typeof (objMDRSell) != 'undefined' && objMDRSell != null){
+            objMDRSell.disabled = false;
+            console.log('MDR disabled');
+        }
+        
+        if(typeof (objRateTxnSell) != 'undefined' && objRateTxnSell != null){
+            objRateTxnSell.disabled = false;
+            console.log('Txn disabled');
+        }
+
+        console.log('refreshTPVandRevenueFields after');
+        
+    }
+
+    function updateSelectAllProductFlag(keyCol){
+        var objFlag = document.getElementById(PREFIX2 + ':' + keyCol + ':pb:ratepbsitem:selectAllFlag');
+        var countRateCard = document.getElementById(PREFIX2 + ':' + keyCol + ':pb:ratepbsitem:maxFamRow');
+        if(typeof (objFlag) != 'undefined' && objFlag != null && typeof (countRateCard) != 'undefined' && countRateCard != null){
+            for(i = 0 ; i < countRateCard.value; i++){
+                var rateFlag = document.getElementById(PREFIX2 + ':' + keyCol + ':pb:ratepbsitem:ratecardtable:' + i + ':productFlag');
+                if(typeof (rateFlag) != 'undefined' && rateFlag != null){
+                    rateFlag.checked = objFlag.checked;
+                }
+            }   
+        }
+    }
+
+    function updateRatecardFlag(keyCol){
+        var objFlag = document.getElementById(PREFIX2 + ':' + keyCol + ':pb:ratepbsitem:selectAllFlag');
+        var countRateCard = document.getElementById(PREFIX2 + ':' + keyCol + ':pb:ratepbsitem:maxFamRow');
+        if(typeof (objFlag) != 'undefined' && objFlag != null && typeof (countRateCard) != 'undefined' && countRateCard != null){
+            objFlag.checked = true;
+            for(i = 0 ; i < countRateCard.value; i++){
+                var rateFlag = document.getElementById(PREFIX2 + ':' + keyCol + ':pb:ratepbsitem:ratecardtable:' + i + ':productFlag');
+                if(typeof (rateFlag) != 'undefined' && rateFlag != null){
+                    console.log('rateFlag checked : ' + rateFlag.checked);
+                    if(!rateFlag.checked){
+                        objFlag.checked = false;
+                    }
+                    
+                }
+                console.log('object flag checked : ' + objFlag.checked);
+            }   
+        }
+    }
+
+    function applyAll(keyCol){
+        console.log('applyAll key : ' + keyCol);
+        var prodFam = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:maxRow'); //to get number of opp item for each product family
+        var subAccountVal = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allColSubaccount'); //mass input id : numberofsubaccount
+        var rateSubAccountVal = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allRateSubaccount'); //mass input id : subaccsell
+        var fixedRateVal = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allColFixedRate'); //mass input id : fixedratesell
+        var tpvVal = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allColTPV'); //mass input id : estimatedtpv
+        var tpvRate = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allColTPVRate'); //mass input id : ratetpvsell
+        var basketSize = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allColBucket'); //mass input id : inputbasketsize
+        var txnRate = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allColTxnRate'); //mass input id : ratetxnsell
+        var eventVal = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allColEvent'); //mass input id : eventcount
+        var eventRate = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allColRatePerEvent'); //mass input id : rateeventsell
+        var projectedCost = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allProjectedCost'); //mass input id : projectedCost
+        var estMonthlyRev = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allEstMonthlyRev'); //mass input id : estMonthlyRev
+        var rateToCustVal = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allColRateToCust'); //mass input id : rateToCust
+        var montVolVal = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allMVol'); //mass input id : monthlyVol
+        var noOfAPICallVal = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allAPICall'); //mass input id : noOfAPICall
+        var rateAPICallVal = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:input_allRateAPICall'); //mass input id : rateAPICall
+        
+        if(typeof (keyCol) != 'undefined' && keyCol != null && typeof (prodFam) != 'undefined' && prodFam != null){
+            
+            massUpdateField(subAccountVal, 'numberofsubaccount', prodFam, keyCol);
+            massUpdateField(rateSubAccountVal, 'subaccsell', prodFam, keyCol);
+            massUpdateField(fixedRateVal, 'fixedratesell', prodFam, keyCol);
+            massUpdateField(tpvVal, 'estimatedtpv', prodFam, keyCol);
+            massUpdateField(tpvRate, 'ratetpvsell', prodFam, keyCol);
+            massUpdateField(basketSize, 'inputbasketsize', prodFam, keyCol);
+            massUpdateField(txnRate, 'ratetxnsell', prodFam, keyCol);
+            massUpdateField(eventVal, 'eventcount', prodFam, keyCol);
+            massUpdateField(eventRate, 'rateeventsell', prodFam, keyCol);
+            massUpdateField(projectedCost, 'projectedCost', prodFam, keyCol);
+            massUpdateField(estMonthlyRev, 'estMonthlyRev', prodFam, keyCol);
+            massUpdateField(rateToCustVal, 'rateToCust', prodFam, keyCol);
+            massUpdateField(montVolVal, 'monthlyVol', prodFam, keyCol);
+            massUpdateField(noOfAPICallVal, 'noOfAPICall', prodFam, keyCol);
+            massUpdateField(rateAPICallVal, 'rateAPICall', prodFam, keyCol);
+
+            refreshAllCalcFields();
+        }
+    }
+
+    function massUpdateField(inputField, outputFieldId, countPrdFam, keyCol){
+        console.log('go to massUpdateField');
+        if(inputField && inputField.value.length > 0){
+            for(i = 0 ; i < countPrdFam.value; i++){
+                var inputVal = document.getElementById(PREFIX1 + ':' + keyCol + ':pb2:pbsitem:itemtable:' + i + ':' + outputFieldId);
+                if(typeof (inputVal) != 'undefined' && inputVal != null){
+                    inputVal.value = inputField.value;
+                    console.log('massUpdateField ' + outputFieldId + ' value : ' );
+                    console.log(inputVal.value);
+                }
+            }
+        }
+    }
+
+    // refresh all notes
+    function refreshAllNotes()
+    {
+        console.log('go to refreshAllNotes');
+        var maksKeyCol = document.getElementById('maxKeyCol').value;
+        for(j = 0 ; j < maksKeyCol; j++){
+            var maks = document.getElementById(PREFIX1 + ':' + j + ':pb2:pbsitem:maxRow');
+            if(typeof (maks) != 'undefined' && maks != null){
+                for(i = 0; i < maks.value; i++) {
+                    refreshNotes(j,i);
+                }
+            }
+        }
+    }
+
+    // refresh all calculation field
+    function refreshAllCalcFields()
+    {
+        console.log('go to refreshAllCalcFields');
+        var maksKeyCol = document.getElementById('maxKeyCol').value;
+        for(j = 0 ; j < maksKeyCol; j++){
+            var maks = document.getElementById(PREFIX1 + ':' + j + ':pb2:pbsitem:maxRow');
+            if(typeof (maks) != 'undefined' && maks != null){
+                for(i = 0; i < maks.value; i++) {
+                    updateBasketSize(j,i);
+                }
+            }
+        }
+    }
+
+    function openPricingTableURL(event){
+        event.preventDefault();
+        var linkURL = "{!$Label.Pricing_Table_Link}";
+        window.open(linkURL,"_blank");
+    }
+
+    refreshAllNotes();
+    refreshAllCalcFields();
+</script>    
+</apex:page>
